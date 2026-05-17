@@ -1,0 +1,635 @@
+name,lat,lon,class_group,recclass,mass_g,fall,year
+Binningup,-33.15639,115.67639,Stony,H5,488.1,Fell,1984
+Bunburra Rockhole,-31.35,129.19,Stony,Eucrite,324.0,Fell,2007
+Dunbogan,-31.66667,152.83333,Stony,L6,30.0,Fell,1999
+Emmaville,-29.46667,151.61667,Stony,Eucrite-mmict,127.0,Fell,1900
+Forest Vale,-33.35,146.85833,Stony,H4,26000.0,Fell,1942
+Karoonda,-35.08333,139.91667,Stony,CK4,41730.0,Fell,1930
+Millbillillie,-26.45,120.36667,Stony,Eucrite-mmict,330000.0,Fell,1960
+Moorleah,-40.975,145.6,Stony,L6,8887.5,Fell,1930
+Mount Browne,-29.8,141.7,Stony,H6,11300.0,Fell,1902
+Murchison,-36.61667,145.2,Stony,CM2,100000.0,Fell,1969
+Narellan,-34.05,150.68889,Stony,L6,367.5,Fell,1928
+Rockhampton,-23.38333,150.51667,Stony,Stone-uncl,1641.0,Fell,1895
+Tenham,-25.73333,142.95,Stony,L6,160000.0,Fell,1879
+Wiluna,-26.59278,120.32833,Stony,H5,150000.0,Fell,1967
+Woolgorong,-27.75,115.83333,Stony,L6,36000.0,Fell,1960
+Alikatnima,-23.33333,134.11667,Iron,"Iron, ungrouped",20000.0,Found,1931
+Answer,-21.65972,140.90694,Iron,Iron,11090.0,Found,1970
+Arltunga,-23.33333,134.66667,Iron,"Iron, IID-an",18100.0,Found,1908
+Arrabury,-26.5,141.08333,Stony,H6,5300.0,Found,1960
+Artracoona,-29.06667,139.91667,Stony,L6,20810.0,Found,1914
+Avoca (Western Australia),-30.85,122.31667,Iron,"Iron, IIIAB",37850.0,Found,1966
+Baandee,-31.61667,118.03333,Stony,H6,256.3,Found,1967
+Balfour Downs,-22.75,120.83333,Iron,"Iron, IAB-sLL",2400.0,Found,1962
+Ballarat,-37.57083,143.82533,Iron,"Iron, IAB complex",15.0,Found,1867
+Ballinoo,-27.7,115.76667,Iron,"Iron, IIC",42200.0,Found,1892
+Barratta,-35.3,144.56667,Stony,L4,200000.0,Found,1845
+Bealiba,-36.8,143.55,Stony,L6,652.0,Found,1950
+Bencubbin,-30.75,117.78333,Stony,CBa,118000.0,Found,1930
+Bendock,-37.15,148.91667,Stony-iron,Pallasite,27000.0,Found,1898
+Biduna Blowhole 001,-31.01667,131.31667,Stony,L4,103.4,Found,2009
+Biduna Blowhole 002,-31.03297,131.28547,Stony,L4,13.0,Found,2011
+Biduna Blowhole 003,-31.01964,131.30394,Stony,L6,0.4,Found,2011
+Biduna Blowhole 004,-31.03278,131.28553,Stony,H5,114.5,Found,2011
+Big Rock Donga,-30.55,130.96667,Stony,H6,19000.0,Found,1970
+Billygoat Donga,-30.13333,126.36667,Stony,L6,893.0,Found,1962
+Binda,-34.31667,149.38333,Stony,Eucrite-cm,5400.0,Found,1912
+Bingera,-29.88333,150.56667,Iron,"Iron, IIAB",10841.0,Found,1880
+Binneringie,-31.4875,122.12389,Stony,H5,9056.0,Found,1946
+Binya,-34.225,146.38167,Iron,"Iron, IIIF",11300.0,Found,1981
+Blue Tier,-41.18333,148.03333,Iron,Iron,1400.0,Found,1890
+Bond Springs,-23.5,133.83333,Stony,H6,6.2,Found,1898
+Boogaldi,-31.15,149.11667,Iron,"Iron, IVA",2000.0,Found,1900
+Boolka,-30.06667,141.06667,Stony,H5,12000.0,Found,1968
+Boorabie 001,-29.46667,128.35,Stony,H5,381.0,Found,1977
+Boxhole,-22.61667,135.2,Iron,"Iron, IIIAB",500000.0,Found,1937
+Brachina,-31.3,138.38333,Stony,Brachinite,202.9,Found,1974
+Broken Hill,-31.83333,141.76667,Stony,L6,34000.0,Found,1994
+Buckleboo,-32.95556,136.1375,Stony,H6,992.0,Found,1963
+Bunjil,-29.62917,116.48222,Stony,L6,38750.0,Found,1971
+Burnabbie,-32.05,126.16667,Stony,H5,2515.0,Found,1965
+Burrika,-31.96667,125.83333,Stony,L6,20.4,Found,1966
+Cadell,-34.06667,139.75,Stony,L6,3290.0,Found,1910
+Calcalong Creek,-26.45,120.36667,Stony,Lunar (anorth),19.0,Found,1960
+Camel Donga,-30.31667,126.61667,Stony,Eucrite-mmict,25000.0,Found,1984
+Camel Donga 002,-30.08333,126.61667,Stony,L6,280.0,Found,1989
+Camel Donga 003,-30.11667,126.91667,Stony,CK3,36.6,Found,1990
+Camel Donga 004,-30.31667,126.56667,Stony,Howardite,32.8,Found,1990
+Camel Donga 005,-30.28333,126.51667,Stony,LL3.4,38.0,Found,1992
+Camel Donga 006,-30.29167,126.5875,Stony,H6,50.96,Found,1992
+Camel Donga 007,-30.31667,126.61667,Stony,L5,100.3,Found,1986
+Camel Donga 008,-30.1085,126.62483,Stony,H6,0.8,Found,1993
+Camel Donga 009,-30.11967,126.8835,Stony,H5,13.4,Found,1993
+Camel Donga 010,-30.1255,126.89,Stony,L6,3.4,Found,1993
+Camel Donga 011,-30.1255,126.89,Stony,L6,28.7,Found,1993
+Camel Donga 012,-30.134,126.8915,Stony,L6,215.0,Found,1993
+Camel Donga 013,-30.13333,126.8905,Stony,L6,94.3,Found,1993
+Camel Donga 014,-30.12433,126.88667,Stony,LL6,36.0,Found,1993
+Camel Donga 015,-30.11967,126.8985,Stony,H6,0.3,Found,1993
+Camel Donga 016,-30.11883,126.88533,Stony,L3,3.5,Found,1993
+Camel Donga 017,-30.022,126.5525,Stony,H5,6.44,Found,1994
+Camel Donga 018,-30.0225,126.552,Stony,L6,12.94,Found,1994
+Camel Donga 019,-30.07967,126.88917,Stony,L6,0.6,Found,1994
+Camel Donga 020,-30.07967,126.88917,Stony,L6,0.81,Found,1994
+Camel Donga 021,-30.06383,126.88417,Stony,L6,4.15,Found,1994
+Camel Donga 022,-30.0855,126.90117,Stony,L6,0.4,Found,1994
+Camel Donga 023,-30.08733,126.90167,Stony,H6,0.6,Found,1994
+Camel Donga 024,-30.09867,126.8855,Stony,L6,0.65,Found,1994
+Camel Donga 025,-30.09867,126.88533,Stony,L/LL6,2.58,Found,1994
+Camel Donga 026,-30.09167,126.88883,Stony,L6,1.0,Found,1994
+Camel Donga 027,-30.09167,126.88883,Stony,L/LL6,5.2,Found,1994
+Camel Donga 028,-30.09167,126.88883,Stony,L6,1.48,Found,1994
+Camel Donga 029,-30.09167,126.88883,Stony,L6,1.0,Found,1994
+Camel Donga 030,-30.09167,126.88883,Stony,L6,3.01,Found,1994
+Camel Donga 031,-30.09167,126.88883,Stony,L6,0.32,Found,1994
+Camel Donga 032,-30.09167,126.88883,Stony,LL6,2.33,Found,1994
+Camel Donga 033,-30.09167,126.88883,Stony,LL6,0.95,Found,1994
+Camel Donga 034,-30.09167,126.88883,Stony,L6,0.7,Found,1994
+Camel Donga 035,-30.09167,126.88883,Stony,L6,0.45,Found,1994
+Camel Donga 036,-30.09167,126.88883,Stony,L6,0.41,Found,1994
+Camel Donga 037,-30.1845,126.68367,Stony,L6,8.7,Found,1994
+Camel Donga 038,-30.18417,126.7,Stony,H6,0.99,Found,1994
+Camel Donga 039,-30.31667,126.6,Stony,H6,3.57,Found,1994
+Camel Donga 040,-30.31667,126.61667,Stony,CV3-an,55.1,Found,1988
+Camel Donga 041,-30.11683,126.8755,Stony,L5,18.8,Found,1993
+Camel Donga 042,-30.12283,126.888,Stony,H3,37.6,Found,1993
+Camel Donga 043,-30.13933,126.901,Stony,L6,69.95,Found,1993
+Camel Donga 044,-30.11967,126.86683,Stony,H6,15.29,Found,1993
+Camel Donga 045,-30.107,126.84217,Stony,H4,26.9,Found,1993
+Camel Donga 046,-30.119,126.838,Stony,LL6,9.09,Found,1993
+Camel Donga 047,-30.32,126.606,Stony,H4/5,28.27,Found,1993
+Camel Donga 048,-30.32,126.606,Stony,L5,104.3,Found,1993
+Camel Donga 049,-30.32,126.606,Stony,H3,13.63,Found,1993
+Camel Donga 050,-30.1085,126.52717,Stony,LL6,19.9,Found,1993
+Camel Donga 051,-30.30883,126.5845,Stony,H5,5.0,Found,1993
+Camel Donga 052,-30.3685,126.6125,Stony,H3-an,61.4,Found,1993
+Camel Donga 053,-30.31667,126.61667,Stony,LL5-6,579.0,Found,2008
+Cardanumbi,-32.1,125.68333,Stony,L5,6.4,Found,1966
+Carlisle Lakes,-29.16667,127.08333,Stony,R3.8,49.5,Found,1977
+Carlisle Lakes 002,-29.16667,127.16667,Stony,H4/5,410.0,Found,1977
+Carlisle Lakes 003,-29.15,127.16667,Stony,H4/5,116.0,Found,1977
+Carlisle Lakes 004,-29.16667,127.16667,Stony,H5,809.0,Found,1977
+Carlisle Lakes 005,-29.18333,127.16667,Stony,H5,502.0,Found,1977
+Caroline,-37.98333,140.98333,Stony,H5,800.0,Found,1941
+Carraweena,-29.23333,139.93333,Stony,L3.9,31600.0,Found,1914
+Cartoonkana,-29.75,141.03333,Stony,L6,294.0,Found,1914
+Castray River,-41.5,145.41667,Iron,Iron,10.0,Found,1899
+Choolkooning 001,-29.91667,129.83333,Stony,L6,2000.0,Found,1991
+Cockarrow Creek,-26.66667,120.16667,Stony,L6,429.0,Found,1970
+Cockburn,-32.13333,141.03333,Stony,L6,2460.0,Found,1946
+Cocklebiddy,-31.93333,126.21667,Stony,H5,19500.0,Found,1949
+Cocunda,-32.81667,134.8,Stony,L6,482.0,Found,1945
+Colville Lake 001,-29.6,126.50667,Stony,H5,56.2,Found,1986
+Colville Lake 002,-29.785,126.58833,Stony,H5,100.0,Found,1986
+Commodore,-31.2,138.3,Stony,H6,304.3,Found,1972
+Cook 001,-30.33333,130.53333,Stony,H5,105000.0,Found,1989
+Cook 002,-30.25,130.66667,Stony,L4,61.0,Found,1989
+Cook 003,-30.31833,129.06333,Stony,CK4,1536.9,Found,1986
+Cook 004,-30.70167,130.45611,Stony,H4,149.0,Found,1991
+Cook 005,-30.24833,130.54083,Stony,L/LL3,97.0,Found,1990
+Cook 006,-30.50683,130.404,Stony,L4,41.8,Found,1991
+Cook 007,-30.61667,130.41667,Stony,H4,100000.0,Found,1989
+Cook 009,-30.50683,130.404,Stony,H4,84.2,Found,1991
+Cook 010,-30.16967,130.70533,Stony,H5,35.4,Found,1991
+Cook 011,-30.23433,130.60067,Stony,L3-5,471.0,Found,1991
+Cook 012,-30.91378,130.90386,Stony,H4,6.6,Found,2010
+Cook 013,-30.94775,130.90858,Stony,H6,46.8,Found,2010
+Coolac,-34.96667,148.125,Iron,"Iron, IAB-MG",19280.0,Found,1874
+Coolamon,-34.81667,147.13333,Stony,L6,393.0,Found,1921
+Coomandook,-35.41667,139.75,Stony,H6,5230.0,Found,1939
+Coonana,-29.85,140.7,Stony,H4,6800.0,Found,1962
+Coorara,-30.45,126.1,Stony,L6,116.7,Found,1966
+Corowa,-36.0,146.36667,Iron,"Iron, IIF",11340.0,Found,1964
+Cosmo Newberry,-27.95,122.88333,Iron,"Iron, IIAB",2156.0,Found,1980
+Cowell,-33.3,136.01667,Iron,"Iron, IIIAB",5717.0,Found,1932
+Cowra,-33.85,148.68333,Iron,"Iron, ungrouped",5560.0,Found,1888
+Crab Hole,-30.4,127.43333,Stony,L6,284.0,Found,1980
+Cranbourne,-38.1,145.3,Iron,"Iron, IAB-MG",8600000.0,Found,1854
+Credo,-30.36667,120.73333,Stony,L6,10820.0,Found,1967
+Crocker's Well,-32.01667,139.78333,Stony,LL7,3.8,Found,1956
+Dalgaranga,-27.71667,117.25,Stony-iron,Mesosiderite-A,12200.0,Found,1923
+Dalgety Downs,-25.33333,116.18333,Stony,L4,257000.0,Found,1941
+Deakin 001,-30.88333,128.96667,Stony,Chondrite-ung,109.5,Found,1978
+Deakin 002,-30.88333,128.975,Stony,H4,4.5,Found,1978
+Deakin 003,-30.88333,128.66667,Stony,H5,82.6,Found,1986
+Deakin 004,-30.47,128.745,Stony,H4,127.9,Found,1986
+Deakin 005,-30.53333,128.56667,Stony,H5,77.0,Found,1989
+Deakin 006,-30.58333,128.66667,Stony,H4/5,274.0,Found,1989
+Deakin 007,-30.16667,128.66667,Stony,H6,1060.0,Found,1989
+Deakin 008,-30.66667,129.01667,Stony,H5,61.4,Found,1989
+Deakin 009,-30.73333,128.91667,Stony,H5,150.0,Found,1991
+Deakin 010,-30.573,128.56367,Stony,Eucrite-mmict,438.0,Found,1988
+Delegate,-37.0,149.03333,Iron,"Iron, IIIAB-an",27700.0,Found,1904
+Denman 002,-30.6,130.06667,Stony,CV3,30.0,Found,1991
+Denman 003,-30.60867,130.08017,Stony,H5,53.0,Found,1991
+Denman 004,-30.60217,129.96667,Stony,L6,113.0,Found,1991
+Dimboola,-36.5,142.03333,Stony,H5,16000.0,Found,1944
+Dingo Pup Donga,-30.43333,126.1,Stony,Ureilite,122.7,Found,1965
+Donnybrook,-33.61667,115.91667,Stony-iron,Mesosiderite?,414.0,Found,1918
+Doolgunna,-25.93333,119.3,Stony,L,20.0,Found,1967
+Dorrigo,-30.28333,152.66667,Iron,"Iron, ungrouped",8500.0,Found,1948
+Duketon,-27.5,122.36667,Iron,"Iron, IIIAB",118300.0,Found,1948
+Edjudina,-29.58639,122.18167,Stony,H4,4480.0,Found,1969
+Eldee 001,-31.66997,141.24233,Stony,L6,4514.0,Found,2006
+Eldee 002,-31.66417,141.23375,Stony,L6-melt breccia,101.0,Found,2006
+Eli Elwah,-34.5,144.71667,Stony,L6,15200.0,Found,1888
+Ellerslie,-28.9,146.76667,Stony,L5,10200.0,Found,1905
+Elsinora,-29.45,143.6,Stony,H5,1797.0,Found,1922
+Erldunda,-25.29647,133.20006,Stony,H5,190.0,Found,1992
+Esperance,-33.86667,121.91667,Stony,L/LL3.4,397.0,Found,1991
+Ethiudna,-32.03333,139.78333,Stony,L4,74318.0,Found,1977
+Fenbark,-30.44028,121.25694,Stony,H5,1861.0,Found,1968
+Forrest 001,-30.81667,128.21667,Stony,H5,97.7,Found,1967
+Forrest 002,-30.98333,127.88333,Stony,L6,26000.0,Found,1980
+Forrest 003,-30.9,128.08333,Stony,H3,74.0,Found,1970
+Forrest 004,-30.46667,128.2,Stony,L6,64.0,Found,1970
+Forrest 005,-30.45833,128.21667,Stony,H4,36.0,Found,1970
+Forrest 006,-30.63333,128.125,Stony,L6,47.3,Found,1977
+Forrest 007,-30.785,128.01667,Stony,H4,910.0,Found,1979
+Forrest 008,-30.75,127.99167,Stony,L6,122.6,Found,1979
+Forrest 009,-30.15,128.08333,Stony,L6,1000.0,Found,1979
+Forrest 010,-30.11667,127.86667,Stony,L4,359.0,Found,1982
+Forrest 011,-30.15,128.08333,Stony,H5,34.6,Found,1982
+Forrest 012,-30.15,128.08333,Stony,H5,28.6,Found,1982
+Forrest 013,-30.15,128.08333,Stony,L6,26.9,Found,1982
+Forrest 014,-30.78333,127.75,Stony,H5,104.0,Found,1990
+Forrest 015,-30.78333,127.8,Stony,H4,82.0,Found,1990
+Forrest 016,-30.15383,128.07283,Stony,H5-6,46.87,Found,1992
+Forrest 017,-30.17417,128.069,Stony,H4,4.6,Found,1992
+Forrest 018,-30.16667,128.08333,Stony,H6,54.41,Found,1992
+Forrest 019,-30.16667,126.08333,Stony,H5,42.94,Found,1992
+Forrest 020,-30.73783,127.95367,Stony,L5/6,6.99,Found,1992
+Forrest 021,-30.757,127.95167,Stony,L6,59.7,Found,1992
+Forrest 022,-30.77283,127.94667,Stony,L5,7.46,Found,1992
+Forrest 023,-30.78167,127.94417,Stony,L4,7.67,Found,1992
+Forrest 024,-30.758,127.94783,Stony,LL6,16.23,Found,1992
+Forrest 025,-30.756,127.93717,Stony,L5,8.11,Found,1992
+Forrest 026,-30.757,127.938,Stony,H5/6,64.11,Found,1992
+Forrest 027,-30.75967,127.94983,Stony,L5/6,14.41,Found,1992
+Forrest 028,-30.73233,127.949,Stony,L7,48.7,Found,1992
+Forrest 029,-30.7315,127.93917,Stony,H3-5,6.0,Found,1992
+Forrest 030,-30.731,127.93917,Stony,L6/7,77.68,Found,1992
+Forrest 031,-30.73783,127.95367,Stony,H4,0.83,Found,1992
+Forrest 032,-30.71667,127.93333,Stony,L6/7,1.38,Found,1992
+Forrest 033,-30.75,128.08333,Stony,EL6,31.3,Found,1991
+Forrest 034,-30.75,128.08333,Stony,L6,99.0,Found,1991
+Forrest 035,-30.75,128.08333,Stony,L6,166.0,Found,1991
+Forrest 036,-30.75,128.08333,Stony,H6,57.0,Found,1991
+Forrest 037,-30.75,128.08333,Stony,H4,10.0,Found,1991
+Forrest Lakes,-29.41667,129.5,Stony,LL5,500.0,Found,1948
+Forrest Lakes 002,-29.58333,128.91667,Stony,H5,52.0,Found,1974
+Frenchman Bay,-30.60833,115.16667,Stony,H3.5,8800.0,Found,1964
+Gascoyne Junction,-24.5,115.18333,Stony,H5,10000.0,Found,1978
+Gibson,-33.68333,121.8,Stony,Lodranite,67.1,Found,1991
+Gilgoin,-30.38333,147.2,Stony,H5,147000.0,Found,1889
+Gladstone (iron),-23.9,151.3,Iron,"Iron, IAB-MG",736600.0,Found,1915
+Glenormiston,-22.9,138.71667,Iron,"Iron, ungrouped",40800.0,Found,1925
+Gnowangerup,-34.0,118.1,Iron,"Iron, IIIAB",33600.0,Found,1976
+Gove,-12.26333,136.83833,Iron,Relict iron,0.0,Found,1979
+Gundaring,-33.3,117.66667,Iron,"Iron, IIIAB",112500.0,Found,1937
+Gunnadorah,-31.0,125.93333,Stony,H5,19.7,Found,1968
+Gunnadorah 002,-30.46667,126.18333,Stony,L5,46.0,Found,1976
+Gunnadorah 003,-30.49967,126.22183,Stony,L6,2.81,Found,1994
+Gunnadorah 004,-30.46717,126.34367,Stony,H5,47.35,Found,1994
+Gunnadorah 005,-30.47483,126.35883,Stony,L6,40.37,Found,1994
+Gunnadorah 006,-30.47483,126.35883,Stony,L6,16.01,Found,1994
+Gunnadorah 007,-30.48033,126.347,Stony,L6,3.26,Found,1994
+Gunnadorah 008,-30.48083,126.34633,Stony,H6,6.13,Found,1994
+Gunnadorah 009,-30.48083,126.34633,Stony,H6,0.4,Found,1994
+Gunnadorah 010,-30.46667,126.33333,Stony,H5,1.3,Found,1994
+Gunnadorah 011,-30.9685,126.252,Stony,L,33.0,Found,1993
+Haig,-31.38333,125.63333,Iron,"Iron, IIIAB",503000.0,Found,1951
+Hamilton (Queensland),-28.48333,148.25,Stony,L6,68000.0,Found,1966
+Hammond Downs,-25.46667,142.8,Stony,H4,27000.0,Found,1950
+Henbury,-24.56667,133.16667,Iron,"Iron, IIIAB",2000000.0,Found,1931
+Hermitage Plains,-31.73333,146.4,Stony,L6,32000.0,Found,1909
+Hidden Valley,-19.11667,145.41667,Iron,"Iron, IIIAB",7000.0,Found,1991
+Huckitta,-22.36667,135.76667,Stony-iron,"Pallasite, PMG-an",2300000.0,Found,1924
+Hughes 001,-30.45,129.5,Stony,LL6,379.0,Found,1990
+Hughes 004,-30.58517,129.58667,Stony,Howardite,304.0,Found,1991
+Hughes 005,-30.60267,129.57528,Stony,Howardite,284.0,Found,1991
+Hughes 006,-30.57,129.31467,Stony,H5,367.0,Found,1991
+Hughes 007,-30.56833,129.6375,Stony,Ureilite,58.0,Found,1991
+Hughes 008,-30.4,129.01667,Stony,L5,44.0,Found,1989
+Hughes 009,-30.41667,129.81667,Stony,Ureilite,108.0,Found,1991
+Hughes 010,-30.2635,129.81033,Stony,L6,71.0,Found,1991
+Hughes 011,-30.23333,129.08333,Stony,L4,263.0,Found,1991
+Hughes 012,-30.28333,129.56667,Stony,H5,25.0,Found,1991
+Hughes 013,-30.66167,129.11667,Stony,H5,4000.0,Found,1991
+Hughes 014,-30.51867,129.54017,Stony,L5/6,57.5,Found,1991
+Hughes 015,-30.51667,129.192,Stony,L3.8,31.2,Found,1991
+Hughes 016,-30.547,129.18917,Stony,L6,58.0,Found,1991
+Hughes 017,-30.55167,129.22133,Stony,H6,138.0,Found,1991
+Hughes 018,-30.568,129.713,Stony,H5/6,53.5,Found,1991
+Hughes 019,-30.16833,129.04183,Stony,H5,90.5,Found,1991
+Hughes 020,-30.27467,129.0185,Stony,L6,23.6,Found,1991
+Hughes 021,-30.668,129.462,Stony,L3.6,159.9,Found,1991
+Hughes 022,-30.21583,129.72083,Stony,L5/6,104.0,Found,1991
+Hughes 023,-30.085,129.10283,Stony,LL6,111.0,Found,1991
+Hughes 024,-30.53367,129.42417,Stony,L5,333.0,Found,1991
+Hughes 025,-30.70117,129.46717,Stony,L5,172.0,Found,1991
+Hughes 026,-30.0,129.16667,Stony,Brachinite,360.0,Found,1995
+Hughes 027,-30.55667,129.63867,Stony,H5,68.0,Found,1993
+Hughes 028,-30.60883,129.62567,Stony,H6,62.0,Found,1993
+Hughes 029,-30.40817,129.33833,Stony,H5,74.0,Found,1993
+Hughes 030,-30.668,129.462,Stony,R3-6,100.0,Found,1991
+Hughes 031,-30.17306,129.53611,Stony,L4,120.0,Found,1991
+Hughes 032,-30.16833,129.5,Stony,L5,42.7,Found,1991
+Hughes 033,-30.13389,129.0625,Stony,CO3,20.0,Found,1991
+Hughes 034,-30.28333,129.53333,Stony,H5,150.6,Found,1993
+Hughes 035,-30.33333,129.5,Stony,L6,23.0,Found,1993
+Hughes 036,-30.35,129.66667,Stony,H4,35.9,Found,1993
+Hughes 037,-30.41667,129.65,Stony,H5,28.5,Found,1994
+Hughes 038,-30.38333,129.68333,Stony,LL6,10.0,Found,1993
+Hughes 039,-30.38333,129.7,Stony,LL5,8.5,Found,1993
+Hughes 040,-30.38333,129.51667,Stony,L5,159.1,Found,1993
+Hughes 041,-30.43333,129.6,Stony,LL6,14.0,Found,1993
+Hughes 042,-30.43333,129.55,Stony,H4,39.0,Found,1993
+Hughes 043,-30.35,129.65,Stony,L6,47.4,Found,1993
+Hughes 044,-30.31667,129.68333,Stony,L5/6,98.5,Found,1993
+Hughes 045,-30.33333,129.68333,Stony,L4,25.6,Found,1993
+Hughes 046,-30.55,129.65,Stony,H5,96.9,Found,1993
+Hughes 047,-30.31667,129.73333,Stony,H5/6,1100.0,Found,1993
+Hughes 048,-30.33333,129.76667,Stony,H5,46.0,Found,1993
+Hughes 049,-30.38333,129.81667,Stony,L6,33.6,Found,1993
+Hughes 050,-30.33333,129.8,Stony,H5,47.4,Found,1993
+Hughes 051,-30.43333,129.76667,Stony,H3,12.8,Found,1993
+Hughes 052,-30.46667,129.71667,Stony,L5,458.3,Found,1993
+Hughes 053,-30.46667,129.78333,Stony,L5,68.9,Found,1993
+Hughes 054,-30.46667,129.8,Stony,L5,311.2,Found,1993
+Hughes 055,-30.46667,129.8,Stony,L5,664.4,Found,1993
+Hughes 056,-30.48333,129.63333,Stony,L5,186.8,Found,1993
+Hughes 057,-30.46667,129.68333,Stony,L5,74.3,Found,1993
+Hughes 058,-30.43333,129.5,Stony,H6,37.2,Found,1993
+Ifould Lake 001,-30.85,132.08333,Stony,L5,40.9,Found,2008
+Ingella Station,-25.55,142.78333,Stony,H5,50000.0,Found,1987
+Jeedamya,-29.58333,121.16667,Stony,H6,914.0,Found,1971
+Juderina Spring,-25.91667,119.3,Stony,L6,2198.0,Found,1990
+Kaldoonera Hill,-32.61667,134.85,Stony,H6,12000.0,Found,1956
+Kappakoola,-33.25,135.53333,Stony,H6,392.5,Found,1929
+Kapunda,-34.31667,138.93333,Iron,"Iron, IIIAB",542.0,Found,1965
+Kielpa,-33.6,136.1,Stony,H5,13600.0,Found,1948
+Kimba,-33.21667,136.41667,Stony,H4,1492.0,Found,1997
+Kinclaven 001,-30.46667,125.7,Stony,L5,17.3,Found,1973
+Kittakittaooloo,-28.03333,138.13333,Stony,H4,3600.0,Found,1970
+Koraleigh,-35.1,143.4,Stony,L6,450.0,Found,1943
+Kulnine,-34.15,141.78333,Stony,L6,55300.0,Found,1886
+Kumerina,-24.91667,119.41667,Iron,"Iron, IIC",53500.0,Found,1937
+Kyancutta,-33.28333,136.0,Iron,"Iron, IIIAB",32700.0,Found,1932
+Kybo 001,-31.18333,126.41667,Stony,LL5,2492.7,Found,1984
+Kybunga,-33.9,138.48333,Stony,L5,7900.0,Found,1956
+Lake Bonney,-37.75,140.3,Stony,L6,2750.0,Found,1961
+Lake Brown,-31.0,118.5,Stony,L6,23400.0,Found,1919
+Lake Carnegie,-26.21667,122.5,Stony,Eucrite-cm,12.1,Found,1992
+Lake Frome 001,-30.71061,140.15142,Stony,H5,32.5,Found,1992
+Lake Frome 002,-30.71061,140.15142,Stony,H5,201.0,Found,1992
+Lake Frome 003,-30.71061,140.15142,Stony,H6,5.0,Found,1992
+Lake Frome 004,-30.71061,140.15142,Stony,H6,107.0,Found,1992
+Lake Frome 005,-30.71061,140.15142,Stony,L5,54.0,Found,1992
+Lake Grace,-33.06667,118.21667,Stony,L6,10500.0,Found,1956
+Lake Labyrinth,-30.53333,134.75,Stony,LL6,25850.0,Found,1924
+Lake Machattie,-24.83333,139.8,Stony,H5,2600.0,Found,1988
+Lake Torrens,-31.03333,138.2,Stony,L6,906.0,Found,1989
+Landor,-25.66667,117.0,Iron,Iron,9000.0,Found,1931
+Laundry East,-31.53333,127.1,Stony,H3.7,43.1,Found,1967
+Laundry Rockhole,-31.53333,127.01667,Stony,H5,1443.0,Found,1967
+Laundry West,-31.46667,126.93333,Stony,L4,4002.0,Found,1967
+Lefroy,-40.73333,146.96667,Iron,Iron,3.3,Found,1904
+Leonora,-28.84519,121.397,Stony,L4,2572.0,Found,1990
+Lismore,-35.95,143.33333,Iron,"Iron, IIIAB?",10000.0,Found,1959
+Little Minnie Creek,-24.13833,115.87167,Stony,L4,357.0,Found,1997
+Lookout Hill,-30.09056,128.80583,Stony,CM2,16.6,Found,1976
+Loongana 001,-30.6,127.16667,Stony,C4-ung,179.0,Found,1990
+Loongana 002,-30.13,127.38267,Stony,H6,53.89,Found,1992
+Loongana 003,-30.53583,127.33967,Stony,L5,58.0,Found,1990
+Loxton,-34.45,140.56667,Stony,L5,22.0,Found,1968
+Lynch 001,-31.01667,127.21667,Stony,L5-6,31.5,Found,1977
+Lynch 002,-31.39953,127.14467,Stony,Lunar,36.54,Found,2010
+Mangalo,-33.56667,136.65,Stony,L6,1050.0,Found,1975
+Maralinga,-30.3,131.26667,Stony,CK4-an,3388.0,Found,1974
+Maroo,-25.73333,142.95,Stony,LL6,236.0,Found,1991
+Mason 001,-29.95,128.08333,Stony,H5,113.3,Found,1977
+Mellenbye,-28.85,116.28333,Stony,LL6,1181.6,Found,1929
+Menindee Lakes 001,-33.16667,141.75,Stony,L6,747.0,Found,1969
+Menindee Lakes 002,-32.91667,141.88333,Stony,H5,270.0,Found,1969
+Menindee Lakes 003,-32.91667,141.88333,Stony,L6,172.0,Found,1969
+Menindee Lakes 004,-33.13333,141.71667,Stony,L6,158.5,Found,1969
+Menindee Lakes 005,-32.91667,141.88333,Stony,H5,72.9,Found,1969
+Menindee Lakes 006,-32.91667,141.88333,Stony,H6,68.2,Found,1969
+Miles,-27.83333,150.33333,Iron,"Iron, IIE",265000.0,Found,1992
+Millrose,-26.33333,121.0,Stony,L6,7464.0,Found,1984
+Milly Milly,-26.11667,116.66667,Iron,"Iron, IIIAB",26500.0,Found,1921
+Moama,-35.95,144.51667,Stony,Eucrite-cm,3416.0,Found,1940
+Molong,-33.28333,148.88333,Stony-iron,"Pallasite, PMG",104000.0,Found,1912
+Monte Colina,-29.4,139.98333,Stony,L3,116.8,Found,1963
+Moonbi,-30.91667,151.28333,Iron,"Iron, IIIF",13200.0,Found,1892
+Moorabie,-30.01667,141.06667,Stony,L3.8-an,14040.0,Found,1965
+Moorumbunna,-28.91667,136.25,Iron,"Iron, IIIAB",77000.0,Found,1943
+Morden,-30.5,142.33333,Iron,"Iron, IAB?",2426.0,Found,1922
+Mossgiel,-33.31667,144.78333,Stony,L4,32383.0,Found,1967
+Motpena (a),-31.1,138.26667,Stony,L6,8810.0,Found,1968
+Motpena (b),-31.2,138.3,Stony,Chondrite-ung,304.0,Found,1972
+Mount Dooling,-29.45,119.71667,Iron,"Iron, IC",734000.0,Found,1909
+Mount Dyrring,-32.33333,151.2,Stony-iron,Pallasite,11300.0,Found,1903
+Mount Edith,-22.5,116.16667,Iron,"Iron, IIIAB",326000.0,Found,1913
+Mount Egerton,-24.76667,117.7,Stony,Aubrite-an,22000.0,Found,1941
+Mount Leake,-25.87667,119.07333,Stony,L5,3667.0,Found,1998
+Mount Magnet,-28.16667,118.5,Iron,"Iron, IAB-sHH",16600.0,Found,1916
+Mount Margaret,-28.83333,122.18333,Stony,L5,850.0,Found,1972
+Mount Padbury,-25.66667,118.1,Stony-iron,Mesosiderite-A1,272000.0,Found,1964
+Mount Sir Charles,-23.83333,134.03333,Iron,"Iron, IVA",22900.0,Found,1942
+Muckera 001,-30.08333,130.03333,Stony,Howardite,513.0,Found,1950
+Muckera 002,-30.05,130.21667,Stony,Howardite,98.0,Found,1991
+Muckera 003,-30.1755,130.089,Stony,L6,104.0,Found,1991
+Muckera 004,-30.36667,130.08333,Stony,H5,48.0,Found,1991
+Muckera 005,-30.3695,130.05533,Stony,L6,1200.0,Found,1991
+Muckera 006,-30.36667,130.08333,Stony,LL5,20.0,Found,1991
+Muckera 007,-30.36667,130.08333,Stony,L-imp melt,14.0,Found,1991
+Muckera 009,-30.36667,130.08333,Stony,L5,8.0,Found,1991
+Muckera 010,-30.36667,130.08333,Stony,L6,18.0,Found,1991
+Muckera 011,-30.36667,130.08333,Stony,L6,26.0,Found,1991
+Muckera 012,-30.35,130.03333,Stony,H5,43.0,Found,1991
+Muckera 013,-30.28583,129.957,Stony,L6,73.0,Found,1991
+Muckera 014,-30.06667,129.8475,Stony,L5/6,54.0,Found,1991
+Muckera 015,-30.06,130.025,Stony,H4/5,40.0,Found,1990
+Muckera 016,-30.21333,129.87333,Stony,L4,538.0,Found,1991
+Muckera 017,-30.21083,129.96833,Stony,L5,472.0,Found,1991
+Muckera 018,-30.34533,130.1,Stony,L6,432.0,Found,1991
+Muckera 019,-30.41667,129.85,Stony,L4,37.7,Found,1993
+Mukinbudin,-30.91667,118.2,Stony,H5,8200.0,Found,1938
+Mulga (north),-30.18333,126.36667,Stony,H6,19900.0,Found,1964
+Mulga (south),-30.2,126.36667,Stony,H4,894.0,Found,1963
+Mulga (west),-30.18333,126.36667,Stony,C5/6-ung,169.2,Found,1971
+Mundrabilla,-30.78333,127.55,Iron,"Iron, IAB-ung",24000000.0,Found,1911
+Mundrabilla 002,-30.88333,127.55,Stony,H5,251.0,Found,1971
+Mundrabilla 003,-30.85,127.53333,Stony,H3,235.0,Found,1972
+Mundrabilla 004,-30.75833,127.525,Stony,H5,9.2,Found,1975
+Mundrabilla 005,-30.475,127.51667,Stony,H5,171.0,Found,1977
+Mundrabilla 006,-30.00833,127.70833,Stony,H6,24.6,Found,1982
+Mundrabilla 007,-30.01667,127.60833,Stony,L6,30.6,Found,1982
+Mundrabilla 008,-30.8,127.61667,Stony,L6,57.1,Found,1982
+Mundrabilla 009,-30.8,127.61667,Stony,L5,25.2,Found,1982
+Mundrabilla 010,-30.01667,127.7,Stony,L6,26.6,Found,1982
+Mundrabilla 011,-30.33333,127.61667,Stony,L5,89.0,Found,1989
+Mundrabilla 012,-30.93333,127.5,Stony,CV2,30.6,Found,1992
+Mundrabilla 013,-30.12633,127.41033,Stony,H6,9.16,Found,1992
+Mundrabilla 014,-30.14267,127.39383,Stony,H4,1.8,Found,1992
+Mundrabilla 015,-30.12633,127.41033,Stony,H5,26.69,Found,1992
+Mundrabilla 016,-30.12167,127.38683,Stony,L5/6,4.41,Found,1992
+Mundrabilla 017,-30.7845,127.69733,Stony,H5,40.59,Found,1992
+Mundrabilla 018,-30.5,127.5,Stony,Howardite,24.0,Found,1990
+Mundrabilla 019,-30.50583,127.43417,Stony,H4-5,50.0,Found,1991
+Mundrabilla 020,-30.83333,127.5,Stony,Howardite,60.0,Found,1989
+Mundrabilla 021,-30.77972,127.52306,Stony,H4,13.0,Found,2010
+Mungindi,-28.93333,148.95,Iron,"Iron, IAB-sLM",51300.0,Found,1897
+Murchison Downs,-26.66667,119.0,Iron,"Iron, ungrouped",33.0,Found,1925
+Murnpeowie,-29.58333,139.9,Iron,"Iron, IC",1143000.0,Found,1909
+Myrtle Springs,-30.45383,137.99017,Stony,H4,52.99,Found,2002
+Nallah,-31.96667,126.25,Stony,H,4.62,Found,1968
+Nardoo (no. 1),-29.53333,143.98333,Stony,H5,3180.0,Found,1944
+Nardoo (no. 2),-29.5,144.06667,Stony,L6,1694.0,Found,1944
+Naretha,-31.0,124.83333,Stony,L4,5500.0,Found,1915
+Narraburra,-34.25,147.7,Iron,"Iron, IIIAB",32200.0,Found,1855
+Naryilco,-28.6,141.15,Stony,LL6,27000.0,Found,1975
+Nilpena,-31.08333,138.3,Stony,Ureilite-pmict,173.0,Found,1975
+Nimberrin,-31.51667,117.96667,Stony,L6,786.0,Found,1970
+Nocoleche,-29.86667,144.21667,Iron,"Iron, IC-an",20000.0,Found,1895
+Nora Creina,-37.31667,139.85,Stony,L4,283.5,Found,1962
+North East Reid,-30.03333,129.01667,Stony,H5,38.6,Found,1969
+North Forrest,-30.5,128.1,Stony,H5,608.9,Found,1969
+North Haig,-30.21667,126.21667,Stony,Ureilite-pmict,964.0,Found,1961
+North Reid,-30.0,128.91667,Stony,LL5,308.7,Found,1969
+North West Forrest (E6),-30.6,127.81667,Stony,EL6,4400.0,Found,1971
+North West Forrest (H),-30.76667,128.01667,Stony,H4,238.4,Found,1969
+Oberon Bay,-39.06667,146.35,Stony,LL6,179.0,Found,1962
+Nuleri,-27.83333,123.86667,Iron,"Iron, IIIAB",120.0,Found,1902
+Nullagine,-21.86667,120.11667,Stony,H5,102.0,Found,1973
+Nullarbor 001,-31.0,132.0,Stony,H5,40000.0,Found,1935
+Nurina 001,-30.66667,126.4,Stony,H4,2.7,Found,1973
+Nurina 002,-30.45,126.6,Stony,H5,170.5,Found,1977
+Nurina 003,-30.78333,126.45,Stony,LL5,40.0,Found,1986
+Nurina 004,-30.78333,126.45,Stony,L6,28.3,Found,1986
+Nurina 005,-30.49117,126.4625,Stony,H5,24.8,Found,1991
+Nurina 006,-30.46,126.38333,Stony,L6,45.5,Found,1993
+Nurina 007,-30.46867,126.39133,Stony,H3,15.9,Found,1993
+Nurina 008,-30.49083,126.39067,Stony,H4,73.9,Found,1993
+Nurina 009,-30.89617,126.44817,Stony,L4,87.0,Found,1993
+Nyanga Lake 001,-29.78,126.45667,Stony,H3,397.1,Found,1986
+Nyanga Lake 002,-29.62833,126.32167,Stony,H4/5,1048.9,Found,1986
+Nyanga Lake 003,-29.73167,126.23833,Stony,H5,129.1,Found,1986
+Oak,-31.58333,127.7,Stony,L5,75.3,Found,1968
+Old Homestead 001,-31.16667,127.75,Stony,Howardite,783.0,Found,1991
+Old Homestead 002,-31.35,127.51667,Stony,L5/6,76.9,Found,1977
+Old Homestead 003,-31.45278,127.8905,Stony,Howardite,1780.0,Found,2002
+Oldfield River,-33.0,121.0,Stony,H5,150.0,Found,1972
+O'Malley 001,-30.75,131.16667,Stony,H6,1403.0,Found,1991
+O'Malley 002,-30.99311,131.33253,Stony,L5,4.6,Found,2011
+O'Malley 003,-30.98622,131.33211,Stony,H6,11.1,Found,2011
+O'Malley 004,-30.62472,131.47064,Stony,LL6,19.0,Found,2011
+O'Malley 005,-30.65364,131.47389,Stony,H5,0.7,Found,2011
+O'Malley 006,-30.657,131.47814,Stony,H5,2.3,Found,2011
+O'Malley 007,-30.69047,131.47353,Stony,H5,24.3,Found,2011
+O'Malley 008,-30.75806,131.44803,Stony,L6,3.4,Found,2011
+O'Malley 009,-30.93383,131.36169,Stony,H4,8.4,Found,2011
+O'Malley 010,-30.93417,131.36111,Stony,L5,52.9,Found,2011
+O'Malley 011,-30.89344,131.39,Stony,L6,33.6,Found,2011
+O'Malley 012,-30.89281,131.39142,Stony,L4,14.1,Found,2011
+O'Malley 013,-30.88561,131.38197,Stony,L4,7.3,Found,2011
+O'Malley 014,-30.88517,131.38011,Stony,H6,9.4,Found,2011
+O'Malley 015,-30.53842,131.25525,Stony,L5,63.9,Found,2011
+O'Malley 016,-30.54019,131.25508,Stony,H4,17.5,Found,2011
+O'Malley 017,-30.54478,131.25928,Stony,L6,4.9,Found,2011
+O'Malley 018,-30.98789,131.34067,Stony,H4,105.2,Found,2011
+O'Malley 019,-30.98036,131.34456,Stony,L6,786.3,Found,2011
+O'Malley 020,-30.57269,131.48094,Stony,H4,13.0,Found,2010
+Ooldea 001,-30.54603,131.9705,Stony,L6,587.4,Found,2010
+Ophara,-32.12333,141.07972,Stony,H4,85.4,Found,1983
+Pannikin,-32.04167,126.18333,Stony,L6,13.6,Found,1965
+Pennyweight,-29.11667,122.08333,Iron,"Iron, ungrouped",12.7,Found,1982
+Pevensey,-34.78333,144.66667,Stony,LL5,4300.0,Found,1868
+Pigick,-35.90667,141.855,Stony,H5,690.0,Found,1994
+Pine Dam,-30.41667,138.0,Stony,L5,200.4,Found,1976
+Pingrup,-33.58316,118.65662,Stony,H5-melt breccia,1213.0,Found,2011
+Pinnaroo,-35.38333,140.91667,Stony-iron,Mesosiderite-A4,39400.0,Found,1927
+Pizzetti Well,-26.26167,120.73333,Stony,H5,218.57,Found,1980
+Poeppel Corner,-25.78333,137.93333,Stony,L6,277.0,Found,1980
+Poolowanna,-29.83167,136.85867,Stony,H5,875.0,Found,1997
+Poonarunna,-27.76667,137.85,Stony,H5,76.0,Found,1970
+Premier Downs 001,-30.46667,125.46667,Stony,L5,83.0,Found,1989
+Premier Downs 002,-30.68833,125.51333,Stony,LL5-6,124.6,Found,2008
+Prospector Pool,-29.35,121.76667,Iron,"Iron, ungrouped",2768.0,Found,2003
+Quinyambie,-30.15,140.98333,Stony,LL3.6,1638.0,Found,1968
+Rabbit Flat,-20.36667,130.11667,Stony,H6,295.0,Found,1974
+Rainbow,-35.90667,141.855,Stony,CO3.2,1553.0,Found,1994
+Rawlinna 001,-31.16667,125.26667,Stony-iron,"Pallasite, PMG-an",74.0,Found,1959
+Rawlinna 002,-30.36667,126.08333,Stony,H5,240.0,Found,1952
+Redfields,-30.71667,116.5,Iron,"Iron, ungrouped",8740.0,Found,1969
+Reid,-30.06667,128.98333,Stony,H5,144.1,Found,1969
+Reid 002,-30.06667,128.96667,Stony,L6,66.5,Found,1974
+Reid 003,-30.06667,128.96667,Stony,L5,128.7,Found,1974
+Reid 004,-30.25,128.8,Stony,H5,295.0,Found,1977
+Reid 005,-30.15,128.8,Stony,L5-6,42.8,Found,1977
+Reid 006,-30.6,128.48333,Stony,H5,920.0,Found,1978
+Reid 007,-30.65,128.40833,Stony,L6,2050.0,Found,1982
+Reid 008,-30.08333,128.81667,Stony,L6,221.0,Found,1982
+Reid 009,-30.31667,128.985,Stony,H4,47.8,Found,1986
+Reid 010,-30.32167,128.85,Stony,H6,8220.0,Found,1986
+Reid 011,-30.21667,128.3,Stony,H3-6,4760.0,Found,1986
+Reid 012,-30.5,128.5,Stony,L6,1367.0,Found,1989
+Reid 013,-30.08333,128.91667,Stony,Brachinite,330.0,Found,1991
+Reid 014,-30.08333,128.83333,Stony,L6,125.0,Found,1991
+Reid 015,-30.28667,128.635,Stony,H5,23.5,Found,1991
+Reid 016,-30.16667,129.0,Stony,Ureilite-pmict,110.0,Found,1995
+Reid 017,-30.16667,128.91667,Stony,L3.7,110.0,Found,1995
+Reid 018,-30.08333,128.91667,Stony,L5,121.0,Found,1993
+Reid 019,-30.51733,128.47617,Stony,L6,56.0,Found,1993
+Reid 020,-30.51667,128.45833,Stony,L6,32.0,Found,1993
+Reid 021,-30.06783,128.98483,Stony,L6,20.0,Found,1993
+Reid 022,-30.30283,128.52617,Stony,H4,188.0,Found,1993
+Reid 023,-30.30083,128.5255,Stony,H5,59.0,Found,1993
+Reid 024,-30.31833,128.38333,Stony,H5,96.0,Found,1993
+Reid 025,-30.28667,128.57333,Stony,L6,21.4,Found,1991
+Reid 026,-30.24833,128.63528,Stony,LL6,100.6,Found,1991
+Reid 027,-30.31806,128.37333,Stony,Brachinite,19.7,Found,1991
+Reid 028,-30.12367,128.8495,Stony,H6,30.6,Found,1999
+Rhine Villa,-34.66667,139.28333,Iron,"Iron, IIIE",3325.0,Found,1900
+River,-30.36667,126.01667,Stony,L5,190.5,Found,1965
+Roebourne,-22.33333,118.0,Iron,"Iron, IIIAB",86860.0,Found,1892
+Roper River,-15.0,135.0,Iron,"Iron, IIIAB",6400.0,Found,1953
+Rowena,-29.8,148.63333,Stony,H6,34700.0,Found,1962
+Seemore Downs 001,-30.58333,125.21667,Stony,L/LL4,429.0,Found,1991
+Silverton (New South Wales),-31.88333,141.2,Stony,L6,350.7,Found,1883
+Sleeper Camp 001,-30.25,126.33333,Stony,L6,1250.0,Found,1962
+Sleeper Camp 002,-30.48333,126.25,Iron,Iron,39.5,Found,1966
+Sleeper Camp 003,-30.3,126.03333,Stony,L6,322.0,Found,1989
+Sleeper Camp 004,-30.36667,126.18333,Stony,LL4,115.0,Found,1991
+Sleeper Camp 006,-30.16667,126.40433,Stony,CK4,6.04,Found,1992
+Sleeper Camp 007,-30.16,126.38667,Stony,L4,60.39,Found,1992
+Sleeper Camp 008,-30.2,126.5,Stony,H5,16.37,Found,1992
+Sleeper Camp 009,-30.16283,126.40833,Stony,L6,145.3,Found,1992
+Sleeper Camp 010,-30.15,126.42833,Stony,H4-6,9.63,Found,1992
+Sleeper Camp 011,-30.16333,126.4085,Stony,L6,15.06,Found,1992
+Sleeper Camp 012,-30.16867,126.28717,Stony,L6,117.3,Found,1991
+Sleeper Camp 013,-30.12417,126.4515,Stony,LL5-7,87.4,Found,1993
+Sleeper Camp 014,-30.18333,126.36667,Stony,LL5,66.0,Found,1995
+Sleeper Camp 015,-30.0275,126.27017,Stony,H5,3.5,Found,1994
+Sleeper Camp 016,-30.03183,126.27283,Stony,L6,173.8,Found,1994
+Sleeper Camp 017,-30.01283,126.25783,Stony,H5,173.8,Found,1994
+Sleeper Camp 018,-30.10233,126.3515,Stony,H6,14.24,Found,1993
+Sleeper Camp 019,-30.10517,126.35,Stony,CK4/5,11.5,Found,1993
+Sleeper Camp 020,-30.1135,126.25117,Stony,LL3.9/4,18.6,Found,1993
+Sleeper Camp 021,-30.11833,126.24767,Stony,LL5,25.6,Found,1993
+Sleeper Camp 022,-30.1065,126.26267,Stony,L5,63.5,Found,1993
+Sleeper Camp 023,-30.10867,126.26033,Stony,H4,72.3,Found,1993
+Sleeper Camp 024,-30.1055,126.2555,Stony,L5,30.3,Found,1993
+Sleeper Camp 025,-30.17917,126.40056,Stony,H5,192.0,Found,2005
+Sleeper Camp 026,-30.17361,126.43444,Stony,L6,150.0,Found,2005
+Sleeper Camp 027,-30.16028,126.34833,Stony,H5,10.85,Found,2005
+Snake Bore,-31.1,138.26667,Stony,H5,66.0,Found,1975
+Starvation Lake,-30.46667,141.08333,Stony,LL3.9,12000.0,Found,1975
+Stockyard Creek,-23.25556,116.90083,Stony,H5,2700.0,Found,2008
+Streaky Bay,-32.86667,134.28333,Stony,L4,909.0,Found,1989
+Tabbita,-34.05,145.83333,Stony,L6,3100.0,Found,1983
+Tawallah Valley,-15.7,135.66667,Iron,"Iron, IVB",75750.0,Found,1939
+Thackaringa,-32.11667,141.08333,Stony,H5,438.6,Found,1974
+Thompson Brook,-33.61667,115.91667,Iron,"Iron, IAB-ung",76.6,Found,1918
+Thunda,-25.7,143.05,Iron,"Iron, IIIAB",62100.0,Found,1881
+Thylacine Hole 001,-31.58333,127.6,Stony,H4/5,101.5,Found,1977
+Thylacine Hole 002,-31.56667,127.8,Stony,L6,3.8,Found,1978
+Tibooburra,-29.43333,142.01667,Stony,CV3,18.6,Found,1970
+Tieraco Creek,-26.33333,118.33333,Iron,"Iron, IIIAB",41700.0,Found,1922
+Tookabarnoo,-27.86667,141.73333,Stony,H4,157.0,Found,1992
+Turriff,-35.48333,142.6,Stony,L5,218.0,Found,1994
+Ularring,-29.96667,120.6,Stony,L6,271.8,Found,1970
+Veevers,-22.96833,125.36861,Iron,"Iron, IIAB",300.0,Found,1984
+Vincent,-35.01667,139.91667,Stony,L5,430.0,Found,1926
+Virginia 001,-32.06667,125.15,Stony,L6,191.5,Found,1980
+Wallareenya,-20.66667,118.83333,Iron,"Iron, IIIAB",4386.0,Found,1965
+Warburton Range,-26.28333,126.66667,Iron,"Iron, IVB",56930.0,Found,1963
+Warden,-23.26667,116.93333,Stony,H5,7868.0,Found,1989
+Watson 001,-30.5,131.55,Iron,"Iron, IIE",93000.0,Found,1972
+Watson 002,-30.71667,131.51667,Stony,CK3-an,83.8,Found,1991
+Watson 003,-30.48333,131.55,Stony,H4,2.6,Found,2008
+Watson 004,-30.48333,131.55,Stony,H4,1.3,Found,2008
+Watson 005,-30.5,131.7,Stony,H5,1.6,Found,2009
+Watson 006,-30.5,131.7,Stony,L5,53.0,Found,2009
+Watson 007,-30.48333,131.68333,Stony,EL3,19.5,Found,2009
+Watson 008,-30.5,131.68333,Stony,H5,1.5,Found,2009
+Watson 009,-30.5,131.68333,Stony,H5,1.0,Found,2009
+Watson 010,-30.5,131.71667,Stony,H5,19.3,Found,2009
+Watson 011,-30.51667,131.5,Stony,H4,4.1,Found,2009
+Watson 012,-30.56667,131.5,Stony,H7,103.1,Found,2009
+Watson 013,-30.575,131.50164,Stony,H3,47.1,Found,2010
+Webb,-31.69167,127.78333,Stony,L6,410.5,Found,1968
+Wedderburn,-36.43333,143.63333,Iron,"Iron, IAB-sLH",210.0,Found,1951
+Weekeroo Station,-32.26667,139.86667,Iron,"Iron, IIE-an",94200.0,Found,1924
+West Forrest,-30.75,127.98333,Stony,H5,170.6,Found,1971
+West Reid,-30.05,128.93333,Stony,H6,627.7,Found,1969
+Whitula Creek,-25.31583,142.44467,Stony,H5,271.0,Found,1991
+Wilbia,-26.45,131.0,Stony,H5,94.0,Found,1965
+Wildara,-28.23333,120.85,Stony,H5,500000.0,Found,1968
+Willaroy,-30.1,143.2,Stony,H3.8-an,4030.0,Found,1970
+Willow Grove,-38.10306,146.18111,Iron,"Iron, ungrouped",11700.0,Found,1995
+Windimurra,-28.09697,118.45561,Stony,H4/5,30000.0,Found,2004
+Wingellina,-26.05,128.95,Stony,H4,200.0,Found,1958
+Witchelina,-30.0,138.0,Stony,H4,3637.0,Found,1920
+Wolf Creek,-19.3,127.76667,Iron,"Iron, IIIAB",760000.0,Found,1947
+Wonyulgunna,-24.91667,120.06667,Iron,"Iron, IIIAB",37800.0,Found,1937
+Wooramel,-25.65,114.21667,Stony,L5,71000.0,Found,1969
+Wynella,-28.95,148.13333,Stony,H4,40000.0,Found,1945
+Yalgoo,-28.38333,116.71667,Stony,LL,850.0,Found,1937
+Yandama,-29.75,141.03333,Stony,L6,5800.0,Found,1914
+Yardea,-32.45,135.55,Iron,"Iron, IAB-MG",3290.0,Found,1875
+Yaringie Hill,-32.08287,135.64985,Stony,H5,5750.0,Found,2006
+Yarle Lakes 001,-30.31667,131.46667,Stony,H5,913.0,Found,1990
+Yarle Lakes 002,-30.36417,131.3745,Stony,H4/5,500.0,Found,1991
+Yarle Lakes 003,-30.28,131.35833,Stony,L6,14.0,Found,1993
+Yarle Lakes 004,-30.5,131.46667,Stony,CK4,4.6,Found,2009
+Yarri,-29.45,121.21667,Iron,"Iron, IIIAB",1500.0,Found,1908
+Yarroweyah,-35.98333,145.58333,Iron,"Iron, IIAB",9600.0,Found,1903
+Yayjinna,-32.03333,126.175,Stony,L6,262.5,Found,1965
+Yenberrie,-14.25,132.01667,Iron,"Iron, IAB-MG",132000.0,Found,1918
+Yilmia,-31.19167,121.53333,Stony,EL6,40000.0,Found,1969
+Youanmi,-29.5,118.75,Iron,"Iron, IIIAB",118400.0,Found,1917
+Youndegin,-32.1,117.71667,Iron,"Iron, IAB-MG",3800000.0,Found,1884
