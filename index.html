@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Australia's Night Sky: A Stargazer's Atlas</title>
+
+    <!-- Vega-Lite libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background: #0d1b2a;
+            color: #e8e0d0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-section {
+            margin-bottom: 3rem;
+        }
+
+        .chart-container {
+            background: #142035;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <h1>Australia's Night Sky</h1>
+        <p class="subtitle">A Stargazer's Atlas — FIT2179 Data Visualisation 2</p>
+
+        <!-- C1: Sky Brightness Map -->
+        <div class="chart-section">
+            <div class="chart-container">
+                <div id="chart-c1"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/charts.js"></script>
+</body>
+
+</html>
