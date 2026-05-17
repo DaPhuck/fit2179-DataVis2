@@ -1,0 +1,250 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Australia's Night Sky Brightness",
+        "subtitle": "Mean limiting magnitude from Globe at Night observations · Higher = darker sky",
+        "fontSize": 18,
+        "subtitleFontSize": 13,
+        "font": "system-ui, -apple-system, sans-serif",
+        "subtitleFont": "system-ui, -apple-system, sans-serif",
+        "anchor": "start",
+        "color": "#0d1b2a",
+        "subtitleColor": "#555",
+        "subtitlePadding": 6,
+        "offset": 12
+    },
+    "width": 700,
+    "height": 500,
+    "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+            -18,
+            -36
+        ],
+        "rotate": [
+            -132,
+            0
+        ]
+    },
+    "layer": [
+        {
+            "data": {
+                "url": "../data/STE_2021_AUST_GDA2020.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "STE_2021_AUST_GDA2020"
+                }
+            },
+            "transform": [
+                {
+                    "lookup": "properties.STE_NAME21",
+                    "from": {
+                        "data": {
+                            "url": "../data/globeatnight_aus_by_state.csv"
+                        },
+                        "key": "state",
+                        "fields": [
+                            "mean_limiting_mag",
+                            "obs_count"
+                        ]
+                    }
+                }
+            ],
+            "params": [
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "geoshape",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.8
+            },
+            "encoding": {
+                "color": {
+                    "condition": {
+                        "test": "datum.mean_limiting_mag === null",
+                        "value": "#cccccc"
+                    },
+                    "field": "mean_limiting_mag",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [
+                            3.5,
+                            5.0
+                        ],
+                        "range": [
+                            "#d73027",
+                            "#fee08b",
+                            "#2166ac"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Sky Darkness",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "titleFontSize": 12,
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 11,
+                        "orient": "bottom-right",
+                        "values": [
+                            3.5,
+                            5.0
+                        ],
+                        "labelExpr": "datum.value === 3.5 ? '< 3.5  Light polluted' : '> 5.0  Dark sky'"
+                    }
+                },
+                "strokeWidth": {
+                    "condition": {
+                        "param": "hover",
+                        "value": 2.5,
+                        "empty": false
+                    },
+                    "value": 0.8
+                },
+                "tooltip": [
+                    {
+                        "field": "properties.STE_NAME21",
+                        "title": "State / Territory"
+                    },
+                    {
+                        "field": "mean_limiting_mag",
+                        "title": "Mean Limiting Magnitude",
+                        "format": ".2f"
+                    },
+                    {
+                        "field": "obs_count",
+                        "title": "Observations"
+                    }
+                ]
+            }
+        },
+        {
+            "data": {
+                "values": [
+                    {
+                        "city": "Sydney",
+                        "lon": 151.21,
+                        "lat": -33.87
+                    },
+                    {
+                        "city": "Melbourne",
+                        "lon": 144.96,
+                        "lat": -37.81
+                    },
+                    {
+                        "city": "Perth",
+                        "lon": 115.86,
+                        "lat": -31.95
+                    },
+                    {
+                        "city": "Brisbane",
+                        "lon": 153.03,
+                        "lat": -27.47
+                    },
+                    {
+                        "city": "Adelaide",
+                        "lon": 138.60,
+                        "lat": -34.93
+                    },
+                    {
+                        "city": "Alice Springs",
+                        "lon": 133.87,
+                        "lat": -23.70
+                    },
+                    {
+                        "city": "Darwin",
+                        "lon": 130.84,
+                        "lat": -12.46
+                    }
+                ]
+            },
+            "mark": {
+                "type": "point",
+                "size": 35,
+                "color": "#ffffff",
+                "filled": true,
+                "opacity": 0.9
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                }
+            }
+        },
+        {
+            "data": {
+                "values": [
+                    {
+                        "city": "Sydney",
+                        "lon": 151.21,
+                        "lat": -33.87
+                    },
+                    {
+                        "city": "Melbourne",
+                        "lon": 144.96,
+                        "lat": -37.81
+                    },
+                    {
+                        "city": "Perth",
+                        "lon": 115.86,
+                        "lat": -31.95
+                    },
+                    {
+                        "city": "Brisbane",
+                        "lon": 153.03,
+                        "lat": -27.47
+                    },
+                    {
+                        "city": "Adelaide",
+                        "lon": 138.60,
+                        "lat": -34.93
+                    },
+                    {
+                        "city": "Alice Springs",
+                        "lon": 133.87,
+                        "lat": -23.70
+                    },
+                    {
+                        "city": "Darwin",
+                        "lon": 130.84,
+                        "lat": -12.46
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "font": "system-ui, -apple-system, sans-serif",
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "align": "left",
+                "baseline": "middle",
+                "dx": 8,
+                "dy": -2,
+                "color": "#ffffff"
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "city"
+                }
+            }
+        }
+    ]
+}
