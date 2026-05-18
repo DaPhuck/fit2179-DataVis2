@@ -1,0 +1,389 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "The Solar Heartbeat — Monthly Sunspot Numbers, 1980–Present",
+        "subtitle": "Raw monthly counts (thin) · 13-month centred average (thick) · Amber band = Solar Cycle 25 recent peak",
+        "fontSize": 18,
+        "subtitleFontSize": 13,
+        "font": "system-ui, -apple-system, sans-serif",
+        "subtitleFont": "system-ui, -apple-system, sans-serif",
+        "anchor": "start",
+        "color": "#1a1a2e",
+        "subtitleColor": "#666",
+        "subtitlePadding": 6,
+        "offset": 12
+    },
+    "width": 700,
+    "height": 350,
+    "layer": [
+        {
+            "description": "SC25 full era — very light background tint",
+            "data": {
+                "values": [
+                    {
+                        "start": "2019-12-01",
+                        "end": "2026-12-01"
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rect",
+                "opacity": 0.06,
+                "color": "#f59e0b"
+            },
+            "encoding": {
+                "x": {
+                    "field": "start",
+                    "type": "temporal"
+                },
+                "x2": {
+                    "field": "end",
+                    "type": "temporal"
+                }
+            }
+        },
+        {
+            "description": "2023-present stronger amber highlight",
+            "data": {
+                "values": [
+                    {
+                        "start": "2023-01-01",
+                        "end": "2026-12-01"
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rect",
+                "opacity": 0.18,
+                "color": "#f59e0b"
+            },
+            "encoding": {
+                "x": {
+                    "field": "start",
+                    "type": "temporal"
+                },
+                "x2": {
+                    "field": "end",
+                    "type": "temporal"
+                }
+            }
+        },
+        {
+            "description": "Solar cycle peak vertical rules and labels",
+            "data": {
+                "values": [
+                    {
+                        "peak_date": "1980-01-01",
+                        "label": "SC21"
+                    },
+                    {
+                        "peak_date": "1989-07-01",
+                        "label": "SC22"
+                    },
+                    {
+                        "peak_date": "2000-03-01",
+                        "label": "SC23"
+                    },
+                    {
+                        "peak_date": "2014-04-01",
+                        "label": "SC24"
+                    },
+                    {
+                        "peak_date": "2025-07-01",
+                        "label": "SC25 ▲"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "rule",
+                        "strokeDash": [
+                            5,
+                            4
+                        ],
+                        "opacity": 0.45,
+                        "color": "#888",
+                        "strokeWidth": 1
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "peak_date",
+                            "type": "temporal"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "font": "system-ui, -apple-system, sans-serif",
+                        "fontSize": 10,
+                        "fontWeight": "bold",
+                        "color": "#888",
+                        "align": "center",
+                        "baseline": "top",
+                        "dy": 6
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "peak_date",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "value": 0
+                        },
+                        "text": {
+                            "field": "label"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "description": "2023 divider rule with label",
+            "data": {
+                "values": [
+                    {
+                        "marker": "2023-01-01"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "rule",
+                        "color": "#d97706",
+                        "strokeDash": [
+                            3,
+                            3
+                        ],
+                        "opacity": 0.7,
+                        "strokeWidth": 1.2
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "marker",
+                            "type": "temporal"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "font": "system-ui, -apple-system, sans-serif",
+                        "fontSize": 9,
+                        "fontWeight": "bold",
+                        "color": "#d97706",
+                        "align": "left",
+                        "baseline": "bottom",
+                        "dx": 4,
+                        "dy": -4
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "marker",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "value": 350
+                        },
+                        "text": {
+                            "value": "2023 onwards"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "description": "Main data layers",
+            "data": {
+                "url": "../data/silso.csv"
+            },
+            "transform": [
+                {
+                    "window": [
+                        {
+                            "op": "mean",
+                            "field": "sunspot_number",
+                            "as": "smoothed_13m"
+                        }
+                    ],
+                    "frame": [
+                        -6,
+                        6
+                    ]
+                }
+            ],
+            "layer": [
+                {
+                    "description": "Invisible wide line to capture mouseover",
+                    "mark": {
+                        "type": "line",
+                        "strokeWidth": 20,
+                        "opacity": 0
+                    },
+                    "params": [
+                        {
+                            "name": "crosshair",
+                            "select": {
+                                "type": "point",
+                                "nearest": true,
+                                "on": "mouseover",
+                                "encodings": [
+                                    "x"
+                                ]
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "sunspot_number",
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "description": "Crosshair vertical rule on hover",
+                    "mark": {
+                        "type": "rule",
+                        "color": "#aaa",
+                        "strokeWidth": 1,
+                        "opacity": 0.6
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal"
+                        },
+                        "opacity": {
+                            "condition": {
+                                "param": "crosshair",
+                                "empty": false,
+                                "value": 0.6
+                            },
+                            "value": 0
+                        },
+                        "tooltip": [
+                            {
+                                "field": "date",
+                                "type": "temporal",
+                                "title": "Date",
+                                "format": "%B %Y"
+                            },
+                            {
+                                "field": "sunspot_number",
+                                "type": "quantitative",
+                                "title": "Monthly count",
+                                "format": ".1f"
+                            },
+                            {
+                                "field": "smoothed_13m",
+                                "type": "quantitative",
+                                "title": "13-month average",
+                                "format": ".1f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "description": "Raw monthly line — thin and faint",
+                    "mark": {
+                        "type": "line",
+                        "strokeWidth": 0.9,
+                        "opacity": 0.3,
+                        "color": "#f59e0b",
+                        "interpolate": "monotone"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal",
+                            "title": null,
+                            "axis": {
+                                "font": "system-ui, -apple-system, sans-serif",
+                                "labelFontSize": 11,
+                                "grid": false,
+                                "tickCount": 10,
+                                "format": "%Y"
+                            }
+                        },
+                        "y": {
+                            "field": "sunspot_number",
+                            "type": "quantitative",
+                            "title": "Sunspot Number",
+                            "axis": {
+                                "font": "system-ui, -apple-system, sans-serif",
+                                "labelFontSize": 11,
+                                "titleFontSize": 12,
+                                "titleFontWeight": "normal",
+                                "grid": true,
+                                "gridOpacity": 0.15,
+                                "gridColor": "#ccc"
+                            }
+                        }
+                    }
+                },
+                {
+                    "description": "13-month smoothed line — thick and prominent",
+                    "mark": {
+                        "type": "line",
+                        "strokeWidth": 2.5,
+                        "opacity": 1,
+                        "color": "#d97706",
+                        "interpolate": "monotone"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "smoothed_13m",
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "description": "Hover dot snapped to smoothed line",
+                    "mark": {
+                        "type": "point",
+                        "size": 70,
+                        "color": "#d97706",
+                        "filled": true,
+                        "opacity": 1,
+                        "strokeWidth": 2,
+                        "stroke": "#fff"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "smoothed_13m",
+                            "type": "quantitative"
+                        },
+                        "opacity": {
+                            "condition": {
+                                "param": "crosshair",
+                                "empty": false,
+                                "value": 1
+                            },
+                            "value": 0
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "config": {
+        "view": {
+            "stroke": "transparent"
+        },
+        "font": "system-ui, -apple-system, sans-serif"
+    }
+}
