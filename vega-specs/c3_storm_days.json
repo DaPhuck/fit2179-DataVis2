@@ -1,0 +1,277 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Geomagnetic Storm Days per Year, 1990–2025",
+        "subtitle": "Amber = any storm (Kp ≥ 5)  ·  Coral = severe storm (Kp ≥ 7)  ·  Severe days are a subset of storm days",
+        "fontSize": 18,
+        "subtitleFontSize": 13,
+        "font": "system-ui, -apple-system, sans-serif",
+        "subtitleFont": "system-ui, -apple-system, sans-serif",
+        "anchor": "start",
+        "color": "#1a1a2e",
+        "subtitleColor": "#666",
+        "subtitlePadding": 6,
+        "offset": 12
+    },
+    "width": 750,
+    "height": 380,
+    "layer": [
+        {
+            "description": "Grouped bars — storm days and severe days per year",
+            "data": {
+                "url": "../data/gfz_kp_yearly.csv"
+            },
+            "transform": [
+                {
+                    "filter": "datum.year < 2026"
+                },
+                {
+                    "fold": [
+                        "storm_days",
+                        "severe_days"
+                    ],
+                    "as": [
+                        "storm_type",
+                        "days"
+                    ]
+                },
+                {
+                    "calculate": "datum.storm_type === 'storm_days' ? 'Storm (Kp ≥ 5)' : 'Severe (Kp ≥ 7)'",
+                    "as": "label"
+                }
+            ],
+            "params": [
+                {
+                    "name": "highlight",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "year"
+                        ],
+                        "on": "mouseover"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "bar",
+                "cornerRadiusTopLeft": 2,
+                "cornerRadiusTopRight": 2
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "ordinal",
+                    "title": "Year",
+                    "axis": {
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 10,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "labelAngle": -45,
+                        "labelExpr": "parseInt(datum.value) % 5 === 0 ? datum.label : ''",
+                        "grid": false,
+                        "tickSize": 0
+                    }
+                },
+                "xOffset": {
+                    "field": "label",
+                    "type": "nominal",
+                    "sort": [
+                        "Storm (Kp ≥ 5)",
+                        "Severe (Kp ≥ 7)"
+                    ]
+                },
+                "y": {
+                    "field": "days",
+                    "type": "quantitative",
+                    "title": "Storm Days",
+                    "axis": {
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 11,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "grid": true,
+                        "gridOpacity": 0.15,
+                        "gridColor": "#ccc"
+                    }
+                },
+                "color": {
+                    "field": "label",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Storm (Kp ≥ 5)",
+                            "Severe (Kp ≥ 7)"
+                        ],
+                        "range": [
+                            "#f59e0b",
+                            "#e05c4b"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Storm Type",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "titleFontSize": 12,
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 11,
+                        "orient": "top-right"
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "highlight",
+                        "value": 1,
+                        "empty": true
+                    },
+                    "value": 0.5
+                },
+                "tooltip": [
+                    {
+                        "field": "year",
+                        "type": "ordinal",
+                        "title": "Year"
+                    },
+                    {
+                        "field": "label",
+                        "type": "nominal",
+                        "title": "Storm type"
+                    },
+                    {
+                        "field": "days",
+                        "type": "quantitative",
+                        "title": "Days"
+                    },
+                    {
+                        "field": "total_days",
+                        "type": "quantitative",
+                        "title": "Days in year"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Solar cycle peak rules and labels",
+            "data": {
+                "values": [
+                    {
+                        "year": "1991",
+                        "label": "SC22"
+                    },
+                    {
+                        "year": "2000",
+                        "label": "SC23"
+                    },
+                    {
+                        "year": "2015",
+                        "label": "SC24"
+                    },
+                    {
+                        "year": "2025",
+                        "label": "SC25 ▲"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "rule",
+                        "strokeDash": [
+                            5,
+                            4
+                        ],
+                        "color": "#aaa",
+                        "opacity": 0.7,
+                        "strokeWidth": 1
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "year",
+                            "type": "ordinal"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "font": "system-ui, -apple-system, sans-serif",
+                        "fontSize": 10,
+                        "fontWeight": "bold",
+                        "color": "#888",
+                        "align": "center",
+                        "baseline": "top",
+                        "dy": 4
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "year",
+                            "type": "ordinal"
+                        },
+                        "y": {
+                            "value": 0
+                        },
+                        "text": {
+                            "field": "label"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "description": "Notable event annotations",
+            "data": {
+                "values": [
+                    {
+                        "year": "2003",
+                        "y": 128,
+                        "text": "Halloween storms"
+                    },
+                    {
+                        "year": "2009",
+                        "y": 22,
+                        "text": "Solar min."
+                    },
+                    {
+                        "year": "2020",
+                        "y": 22,
+                        "text": "Solar min."
+                    },
+                    {
+                        "year": "2024",
+                        "y": 50,
+                        "text": "May superstorm"
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "font": "system-ui, -apple-system, sans-serif",
+                "fontSize": 9,
+                "fontStyle": "italic",
+                "color": "#999",
+                "align": "center",
+                "dy": -4
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "ordinal"
+                },
+                "y": {
+                    "field": "y",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "text"
+                }
+            }
+        }
+    ],
+    "config": {
+        "view": {
+            "stroke": "transparent"
+        },
+        "font": "system-ui, -apple-system, sans-serif"
+    }
+}

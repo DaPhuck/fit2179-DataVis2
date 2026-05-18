@@ -9,3 +9,9 @@ vegaEmbed('#chart-c2', 'vega-specs/c2_sunspot_cycle.json', {
     actions: false,
     renderer: 'svg'
 }).catch(console.error);
+
+// ── C3: Geomagnetic Storm Days ────────────────────────────────────────────
+vegaEmbed('#chart-c3', 'vega-specs/c3_storm_days.json', {
+    actions: false,
+    renderer: 'svg'
+}).catch(console.error);
