@@ -27,3 +27,9 @@ vegaEmbed('#chart-c5', 'vega-specs/c5_aurora_radial.json', {
     actions: true,
     renderer: 'svg'
 }).catch(console.error);
+
+// ── C6: Kp vs Sunspot Dual-Axis ───────────────────────────────────────────
+vegaEmbed('#chart-c6', 'vega-specs/c6_kp_vs_sunspot.json', {
+    actions: true,
+    renderer: 'svg'
+}).catch(console.error);

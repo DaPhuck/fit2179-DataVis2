@@ -1,0 +1,493 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#0f1a2b",
+    "title": {
+        "text": "Solar Activity vs Geomagnetic Disturbance, 1990–2025",
+        "subtitle": "Annual mean sunspot number (amber, right axis) vs annual mean Kp index (teal, left axis) · Kp peaks often lag sunspot maxima by 1–3 years",
+        "fontSize": 18,
+        "subtitleFontSize": 12,
+        "font": "system-ui, -apple-system, sans-serif",
+        "subtitleFont": "system-ui, -apple-system, sans-serif",
+        "anchor": "start",
+        "color": "#e8e2d4",
+        "subtitleColor": "#7a8ba3",
+        "subtitlePadding": 6,
+        "offset": 12
+    },
+    "width": 700,
+    "height": 380,
+    "resolve": {
+        "scale": {
+            "y": "independent"
+        }
+    },
+    "layer": [
+        {
+            "description": "Solar minimum background shading",
+            "data": {
+                "values": [
+                    {
+                        "year": 1995.5,
+                        "year_end": 1997.5
+                    },
+                    {
+                        "year": 2007.5,
+                        "year_end": 2010.5
+                    },
+                    {
+                        "year": 2018.5,
+                        "year_end": 2020.5
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rect",
+                "opacity": 0.08,
+                "color": "#7a8ba3"
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "x2": {
+                    "field": "year_end",
+                    "type": "quantitative"
+                }
+            }
+        },
+        {
+            "description": "Solar cycle peak rules",
+            "data": {
+                "values": [
+                    {
+                        "year": 1991,
+                        "label": "SC22"
+                    },
+                    {
+                        "year": 2000,
+                        "label": "SC23"
+                    },
+                    {
+                        "year": 2014,
+                        "label": "SC24"
+                    },
+                    {
+                        "year": 2025,
+                        "label": "SC25 ▲"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "rule",
+                        "strokeDash": [
+                            5,
+                            4
+                        ],
+                        "opacity": 0.4,
+                        "color": "#7a8ba3",
+                        "strokeWidth": 1
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "year",
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [
+                                    1989,
+                                    2026
+                                ],
+                                "zero": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "font": "system-ui, -apple-system, sans-serif",
+                        "fontSize": 10,
+                        "fontWeight": "bold",
+                        "color": "#7a8ba3",
+                        "align": "center",
+                        "baseline": "top",
+                        "dy": 4
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "year",
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [
+                                    1989,
+                                    2026
+                                ],
+                                "zero": false
+                            }
+                        },
+                        "y": {
+                            "value": 0
+                        },
+                        "text": {
+                            "field": "label"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "description": "2003 Halloween storm annotation",
+            "data": {
+                "values": [
+                    {
+                        "year": 2003
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "font": "system-ui, -apple-system, sans-serif",
+                "fontSize": 9,
+                "fontStyle": "italic",
+                "color": "#e05c4b",
+                "align": "center",
+                "baseline": "bottom",
+                "dy": -4
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "value": 28
+                },
+                "text": {
+                    "value": "Halloween storms"
+                }
+            }
+        },
+        {
+            "description": "Crosshair capture",
+            "data": {
+                "url": "../data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "line",
+                "strokeWidth": 20,
+                "opacity": 0
+            },
+            "params": [
+                {
+                    "name": "crosshair",
+                    "select": {
+                        "type": "point",
+                        "nearest": true,
+                        "on": "mouseover",
+                        "encodings": [
+                            "x"
+                        ]
+                    }
+                }
+            ],
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "field": "mean_kp",
+                    "type": "quantitative"
+                }
+            }
+        },
+        {
+            "description": "Crosshair vertical rule and tooltip",
+            "data": {
+                "url": "../data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "rule",
+                "color": "#7a8ba3",
+                "strokeWidth": 1
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "crosshair",
+                        "empty": false,
+                        "value": 0.5
+                    },
+                    "value": 0
+                },
+                "tooltip": [
+                    {
+                        "field": "year",
+                        "type": "quantitative",
+                        "title": "Year",
+                        "format": "d"
+                    },
+                    {
+                        "field": "mean_kp",
+                        "type": "quantitative",
+                        "title": "Annual mean Kp",
+                        "format": ".2f"
+                    },
+                    {
+                        "field": "mean_sunspot",
+                        "type": "quantitative",
+                        "title": "Annual mean sunspot no.",
+                        "format": ".1f"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Sunspot number line — amber, right axis",
+            "data": {
+                "url": "../data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "line",
+                "strokeWidth": 2.5,
+                "color": "#f59e0b",
+                "interpolate": "monotone"
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "title": "Year",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    },
+                    "axis": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 11,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "grid": false,
+                        "format": "d",
+                        "tickCount": 8
+                    }
+                },
+                "y": {
+                    "field": "mean_sunspot",
+                    "type": "quantitative",
+                    "title": "Annual Mean Sunspot Number",
+                    "scale": {
+                        "domain": [
+                            0,
+                            240
+                        ]
+                    },
+                    "axis": {
+                        "orient": "right",
+                        "tickCount": 5,
+                        "offset": 20,
+                        "labelColor": "#f59e0b",
+                        "titleColor": "#f59e0b",
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 11,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "grid": false
+                    }
+                }
+            }
+        },
+        {
+            "description": "Kp index line — teal, left axis",
+            "data": {
+                "url": "../data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "line",
+                "strokeWidth": 2.5,
+                "color": "#2dd4bf",
+                "interpolate": "monotone"
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "field": "mean_kp",
+                    "type": "quantitative",
+                    "title": "Annual Mean Kp Index",
+                    "scale": {
+                        "domain": [
+                            0,
+                            4
+                        ]
+                    },
+                    "axis": {
+                        "orient": "left",
+                        "tickCount": 5,
+                        "labelColor": "#2dd4bf",
+                        "titleColor": "#2dd4bf",
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 11,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "grid": true,
+                        "gridColor": "#1e2e47",
+                        "gridOpacity": 0.6
+                    }
+                }
+            }
+        },
+        {
+            "description": "Hover dot on Kp line",
+            "data": {
+                "url": "../data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "point",
+                "size": 60,
+                "color": "#2dd4bf",
+                "filled": true,
+                "stroke": "#0f1a2b",
+                "strokeWidth": 1.5
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "field": "mean_kp",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            4
+                        ]
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "crosshair",
+                        "empty": false,
+                        "value": 1
+                    },
+                    "value": 0
+                }
+            }
+        },
+        {
+            "description": "Hover dot on sunspot line",
+            "data": {
+                "url": "../data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "point",
+                "size": 60,
+                "color": "#f59e0b",
+                "filled": true,
+                "stroke": "#0f1a2b",
+                "strokeWidth": 1.5
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "field": "mean_sunspot",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            240
+                        ]
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "crosshair",
+                        "empty": false,
+                        "value": 1
+                    },
+                    "value": 0
+                }
+            }
+        }
+    ],
+    "config": {
+        "view": {
+            "stroke": "transparent"
+        },
+        "font": "system-ui, -apple-system, sans-serif",
+        "axis": {
+            "labelColor": "#e8e2d4",
+            "titleColor": "#e8e2d4",
+            "gridColor": "#1e2e47"
+        }
+    }
+}
