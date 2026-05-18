@@ -4,47 +4,470 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Australia's Night Sky: A Stargazer's Atlas</title>
-
-    <!-- Vega-Lite libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+    <title>Australia's Night Sky — A Stargazer's Atlas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
     <style>
-        body {
-            font-family: Georgia, serif;
-            background: #0d1b2a;
-            color: #e8e0d0;
+        /* ── Reset & base ─────────────────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        :root {
+            --navy: #080e1a;
+            --navy-mid: #0d1625;
+            --navy-card: #111d30;
+            --navy-border: #1e2e47;
+            --star-white: #e8e2d4;
+            --muted: #7a8ba3;
+            --amber: #f59e0b;
+            --amber-dim: #92600a;
+            --coral: #e05c4b;
+            --teal: #2dd4bf;
+            --blue: #60a5fa;
+            --purple: #a78bfa;
+            --pink: #f472b6;
+            --green: #34d399;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--navy);
+            color: var(--star-white);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── Star field background ────────────────────────────────────────── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 15% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 42% 8%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 67% 35%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 83% 12%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 28% 55%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 91% 62%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 5% 78%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 55% 88%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+                radial-gradient(2px 2px at 73% 72%, rgba(255, 255, 255, 0.2) 0%, transparent 100%),
+                radial-gradient(1px 1px at 38% 92%, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Layout ───────────────────────────────────────────────────────── */
         .page {
+            position: relative;
+            z-index: 1;
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 0 2rem 6rem;
         }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.25rem;
+        /* ── Hero ─────────────────────────────────────────────────────────── */
+        .hero {
+            padding: 5rem 0 3.5rem;
+            border-bottom: 1px solid var(--navy-border);
+            margin-bottom: 4rem;
         }
 
-        .subtitle {
-            color: #aaa;
-            font-size: 1rem;
+        .hero-eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 1.2rem;
+            opacity: 0.85;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            color: var(--star-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--amber);
+        }
+
+        .hero-sub {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--muted);
             margin-bottom: 2rem;
         }
 
-        .chart-section {
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+        }
+
+        .hero-meta span {
+            color: var(--star-white);
+            opacity: 0.7;
+        }
+
+        /* ── Section wrapper ──────────────────────────────────────────────── */
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        /* ── Section header ───────────────────────────────────────────────── */
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .section-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 99px;
+            flex-shrink: 0;
+        }
+
+        .tag-intro {
+            background: rgba(122, 139, 163, 0.15);
+            color: var(--muted);
+        }
+
+        .tag-amber {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--amber);
+        }
+
+        .tag-coral {
+            background: rgba(224, 92, 75, 0.15);
+            color: var(--coral);
+        }
+
+        .tag-teal {
+            background: rgba(45, 212, 191, 0.15);
+            color: var(--teal);
+        }
+
+        .tag-purple {
+            background: rgba(167, 139, 250, 0.15);
+            color: var(--purple);
+        }
+
+        .tag-blue {
+            background: rgba(96, 165, 250, 0.15);
+            color: var(--blue);
+        }
+
+        .tag-pink {
+            background: rgba(244, 114, 182, 0.15);
+            color: var(--pink);
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--star-white);
+            line-height: 1.2;
+        }
+
+        /* ── Narrative text ───────────────────────────────────────────────── */
+        .narrative {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.4rem 1.6rem 1.4rem 2rem;
+            background: linear-gradient(135deg, var(--navy-card), rgba(17, 29, 48, 0.6));
+            border: 1px solid var(--navy-border);
+            border-left: 3px solid;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: rgba(232, 226, 212, 0.85);
+        }
+
+        .narrative-amber {
+            border-left-color: var(--amber);
+        }
+
+        .narrative-coral {
+            border-left-color: var(--coral);
+        }
+
+        .narrative-teal {
+            border-left-color: var(--teal);
+        }
+
+        .narrative-purple {
+            border-left-color: var(--purple);
+        }
+
+        .narrative-blue {
+            border-left-color: var(--blue);
+        }
+
+        .narrative-pink {
+            border-left-color: var(--pink);
+        }
+
+        .narrative-muted {
+            border-left-color: var(--muted);
+        }
+
+        .narrative strong {
+            font-weight: 600;
+            color: var(--star-white);
+        }
+
+        /* ── Chart card ───────────────────────────────────────────────────── */
+        .chart-card {
+            background: #ffffff;
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 1.75rem 1.75rem 1.25rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .chart-label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .chart-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #888;
+            background: #f1f1f1;
+            padding: 2px 7px;
+            border-radius: 4px;
+        }
+
+        .chart-desc {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            color: #888;
+            font-weight: 400;
+        }
+
+        /* ── Placeholder card ─────────────────────────────────────────────── */
+        .placeholder-card {
+            border: 1px dashed var(--navy-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            min-height: 200px;
+            text-align: center;
+        }
+
+        .placeholder-inner {
+            max-width: 360px;
+        }
+
+        .placeholder-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            opacity: 0.4;
+        }
+
+        .placeholder-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .placeholder-sub {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            color: rgba(122, 139, 163, 0.5);
+            letter-spacing: 0.06em;
+        }
+
+        /* ── Flow divider ─────────────────────────────────────────────────── */
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            opacity: 0.3;
+        }
+
+        .flow::before,
+        .flow::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--navy-border);
+        }
+
+        .flow-icon {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        /* ── Outro ────────────────────────────────────────────────────────── */
+        .outro {
+            margin-top: 5rem;
+            padding: 2.5rem;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .outro-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--star-white);
+            margin-bottom: 1rem;
+        }
+
+        .outro p {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .outro-meta {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            color: rgba(122, 139, 163, 0.5);
+            letter-spacing: 0.08em;
+        }
+
+        /* ── Stat strip ───────────────────────────────────────────────────── */
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: var(--navy-border);
+            border: 1px solid var(--navy-border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 4rem;
             margin-bottom: 3rem;
         }
 
-        .chart-container {
-            background: #142035;
-            border-radius: 12px;
-            padding: 1.5rem;
+        .stat-cell {
+            background: var(--navy-card);
+            padding: 1.1rem 0.5rem;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--amber);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        /* ── Scroll fade-in ───────────────────────────────────────────────── */
+        .section,
+        .hero {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.35s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.4s;
         }
     </style>
 </head>
@@ -52,24 +475,309 @@
 <body>
     <div class="page">
 
-        <h1>Australia's Night Sky</h1>
-        <p class="subtitle">A Stargazer's Atlas — FIT2179 Data Visualisation 2</p>
+        <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+        <header class="hero">
+            <p class="hero-eyebrow">FIT2179 · Data Visualisation 2</p>
+            <h1>Australia's <em>Night Sky</em></h1>
+            <p class="hero-sub">A Stargazer's Atlas — from solar physics to personal dark sky</p>
+            <!-- <div class="hero-meta">
+                <div>Charts &nbsp;<span>15</span></div>
+                <div>Maps &nbsp;<span>4</span></div>
+                <div>Datasets &nbsp;<span>8</span></div>
+                <div>Sections &nbsp;<span>6</span></div>
+            </div> -->
+        </header>
 
-        <!-- C1: Sky Brightness Map -->
-        <div class="chart-section">
-            <div class="chart-container">
+        <!-- ── INTRO ─────────────────────────────────────────────────────────── -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag tag-intro">Intro</span>
+                <h2 class="section-title">Why Australia? The dark sky advantage</h2>
+            </div>
+
+            <div class="narrative narrative-muted">
+                Australia sits almost entirely in the southern hemisphere, granting
+                <strong>exclusive views of the Milky Way's galactic core</strong>, the Magellanic Clouds,
+                and celestial objects invisible from most of the world. Its vast, arid interior places
+                millions of square kilometres far from city lights — among the darkest skies on the planet.
+                This visualisation takes you through five lenses: the solar engine, geomagnetic storms and
+                aurora, a once-in-twenty-years superstorm, rocks from space, and eclipses.
+                Everything is anchored to the Australian landscape and sky.
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-label">
+                    <span class="chart-num">C1</span>
+                    <span class="chart-desc">Sky brightness by state · Globe at Night limiting magnitude
+                        observations</span>
+                </div>
                 <div id="chart-c1"></div>
             </div>
-        </div>
+        </section>
 
-        <!-- C2: Sunspot Cycle -->
-        <div class="chart-section">
-            <div class="chart-container">
+        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 1</span></div> -->
+
+        <!-- ── SECTION 1 — SOLAR ENGINE ──────────────────────────────────────── -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag tag-amber">Section 1</span>
+                <h2 class="section-title">The solar engine — what drives it all</h2>
+            </div>
+
+            <div class="narrative narrative-amber">
+                Every phenomenon in this story — aurora, geomagnetic storms, even enhanced meteor activity
+                — traces back to one source: <strong>the sun</strong>. Our star breathes on an
+                <strong>11-year cycle</strong> of rising and falling magnetic chaos, measured by the count
+                of dark sunspots on its surface. We are currently in Solar Cycle 25, approaching its
+                predicted peak in 2025–2026. Right now, the sun is as active as it has been in two
+                decades — and that energy is flowing toward Earth.
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-label">
+                    <span class="chart-num">C2</span>
+                    <span class="chart-desc">Monthly mean sunspot number · SILSO data · 1980–present</span>
+                </div>
                 <div id="chart-c2"></div>
             </div>
+
+            <div class="chart-card">
+                <div class="chart-label">
+                    <span class="chart-num">C3</span>
+                    <span class="chart-desc">Geomagnetic storm days per year · GFZ Kp index · 1990–2025</span>
+                </div>
+                <div id="chart-c3"></div>
+            </div>
+        </section>
+
+        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 2</span></div> -->
+
+        <!-- ── SECTION 2 — STORM SEASONS ─────────────────────────────────────── -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag tag-coral">Section 2</span>
+                <h2 class="section-title">Storm seasons — when to look up</h2>
+            </div>
+
+            <div class="narrative narrative-coral">
+                Solar activity sets the long-run average — but within any given year, geomagnetic storms
+                are not distributed evenly across months. The <strong>"equinox effect"</strong> means that
+                March and September consistently produce more severe storms than midsummer or midwinter.
+                This counterintuitive fact — rooted in the geometry of Earth's magnetic field orientation
+                relative to the sun — has enormous practical value for aurora chasers planning a trip south.
+                The following charts decode the seasonality hidden inside nine decades of geomagnetic records.
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">🗓</div>
+                    <p class="placeholder-title">C4 — Storm intensity calendar heatmap</p>
+                    <p class="placeholder-sub">Month × year · Max daily Kp · gfz_kp_storm.csv</p>
+                </div>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">🌀</div>
+                    <p class="placeholder-title">C5 — Best months for aurora · Polar radial bar</p>
+                    <p class="placeholder-sub">Kp ≥ 7 storm days by calendar month · gfz_kp_storm.csv</p>
+                </div>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">📈</div>
+                    <p class="placeholder-title">C6 — Solar cycle vs geomagnetic activity · Dual-axis line</p>
+                    <p class="placeholder-sub">Annual mean Kp vs sunspot number · gfz_kp_storm.csv + silso.csv</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 3</span></div> -->
+
+        <!-- ── SECTION 3 — MAY 2024 SUPERSTORM ───────────────────────────────── -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag tag-teal">Section 3</span>
+                <h2 class="section-title">Case study — the May 2024 superstorm</h2>
+            </div>
+
+            <div class="narrative narrative-teal">
+                On the night of <strong>10 May 2024</strong>, the strongest geomagnetic storm in 20 years
+                struck Earth. With a peak Kp of 9, the aurora australis blazed across the entire southern
+                sky — visible from every Australian state, reaching as far north as Queensland. The ARCTICS
+                survey captured 696 observers across 30+ countries. This section zooms into the Australian
+                respondents, turning a historic storm into a human story: who saw it, from where, what they
+                described, and what the data reveals about aurora visibility thresholds across latitudes.
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">📍</div>
+                    <p class="placeholder-title">C7 — Where Australians saw the aurora · Geographic map</p>
+                    <p class="placeholder-sub">ARCTICS respondents · aurora_sightings_australia.csv</p>
+                </div>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">⚡</div>
+                    <p class="placeholder-title">C8 — Latitude vs aurora visibility · Scatter plot</p>
+                    <p class="placeholder-sub">Kp threshold gradient · aurora_sightings_australia.csv</p>
+                </div>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">🎨</div>
+                    <p class="placeholder-title">C9 — What observers reported · Grouped bar chart</p>
+                    <p class="placeholder-sub">Colours, forms, experience level · aurora_sightings_australia.csv</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 4</span></div> -->
+
+        <!-- ── SECTION 4 — ROCKS FROM SPACE ──────────────────────────────────── -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag tag-purple">Section 4</span>
+                <h2 class="section-title">Rocks from space — fireballs &amp; meteorites</h2>
+            </div>
+
+            <div class="narrative narrative-purple">
+                Not everything falling from the sky is light. Every day, <strong>tonnes of rocky debris</strong>
+                left over from the solar system's formation rain down on Earth. Most vaporise in a streak of
+                light — fireballs bright enough to cast shadows. A precious few survive the fiery descent and
+                land as meteorites. Australia's vast, dry, geologically stable interior is one of the planet's
+                finest meteorite-preserving environments — the continent is, in a very real sense,
+                <strong>a natural meteorite museum</strong>.
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">🔥</div>
+                    <p class="placeholder-title">C10 — Fireball events over Australia · Point map</p>
+                    <p class="placeholder-sub">NASA CNEOS · nasa_cneos_fireballs.csv</p>
+                </div>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">🪨</div>
+                    <p class="placeholder-title">C11 — Meteorite landing sites · Discovery map</p>
+                    <p class="placeholder-sub">NASA Meteorite Landings · nasa_meteorite_landings.csv</p>
+                </div>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">📊</div>
+                    <p class="placeholder-title">C12 — Fireball size vs frequency · Log scatter</p>
+                    <p class="placeholder-sub">Power-law relationship · nasa_cneos_fireballs.csv</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 5</span></div> -->
+
+        <!-- ── SECTION 5 — ECLIPSES ───────────────────────────────────────────── -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag tag-blue">Section 5</span>
+                <h2 class="section-title">Eclipses — Australia's appointments with shadow</h2>
+            </div>
+
+            <div class="narrative narrative-blue">
+                Total solar eclipses rank among the rarest and most awe-inspiring events a human being can
+                witness — a moment when day turns to twilight, stars appear at noon, and the solar corona
+                shimmers around a perfect black disc. Australia is fortunate: several total solar eclipses
+                will cross the continent in the coming decades, including <strong>Sydney in 2028</strong>
+                and <strong>Queensland in 2038</strong>. This section maps every eclipse visible from
+                Australia across 160 years — past and future.
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">🌑</div>
+                    <p class="placeholder-title">C13 — Eclipse timeline 1900–2060 · Strip chart</p>
+                    <p class="placeholder-sub">Solar and lunar events · nasa_eclipse_data.csv</p>
+                </div>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">📅</div>
+                    <p class="placeholder-title">C14 — Eclipse type distribution per decade · Stacked bar</p>
+                    <p class="placeholder-sub">What Australia actually gets · nasa_eclipse_data.csv</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 6</span></div> -->
+
+        <!-- ── SECTION 6 — DARK SKY FINDER ───────────────────────────────────── -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag tag-pink">Section 6</span>
+                <h2 class="section-title">Finding your dark sky — where to go tonight</h2>
+            </div>
+
+            <div class="narrative narrative-pink">
+                Armed with an understanding of what to look for and when, the final question is:
+                <strong>where?</strong> The Globe at Night citizen-science project has been collecting sky
+                brightness readings across Australia for over a decade. By aggregating those readings by
+                location, we can build a practical ranking of dark-sky sites relative to Australia's major
+                population centres. This closing section gives readers a data-driven answer to the question
+                <em>"where is the darkest, clearest sky I can realistically reach?"</em>
+            </div>
+
+            <div class="placeholder-card">
+                <div class="placeholder-inner">
+                    <div class="placeholder-icon">✨</div>
+                    <p class="placeholder-title">C15 — Sky brightness vs latitude · Scatter plot</p>
+                    <p class="placeholder-sub">Globe at Night clusters · globeatnight_aus.csv</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── STAT STRIP ───────────────────────────────────────────────────────
+        <div class="stat-strip">
+            <div class="stat-cell">
+                <div class="stat-num">15</div>
+                <div class="stat-label">Total charts</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-num">4</div>
+                <div class="stat-label">Maps</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-num">8</div>
+                <div class="stat-label">Datasets</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-num">36</div>
+                <div class="stat-label">Years of Kp data</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-num">46</div>
+                <div class="stat-label">Years of solar data</div>
+            </div>
+        </div> -->
+
+        <!-- ── OUTRO ──────────────────────────────────────────────────────────── -->
+        <div class="outro">
+            <p class="outro-title">Australia's cosmic privilege</p>
+            <p>
+                From the sun's 11-year heartbeat to a record-breaking aurora, from ancient meteorites
+                sleeping in the desert to an eclipse that will darken Sydney in 2028 — every story in
+                this visualisation is both planetary and deeply local. Australia's geography, geology,
+                and climate combine to make it one of Earth's premier nations for astronomy.
+            </p>
+            <p class="outro-meta">FIT2179 Data Visualisation 2 &nbsp;·&nbsp; Vega-Lite &nbsp;·&nbsp; GitHub Pages</p>
         </div>
 
-    </div>
+    </div><!-- /page -->
 
     <script src="js/charts.js"></script>
 </body>
