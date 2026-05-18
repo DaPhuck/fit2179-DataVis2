@@ -1,6 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "#0f1a2b",
+    "padding": {
+        "right": 50
+    },
     "title": {
         "text": "Australia's Night Sky Brightness",
         "subtitle": "Mean limiting magnitude from Globe at Night observations · Higher = darker sky",
@@ -14,8 +17,8 @@
         "subtitlePadding": 6,
         "offset": 12
     },
-    "width": 700,
-    "height": 500,
+    "width": 820,
+    "height": 560,
     "projection": {
         "type": "conicEqualArea",
         "parallels": [
@@ -69,7 +72,7 @@
                 "color": {
                     "condition": {
                         "test": "datum.mean_limiting_mag === null",
-                        "value": "#cccccc"
+                        "value": "#2a3a52"
                     },
                     "field": "mean_limiting_mag",
                     "type": "quantitative",
@@ -80,25 +83,29 @@
                             5.0
                         ],
                         "range": [
-                            "#d73027",
-                            "#fee08b",
-                            "#2166ac"
+                            "#d7191c",
+                            "#fdae61",
+                            "#2c7bb6"
                         ]
                     },
                     "legend": {
-                        "labelColor": "#e8e2d4",
-                        "titleColor": "#e8e2d4",
                         "title": "Sky Darkness",
+                        "titleColor": "#e8e2d4",
+                        "labelColor": "#e8e2d4",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "titleFontSize": 12,
                         "labelFont": "system-ui, -apple-system, sans-serif",
                         "labelFontSize": 11,
-                        "orient": "bottom-right",
+                        "orient": "bottom",
+                        "direction": "horizontal",
+                        "gradientLength": 200,
+                        "offset": 12,
                         "values": [
-                            3.5,
-                            5.0
+                            2,
+                            4.2,
+                            6
                         ],
-                        "labelExpr": "datum.value === 3.5 ? '< 3.5  Light polluted' : '> 5.0  Dark sky'"
+                        "labelExpr": "datum.value === 2 ? '< 3.5  Light polluted' : datum.value === 4.2 ? '3.5–5.0  Moderate' : '> 5.0  Dark sky'"
                     }
                 },
                 "strokeWidth": {
@@ -169,7 +176,7 @@
             "mark": {
                 "type": "point",
                 "size": 35,
-                "color": "#ffffff",
+                "color": "#0d1b2a",
                 "filled": true,
                 "opacity": 0.9
             },
@@ -233,7 +240,7 @@
                 "baseline": "middle",
                 "dx": 8,
                 "dy": -2,
-                "color": "#ffffff"
+                "color": "#0d1b2a"
             },
             "encoding": {
                 "longitude": {
