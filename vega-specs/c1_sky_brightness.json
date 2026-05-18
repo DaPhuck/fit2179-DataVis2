@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#0f1a2b",
     "title": {
         "text": "Australia's Night Sky Brightness",
         "subtitle": "Mean limiting magnitude from Globe at Night observations · Higher = darker sky",
@@ -8,8 +9,8 @@
         "font": "system-ui, -apple-system, sans-serif",
         "subtitleFont": "system-ui, -apple-system, sans-serif",
         "anchor": "start",
-        "color": "#0d1b2a",
-        "subtitleColor": "#555",
+        "color": "#e8e2d4",
+        "subtitleColor": "#7a8ba3",
         "subtitlePadding": 6,
         "offset": 12
     },
@@ -85,6 +86,8 @@
                         ]
                     },
                     "legend": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
                         "title": "Sky Darkness",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "titleFontSize": 12,

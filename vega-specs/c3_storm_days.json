@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#0f1a2b",
     "title": {
         "text": "Geomagnetic Storm Days per Year, 1990–2025",
         "subtitle": "Amber = any storm (Kp ≥ 5)  ·  Coral = severe storm (Kp ≥ 7)  ·  Severe days are a subset of storm days",
@@ -8,8 +9,8 @@
         "font": "system-ui, -apple-system, sans-serif",
         "subtitleFont": "system-ui, -apple-system, sans-serif",
         "anchor": "start",
-        "color": "#1a1a2e",
-        "subtitleColor": "#666",
+        "color": "#e8e2d4",
+        "subtitleColor": "#7a8ba3",
         "subtitlePadding": 6,
         "offset": 12
     },
@@ -63,6 +64,9 @@
                     "type": "ordinal",
                     "title": "Year",
                     "axis": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
+                        "gridColor": "#2a3a52",
                         "labelFont": "system-ui, -apple-system, sans-serif",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "labelFontSize": 10,
@@ -87,14 +91,16 @@
                     "type": "quantitative",
                     "title": "Storm Days",
                     "axis": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
+                        "gridColor": "#2a3a52",
                         "labelFont": "system-ui, -apple-system, sans-serif",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "labelFontSize": 11,
                         "titleFontSize": 12,
                         "titleFontWeight": "normal",
                         "grid": true,
-                        "gridOpacity": 0.15,
-                        "gridColor": "#ccc"
+                        "gridOpacity": 0.15
                     }
                 },
                 "color": {
@@ -111,6 +117,8 @@
                         ]
                     },
                     "legend": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
                         "title": "Storm Type",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "titleFontSize": 12,

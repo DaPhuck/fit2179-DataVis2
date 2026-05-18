@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#0f1a2b",
     "title": {
         "text": "Best Months to See Aurora from Australia",
         "subtitle": "Count of severe geomagnetic storm days (Kp ≥ 7) by calendar month · 1990–2025 · Equinox months highlighted in coral",
@@ -8,8 +9,8 @@
         "font": "system-ui, -apple-system, sans-serif",
         "subtitleFont": "system-ui, -apple-system, sans-serif",
         "anchor": "middle",
-        "color": "#1a1a2e",
-        "subtitleColor": "#666",
+        "color": "#e8e2d4",
+        "subtitleColor": "#7a8ba3",
         "subtitlePadding": 6,
         "offset": 12
     },
@@ -143,7 +144,7 @@
                         "test": "datum.month === 3 || datum.month === 9",
                         "value": "#e05c4b"
                     },
-                    "value": "#444"
+                    "value": "#e8e2d4"
                 }
             }
         },
@@ -195,7 +196,7 @@
                         "test": "datum.month === 3 || datum.month === 9",
                         "value": "#e05c4b"
                     },
-                    "value": "#555"
+                    "value": "#e8e2d4"
                 }
             }
         },
@@ -216,7 +217,7 @@
                         "fontSize": 13,
                         "fontWeight": "bold",
                         "font": "system-ui, -apple-system, sans-serif",
-                        "color": "#1a1a2e",
+                        "color": "#e8e2d4",
                         "dy": -8
                     },
                     "encoding": {
@@ -237,7 +238,7 @@
                         "fontSize": 10,
                         "fontWeight": "normal",
                         "font": "system-ui, -apple-system, sans-serif",
-                        "color": "#888",
+                        "color": "#7a8ba3",
                         "dy": 10
                     },
                     "encoding": {

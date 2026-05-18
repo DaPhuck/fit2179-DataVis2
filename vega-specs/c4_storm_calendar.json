@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#0f1a2b",
     "title": {
         "text": "Geomagnetic Storm Intensity Calendar, 1990–2025",
         "subtitle": "Monthly maximum Kp index · Diverging scale centred at storm threshold (Kp = 5)",
@@ -8,8 +9,8 @@
         "font": "system-ui, -apple-system, sans-serif",
         "subtitleFont": "system-ui, -apple-system, sans-serif",
         "anchor": "start",
-        "color": "#1a1a2e",
-        "subtitleColor": "#666",
+        "color": "#e8e2d4",
+        "subtitleColor": "#7a8ba3",
         "subtitlePadding": 6,
         "offset": 12
     },
@@ -63,6 +64,9 @@
                         "Dec"
                     ],
                     "axis": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
+                        "gridColor": "#2a3a52",
                         "labelFont": "system-ui, -apple-system, sans-serif",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "labelFontSize": 11,
@@ -80,6 +84,9 @@
                     "title": "Year",
                     "sort": "descending",
                     "axis": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
+                        "gridColor": "#2a3a52",
                         "labelFont": "system-ui, -apple-system, sans-serif",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "labelFontSize": 10,
@@ -110,6 +117,8 @@
                         ]
                     },
                     "legend": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
                         "title": "Max Monthly Kp",
                         "titleFont": "system-ui, -apple-system, sans-serif",
                         "titleFontSize": 11,

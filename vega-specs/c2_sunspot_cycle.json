@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#0f1a2b",
     "title": {
         "text": "The Solar Heartbeat — Monthly Sunspot Numbers, 1980–Present",
         "subtitle": "Raw monthly counts (thin) · 13-month centred average (thick) · Amber band = Solar Cycle 25 recent peak",
@@ -8,8 +9,8 @@
         "font": "system-ui, -apple-system, sans-serif",
         "subtitleFont": "system-ui, -apple-system, sans-serif",
         "anchor": "start",
-        "color": "#1a1a2e",
-        "subtitleColor": "#666",
+        "color": "#e8e2d4",
+        "subtitleColor": "#7a8ba3",
         "subtitlePadding": 6,
         "offset": 12
     },
@@ -304,6 +305,9 @@
                             "type": "temporal",
                             "title": null,
                             "axis": {
+                                "labelColor": "#e8e2d4",
+                                "titleColor": "#e8e2d4",
+                                "gridColor": "#2a3a52",
                                 "labelFont": "system-ui, -apple-system, sans-serif",
                                 "labelFontSize": 11,
                                 "grid": false,
@@ -316,13 +320,15 @@
                             "type": "quantitative",
                             "title": "Sunspot Number",
                             "axis": {
+                                "labelColor": "#e8e2d4",
+                                "titleColor": "#e8e2d4",
+                                "gridColor": "#2a3a52",
                                 "labelFont": "system-ui, -apple-system, sans-serif",
                                 "labelFontSize": 11,
                                 "titleFontSize": 12,
                                 "titleFontWeight": "normal",
                                 "grid": true,
-                                "gridOpacity": 0.15,
-                                "gridColor": "#ccc"
+                                "gridOpacity": 0.15
                             }
                         }
                     }

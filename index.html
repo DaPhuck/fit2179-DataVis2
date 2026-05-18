@@ -154,52 +154,6 @@
             border-bottom: 1px solid var(--navy-border);
         }
 
-        .section-tag {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.62rem;
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            padding: 3px 10px;
-            border-radius: 99px;
-            flex-shrink: 0;
-        }
-
-        .tag-intro {
-            background: rgba(122, 139, 163, 0.15);
-            color: var(--muted);
-        }
-
-        .tag-amber {
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--amber);
-        }
-
-        .tag-coral {
-            background: rgba(224, 92, 75, 0.15);
-            color: var(--coral);
-        }
-
-        .tag-teal {
-            background: rgba(45, 212, 191, 0.15);
-            color: var(--teal);
-        }
-
-        .tag-purple {
-            background: rgba(167, 139, 250, 0.15);
-            color: var(--purple);
-        }
-
-        .tag-blue {
-            background: rgba(96, 165, 250, 0.15);
-            color: var(--blue);
-        }
-
-        .tag-pink {
-            background: rgba(244, 114, 182, 0.15);
-            color: var(--pink);
-        }
-
         .section-title {
             font-family: 'Crimson Pro', serif;
             font-size: 1.6rem;
@@ -258,37 +212,12 @@
 
         /* ── Chart card ───────────────────────────────────────────────────── */
         .chart-card {
-            background: #ffffff;
-            border: 1px solid var(--navy-border);
-            border-radius: 12px;
-            padding: 1.75rem 1.75rem 1.25rem;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0.5rem 0 0.25rem;
             margin-bottom: 1.5rem;
             overflow: hidden;
-        }
-
-        .chart-label {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .chart-num {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.6rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            color: #888;
-            background: #f1f1f1;
-            padding: 2px 7px;
-            border-radius: 4px;
-        }
-
-        .chart-desc {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.72rem;
-            color: #888;
-            font-weight: 400;
         }
 
         /* ── Placeholder card ─────────────────────────────────────────────── */
@@ -477,21 +406,14 @@
 
         <!-- ── HERO ─────────────────────────────────────────────────────────── -->
         <header class="hero">
-            <p class="hero-eyebrow">FIT2179 · Data Visualisation 2</p>
+            <!-- <p class="hero-eyebrow">FIT2179 · Data Visualisation 2</p> -->
             <h1>Australia's <em>Night Sky</em></h1>
             <p class="hero-sub">A Stargazer's Atlas — from solar physics to personal dark sky</p>
-            <!-- <div class="hero-meta">
-                <div>Charts &nbsp;<span>15</span></div>
-                <div>Maps &nbsp;<span>4</span></div>
-                <div>Datasets &nbsp;<span>8</span></div>
-                <div>Sections &nbsp;<span>6</span></div>
-            </div> -->
         </header>
 
         <!-- ── INTRO ─────────────────────────────────────────────────────────── -->
         <section class="section">
             <div class="section-header">
-                <span class="section-tag tag-intro">Intro</span>
                 <h2 class="section-title">Why Australia? The dark sky advantage</h2>
             </div>
 
@@ -506,11 +428,6 @@
             </div>
 
             <div class="chart-card">
-                <div class="chart-label">
-                    <span class="chart-num">C1</span>
-                    <span class="chart-desc">Sky brightness by state · Globe at Night limiting magnitude
-                        observations</span>
-                </div>
                 <div id="chart-c1"></div>
             </div>
         </section>
@@ -520,7 +437,6 @@
         <!-- ── SECTION 1 — SOLAR ENGINE ──────────────────────────────────────── -->
         <section class="section">
             <div class="section-header">
-                <span class="section-tag tag-amber">Section 1</span>
                 <h2 class="section-title">The solar engine — what drives it all</h2>
             </div>
 
@@ -534,18 +450,10 @@
             </div>
 
             <div class="chart-card">
-                <div class="chart-label">
-                    <span class="chart-num">C2</span>
-                    <span class="chart-desc">Monthly mean sunspot number · SILSO data · 1980–present</span>
-                </div>
                 <div id="chart-c2"></div>
             </div>
 
             <div class="chart-card">
-                <div class="chart-label">
-                    <span class="chart-num">C3</span>
-                    <span class="chart-desc">Geomagnetic storm days per year · GFZ Kp index · 1990–2025</span>
-                </div>
                 <div id="chart-c3"></div>
             </div>
         </section>
@@ -555,7 +463,6 @@
         <!-- ── SECTION 2 — STORM SEASONS ─────────────────────────────────────── -->
         <section class="section">
             <div class="section-header">
-                <span class="section-tag tag-coral">Section 2</span>
                 <h2 class="section-title">Storm seasons — when to look up</h2>
             </div>
 
@@ -569,19 +476,10 @@
             </div>
 
             <div class="chart-card">
-                <div class="chart-label">
-                    <span class="chart-num">C4</span>
-                    <span class="chart-desc">Storm intensity calendar · Month × year · Max daily Kp</span>
-                </div>
                 <div id="chart-c4"></div>
             </div>
 
             <div class="chart-card">
-                <div class="chart-label">
-                    <span class="chart-num">C5</span>
-                    <span class="chart-desc">Best months for aurora · Severe storm days by month · Polar radial
-                        bar</span>
-                </div>
                 <div id="chart-c5"></div>
             </div>
 
@@ -594,12 +492,9 @@
             </div>
         </section>
 
-        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 3</span></div> -->
-
         <!-- ── SECTION 3 — MAY 2024 SUPERSTORM ───────────────────────────────── -->
         <section class="section">
             <div class="section-header">
-                <span class="section-tag tag-teal">Section 3</span>
                 <h2 class="section-title">Case study — the May 2024 superstorm</h2>
             </div>
 
@@ -637,12 +532,9 @@
             </div>
         </section>
 
-        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 4</span></div> -->
-
         <!-- ── SECTION 4 — ROCKS FROM SPACE ──────────────────────────────────── -->
         <section class="section">
             <div class="section-header">
-                <span class="section-tag tag-purple">Section 4</span>
                 <h2 class="section-title">Rocks from space — fireballs &amp; meteorites</h2>
             </div>
 
@@ -680,12 +572,9 @@
             </div>
         </section>
 
-        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 5</span></div> -->
-
         <!-- ── SECTION 5 — ECLIPSES ───────────────────────────────────────────── -->
         <section class="section">
             <div class="section-header">
-                <span class="section-tag tag-blue">Section 5</span>
                 <h2 class="section-title">Eclipses — Australia's appointments with shadow</h2>
             </div>
 
@@ -715,12 +604,9 @@
             </div>
         </section>
 
-        <!-- <div class="flow"><span class="flow-icon">↓ &nbsp; SECTION 6</span></div> -->
-
         <!-- ── SECTION 6 — DARK SKY FINDER ───────────────────────────────────── -->
         <section class="section">
             <div class="section-header">
-                <span class="section-tag tag-pink">Section 6</span>
                 <h2 class="section-title">Finding your dark sky — where to go tonight</h2>
             </div>
 
@@ -741,30 +627,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- ── STAT STRIP ───────────────────────────────────────────────────────
-        <div class="stat-strip">
-            <div class="stat-cell">
-                <div class="stat-num">15</div>
-                <div class="stat-label">Total charts</div>
-            </div>
-            <div class="stat-cell">
-                <div class="stat-num">4</div>
-                <div class="stat-label">Maps</div>
-            </div>
-            <div class="stat-cell">
-                <div class="stat-num">8</div>
-                <div class="stat-label">Datasets</div>
-            </div>
-            <div class="stat-cell">
-                <div class="stat-num">36</div>
-                <div class="stat-label">Years of Kp data</div>
-            </div>
-            <div class="stat-cell">
-                <div class="stat-num">46</div>
-                <div class="stat-label">Years of solar data</div>
-            </div>
-        </div> -->
 
         <!-- ── OUTRO ──────────────────────────────────────────────────────────── -->
         <div class="outro">
