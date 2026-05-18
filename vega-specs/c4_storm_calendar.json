@@ -1,0 +1,279 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Geomagnetic Storm Intensity Calendar, 1990–2025",
+        "subtitle": "Monthly maximum Kp index · Diverging scale centred at storm threshold (Kp = 5)",
+        "fontSize": 18,
+        "subtitleFontSize": 13,
+        "font": "system-ui, -apple-system, sans-serif",
+        "subtitleFont": "system-ui, -apple-system, sans-serif",
+        "anchor": "start",
+        "color": "#1a1a2e",
+        "subtitleColor": "#666",
+        "subtitlePadding": 6,
+        "offset": 12
+    },
+    "width": 600,
+    "height": {
+        "step": 16
+    },
+    "layer": [
+        {
+            "description": "Heatmap cells",
+            "data": {
+                "url": "../data/gfz_kp_monthly.csv"
+            },
+            "transform": [
+                {
+                    "calculate": "datum.max_kp < 3 ? 'Quiet (< 3)' : datum.max_kp < 5 ? 'Active (3–5)' : datum.max_kp < 7 ? 'Storm (5–7)' : datum.max_kp < 8 ? 'Strong Storm (7–8)' : 'Extreme (≥ 8)'",
+                    "as": "kp_level"
+                }
+            ],
+            "params": [
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "rect",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.4
+            },
+            "encoding": {
+                "x": {
+                    "field": "month_name",
+                    "type": "ordinal",
+                    "title": "Month",
+                    "sort": [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ],
+                    "axis": {
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 11,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "orient": "top",
+                        "labelPadding": 6,
+                        "ticks": false,
+                        "domain": false
+                    }
+                },
+                "y": {
+                    "field": "year",
+                    "type": "ordinal",
+                    "title": "Year",
+                    "sort": "descending",
+                    "axis": {
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 10,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "ticks": false,
+                        "domain": false,
+                        "labelPadding": 8
+                    }
+                },
+                "color": {
+                    "field": "max_kp",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [
+                            3,
+                            5,
+                            7,
+                            8
+                        ],
+                        "range": [
+                            "#2166ac",
+                            "#92c5de",
+                            "#f4a582",
+                            "#d6604d",
+                            "#b2182b"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Max Monthly Kp",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "titleFontSize": 11,
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 10,
+                        "orient": "right",
+                        "values": [
+                            3,
+                            5,
+                            7,
+                            8
+                        ],
+                        "labelExpr": "datum.value === 3 ? '< 3  Quiet' : datum.value === 5 ? '3–5  Active' : datum.value === 7 ? '5–7  Storm' : '7–8  Strong · ≥8 Extreme'"
+                    }
+                },
+                "strokeWidth": {
+                    "condition": {
+                        "param": "hover",
+                        "value": 2,
+                        "empty": false
+                    },
+                    "value": 0.4
+                },
+                "stroke": {
+                    "condition": {
+                        "param": "hover",
+                        "value": "#ffffff",
+                        "empty": false
+                    },
+                    "value": "#ffffff"
+                },
+                "tooltip": [
+                    {
+                        "field": "year",
+                        "type": "ordinal",
+                        "title": "Year"
+                    },
+                    {
+                        "field": "month_name",
+                        "type": "nominal",
+                        "title": "Month"
+                    },
+                    {
+                        "field": "max_kp",
+                        "type": "quantitative",
+                        "title": "Max Kp",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "kp_level",
+                        "type": "nominal",
+                        "title": "Level"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Notable event labels on extreme cells",
+            "data": {
+                "values": [
+                    {
+                        "year": "2003",
+                        "month_name": "Oct",
+                        "label": "★"
+                    },
+                    {
+                        "year": "2003",
+                        "month_name": "Nov",
+                        "label": "★"
+                    },
+                    {
+                        "year": "2024",
+                        "month_name": "May",
+                        "label": "★"
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "fontSize": 9,
+                "color": "#ffffff",
+                "fontWeight": "bold",
+                "align": "center",
+                "baseline": "middle"
+            },
+            "encoding": {
+                "x": {
+                    "field": "month_name",
+                    "type": "ordinal",
+                    "sort": [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ]
+                },
+                "y": {
+                    "field": "year",
+                    "type": "ordinal",
+                    "sort": "descending"
+                },
+                "text": {
+                    "field": "label"
+                }
+            }
+        },
+        {
+            "description": "Equinox month highlight rules — March and September",
+            "data": {
+                "values": [
+                    {
+                        "month_name": "Mar",
+                        "label": "Equinox"
+                    },
+                    {
+                        "month_name": "Sep",
+                        "label": "Equinox"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "rect",
+                        "opacity": 0,
+                        "stroke": "#f59e0b",
+                        "strokeWidth": 2
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "month_name",
+                            "type": "ordinal",
+                            "sort": [
+                                "Jan",
+                                "Feb",
+                                "Mar",
+                                "Apr",
+                                "May",
+                                "Jun",
+                                "Jul",
+                                "Aug",
+                                "Sep",
+                                "Oct",
+                                "Nov",
+                                "Dec"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "config": {
+        "view": {
+            "stroke": "transparent"
+        },
+        "font": "system-ui, -apple-system, sans-serif"
+    }
+}
