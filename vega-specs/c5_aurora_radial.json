@@ -1,0 +1,264 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Best Months to See Aurora from Australia",
+        "subtitle": "Count of severe geomagnetic storm days (Kp ≥ 7) by calendar month · 1990–2025 · Equinox months highlighted in coral",
+        "fontSize": 18,
+        "subtitleFontSize": 12,
+        "font": "system-ui, -apple-system, sans-serif",
+        "subtitleFont": "system-ui, -apple-system, sans-serif",
+        "anchor": "middle",
+        "color": "#1a1a2e",
+        "subtitleColor": "#666",
+        "subtitlePadding": 6,
+        "offset": 12
+    },
+    "width": 420,
+    "height": 420,
+    "layer": [
+        {
+            "description": "Radial bars — one wedge per month",
+            "data": {
+                "url": "../data/gfz_kp_monthly_severe.csv"
+            },
+            "transform": [
+                {
+                    "calculate": "datum.month === 3 || datum.month === 9 ? '★ Equinox — peak aurora season' : 'Regular month'",
+                    "as": "note"
+                }
+            ],
+            "params": [
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "arc",
+                "innerRadius": 45,
+                "stroke": "#ffffff",
+                "strokeWidth": 1.5,
+                "padAngle": 0.02
+            },
+            "encoding": {
+                "theta": {
+                    "field": "month_name",
+                    "type": "ordinal",
+                    "sort": [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ]
+                },
+                "radius": {
+                    "field": "severe_days",
+                    "type": "quantitative",
+                    "scale": {
+                        "rangeMin": 45,
+                        "rangeMax": 185
+                    }
+                },
+                "color": {
+                    "condition": {
+                        "test": "datum.month === 3 || datum.month === 9",
+                        "value": "#e05c4b"
+                    },
+                    "value": "#f59e0b"
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "hover",
+                        "value": 1,
+                        "empty": true
+                    },
+                    "value": 0.8
+                },
+                "tooltip": [
+                    {
+                        "field": "month_name",
+                        "type": "nominal",
+                        "title": "Month"
+                    },
+                    {
+                        "field": "severe_days",
+                        "type": "quantitative",
+                        "title": "Severe storm days (Kp ≥ 7)"
+                    },
+                    {
+                        "field": "note",
+                        "type": "nominal",
+                        "title": "Note"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Month name labels at fixed outer ring",
+            "data": {
+                "url": "../data/gfz_kp_monthly_severe.csv"
+            },
+            "mark": {
+                "type": "text",
+                "radius": 225,
+                "fontSize": 11,
+                "fontWeight": "normal",
+                "font": "system-ui, -apple-system, sans-serif"
+            },
+            "encoding": {
+                "theta": {
+                    "field": "month_name",
+                    "type": "ordinal",
+                    "sort": [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ]
+                },
+                "text": {
+                    "field": "month_name"
+                },
+                "color": {
+                    "condition": {
+                        "test": "datum.month === 3 || datum.month === 9",
+                        "value": "#e05c4b"
+                    },
+                    "value": "#444"
+                }
+            }
+        },
+        {
+            "description": "Count labels just outside the tip of each bar",
+            "data": {
+                "url": "../data/gfz_kp_monthly_severe.csv"
+            },
+            "mark": {
+                "type": "text",
+                "radiusOffset": 12,
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "font": "system-ui, -apple-system, sans-serif"
+            },
+            "encoding": {
+                "theta": {
+                    "field": "month_name",
+                    "type": "ordinal",
+                    "sort": [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ]
+                },
+                "radius": {
+                    "field": "severe_days",
+                    "type": "quantitative",
+                    "scale": {
+                        "rangeMin": 45,
+                        "rangeMax": 185
+                    }
+                },
+                "text": {
+                    "field": "severe_days",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "condition": {
+                        "test": "datum.month === 3 || datum.month === 9",
+                        "value": "#e05c4b"
+                    },
+                    "value": "#555"
+                }
+            }
+        },
+        {
+            "description": "Centre label — Kp threshold reminder",
+            "data": {
+                "values": [
+                    {
+                        "label": "Kp ≥ 7",
+                        "sub": "storm days"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 13,
+                        "fontWeight": "bold",
+                        "font": "system-ui, -apple-system, sans-serif",
+                        "color": "#1a1a2e",
+                        "dy": -8
+                    },
+                    "encoding": {
+                        "text": {
+                            "field": "label"
+                        },
+                        "theta": {
+                            "value": 0
+                        },
+                        "radius": {
+                            "value": 0
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 10,
+                        "fontWeight": "normal",
+                        "font": "system-ui, -apple-system, sans-serif",
+                        "color": "#888",
+                        "dy": 10
+                    },
+                    "encoding": {
+                        "text": {
+                            "field": "sub"
+                        },
+                        "theta": {
+                            "value": 0
+                        },
+                        "radius": {
+                            "value": 0
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "config": {
+        "view": {
+            "stroke": "transparent"
+        },
+        "font": "system-ui, -apple-system, sans-serif"
+    }
+}

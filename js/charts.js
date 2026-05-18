@@ -21,3 +21,9 @@ vegaEmbed('#chart-c4', 'vega-specs/c4_storm_calendar.json', {
     actions: true,
     renderer: 'svg'
 }).catch(console.error);
+
+// ── C5: Aurora Radial Bar Chart ───────────────────────────────────────────
+vegaEmbed('#chart-c5', 'vega-specs/c5_aurora_radial.json', {
+    actions: true,
+    renderer: 'svg'
+}).catch(console.error);
