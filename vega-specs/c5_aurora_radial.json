@@ -20,7 +20,7 @@
         {
             "description": "Radial bars — one wedge per month",
             "data": {
-                "url": "../data/gfz_kp_monthly_severe.csv"
+                "url": "/data/gfz_kp_monthly_severe.csv"
             },
             "transform": [
                 {

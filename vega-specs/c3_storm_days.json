@@ -20,7 +20,7 @@
         {
             "description": "Grouped bars — storm days and severe days per year",
             "data": {
-                "url": "../data/gfz_kp_yearly.csv"
+                "url": "/data/gfz_kp_yearly.csv"
             },
             "transform": [
                 {

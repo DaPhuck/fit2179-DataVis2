@@ -198,7 +198,7 @@
         {
             "description": "Main data layers",
             "data": {
-                "url": "../data/silso.csv"
+                "url": "/data/silso.csv"
             },
             "transform": [
                 {
