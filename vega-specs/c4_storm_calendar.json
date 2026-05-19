@@ -22,7 +22,7 @@
         {
             "description": "Heatmap cells",
             "data": {
-                "url": "/data/gfz_kp_monthly.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/gfz_kp_monthly.csv"
             },
             "transform": [
                 {

@@ -186,7 +186,7 @@
         {
             "description": "Crosshair capture",
             "data": {
-                "url": "/data/kp_vs_sunspot_annual.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
             },
             "mark": {
                 "type": "line",
@@ -227,7 +227,7 @@
         {
             "description": "Crosshair vertical rule and tooltip",
             "data": {
-                "url": "/data/kp_vs_sunspot_annual.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
             },
             "mark": {
                 "type": "rule",
@@ -341,7 +341,7 @@
         {
             "description": "Kp index line — teal, left axis",
             "data": {
-                "url": "/data/kp_vs_sunspot_annual.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
             },
             "mark": {
                 "type": "line",
@@ -391,7 +391,7 @@
         {
             "description": "Hover dot on Kp line",
             "data": {
-                "url": "/data/kp_vs_sunspot_annual.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
             },
             "mark": {
                 "type": "point",
@@ -436,7 +436,7 @@
         {
             "description": "Hover dot on sunspot line",
             "data": {
-                "url": "/data/kp_vs_sunspot_annual.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
             },
             "mark": {
                 "type": "point",

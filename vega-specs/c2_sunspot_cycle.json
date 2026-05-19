@@ -198,7 +198,7 @@
         {
             "description": "Main data layers",
             "data": {
-                "url": "/data/silso.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/silso.csv"
             },
             "transform": [
                 {

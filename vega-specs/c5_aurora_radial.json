@@ -20,7 +20,7 @@
         {
             "description": "Radial bars — one wedge per month",
             "data": {
-                "url": "/data/gfz_kp_monthly_severe.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/gfz_kp_monthly_severe.csv"
             },
             "transform": [
                 {
@@ -108,7 +108,7 @@
         {
             "description": "Month name labels at fixed outer ring",
             "data": {
-                "url": "../data/gfz_kp_monthly_severe.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/gfz_kp_monthly_severe.csv"
             },
             "mark": {
                 "type": "text",
@@ -151,7 +151,7 @@
         {
             "description": "Count labels just outside the tip of each bar",
             "data": {
-                "url": "../data/gfz_kp_monthly_severe.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/gfz_kp_monthly_severe.csv"
             },
             "mark": {
                 "type": "text",
