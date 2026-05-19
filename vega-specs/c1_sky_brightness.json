@@ -33,7 +33,7 @@
     "layer": [
         {
             "data": {
-                "url": "/data/STE_2021_AUST_GDA2020.json",
+                "url": "data/STE_2021_AUST_GDA2020.json",
                 "format": {
                     "type": "topojson",
                     "feature": "STE_2021_AUST_GDA2020"
@@ -44,7 +44,7 @@
                     "lookup": "properties.STE_NAME21",
                     "from": {
                         "data": {
-                            "url": "/data/globeatnight_aus_by_state.csv"
+                            "url": "data/globeatnight_aus_by_state.csv"
                         },
                         "key": "state",
                         "fields": [
