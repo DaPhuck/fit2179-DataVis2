@@ -23,6 +23,8 @@
 ```
 fit2179-DataVis2/
 ├── index.html              # Atlas entry point
+├── css/
+│   └── styles.css          # Layout and theme styling
 ├── js/
 │   └── charts.js           # Vega-Embed wiring
 ├── vega-specs/             # 15 Vega-Lite chart specifications
