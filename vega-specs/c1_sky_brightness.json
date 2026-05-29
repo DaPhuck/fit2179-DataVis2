@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "background": "#0f1a2b",
+    "background": "#111d30",
     "padding": {
         "right": 50
     },
@@ -66,7 +66,7 @@
             "mark": {
                 "type": "geoshape",
                 "stroke": "#ffffff",
-                "strokeWidth": 0.8
+                "strokeWidth": 0.5
             },
             "encoding": {
                 "color": {
@@ -79,17 +79,19 @@
                     "scale": {
                         "type": "threshold",
                         "domain": [
-                            3.5,
+                            4.0,
+                            4.5,
                             5.0
                         ],
                         "range": [
                             "#d7191c",
                             "#fdae61",
+                            "#abd9e9",
                             "#2c7bb6"
                         ]
                     },
                     "legend": {
-                        "title": "Sky Darkness",
+                        "title": "Sky Darkness Scale",
                         "titleColor": "#e8e2d4",
                         "labelColor": "#e8e2d4",
                         "titleFont": "system-ui, -apple-system, sans-serif",
@@ -98,23 +100,24 @@
                         "labelFontSize": 11,
                         "orient": "bottom",
                         "direction": "horizontal",
-                        "gradientLength": 200,
+                        "gradientLength": 220,
                         "offset": 12,
                         "values": [
-                            2,
-                            4.2,
-                            6
+                            3.7,
+                            4.25,
+                            4.75,
+                            5.3
                         ],
-                        "labelExpr": "datum.value === 2 ? '< 3.5  Light polluted' : datum.value === 4.2 ? '3.5–5.0  Moderate' : '> 5.0  Dark sky'"
+                        "labelExpr": "datum.value === 3.7 ? '< 4.0  Light polluted' : datum.value === 4.25 ? '4.0–4.5  Suburban' : datum.value === 4.75 ? '4.5–5.0  Rural' : '> 5.0  Dark sky'"
                     }
                 },
                 "strokeWidth": {
                     "condition": {
                         "param": "hover",
-                        "value": 2.5,
+                        "value": 0.8,
                         "empty": false
                     },
-                    "value": 0.8
+                    "value": 0.5
                 },
                 "tooltip": [
                     {
@@ -165,11 +168,6 @@
                         "city": "Alice Springs",
                         "lon": 133.87,
                         "lat": -23.70
-                    },
-                    {
-                        "city": "Darwin",
-                        "lon": 130.84,
-                        "lat": -12.46
                     }
                 ]
             },
@@ -223,11 +221,6 @@
                         "city": "Alice Springs",
                         "lon": 133.87,
                         "lat": -23.70
-                    },
-                    {
-                        "city": "Darwin",
-                        "lon": 130.84,
-                        "lat": -12.46
                     }
                 ]
             },
