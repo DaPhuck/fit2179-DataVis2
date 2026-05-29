@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "background": "#0f1a2b",
+    "background": "#111d30",
     "title": {
         "text": "The Solar Heartbeat — Monthly Sunspot Numbers, 1980–Present",
         "subtitle": "Raw monthly counts (thin) · 13-month centred average (thick) · Amber band = Solar Cycle 25 recent peak",
@@ -16,6 +16,24 @@
     },
     "width": 700,
     "height": 350,
+    "params": [
+        {
+            "name": "cycleSel",
+            "value": "All",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "All",
+                    "SC21",
+                    "SC22",
+                    "SC23",
+                    "SC24",
+                    "SC25"
+                ],
+                "name": "Solar Cycle: "
+            }
+        }
+    ],
     "layer": [
         {
             "description": "SC25 full era — very light background tint",
@@ -30,7 +48,8 @@
             "mark": {
                 "type": "rect",
                 "opacity": 0.06,
-                "color": "#f59e0b"
+                "color": "#f59e0b",
+                "clip": true
             },
             "encoding": {
                 "x": {
@@ -56,7 +75,8 @@
             "mark": {
                 "type": "rect",
                 "opacity": 0.18,
-                "color": "#f59e0b"
+                "color": "#f59e0b",
+                "clip": true
             },
             "encoding": {
                 "x": {
@@ -105,7 +125,8 @@
                         ],
                         "opacity": 0.45,
                         "color": "#888",
-                        "strokeWidth": 1
+                        "strokeWidth": 1,
+                        "clip": true
                     },
                     "encoding": {
                         "x": {
@@ -123,7 +144,8 @@
                         "color": "#888",
                         "align": "center",
                         "baseline": "top",
-                        "dy": 6
+                        "dy": 6,
+                        "clip": true
                     },
                     "encoding": {
                         "x": {
@@ -159,7 +181,8 @@
                             3
                         ],
                         "opacity": 0.7,
-                        "strokeWidth": 1.2
+                        "strokeWidth": 1.2,
+                        "clip": true
                     },
                     "encoding": {
                         "x": {
@@ -178,7 +201,8 @@
                         "align": "left",
                         "baseline": "bottom",
                         "dx": 4,
-                        "dy": -4
+                        "dy": -4,
+                        "clip": true
                     },
                     "encoding": {
                         "x": {
@@ -297,13 +321,19 @@
                         "strokeWidth": 0.9,
                         "opacity": 0.3,
                         "color": "#f59e0b",
-                        "interpolate": "monotone"
+                        "interpolate": "monotone",
+                        "clip": true
                     },
                     "encoding": {
                         "x": {
                             "field": "date",
                             "type": "temporal",
                             "title": null,
+                            "scale": {
+                                "domain": {
+                                    "expr": "cycleSel == 'SC21' ? [datetime(1980,0,1), datetime(1986,8,1)] : cycleSel == 'SC22' ? [datetime(1986,8,1), datetime(1996,7,1)] : cycleSel == 'SC23' ? [datetime(1996,7,1), datetime(2008,11,1)] : cycleSel == 'SC24' ? [datetime(2008,11,1), datetime(2019,11,1)] : cycleSel == 'SC25' ? [datetime(2019,11,1), datetime(2026,11,1)] : [datetime(1980,0,1), datetime(2026,11,1)]"
+                                }
+                            },
                             "axis": {
                                 "labelColor": "#e8e2d4",
                                 "titleColor": "#e8e2d4",
@@ -340,7 +370,8 @@
                         "strokeWidth": 2.5,
                         "opacity": 1,
                         "color": "#d97706",
-                        "interpolate": "monotone"
+                        "interpolate": "monotone",
+                        "clip": true
                     },
                     "encoding": {
                         "x": {
