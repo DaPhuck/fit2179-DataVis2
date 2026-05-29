@@ -1,9 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "background": "#0f1a2b",
+    "background": "#111d30",
     "title": {
         "text": "Geomagnetic Storm Intensity Calendar, 1990–2025",
-        "subtitle": "Monthly maximum Kp index · Diverging scale centred at storm threshold (Kp = 5)",
+        "subtitle": "Monthly maximum Kp index · Click a cell to highlight its month + year · Click again to clear",
         "fontSize": 18,
         "subtitleFontSize": 13,
         "font": "system-ui, -apple-system, sans-serif",
@@ -16,8 +16,25 @@
     },
     "width": 600,
     "height": {
-        "step": 16
+        "step": 22
     },
+    "params": [
+        {
+            "name": "cycleSel",
+            "value": "All",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "All",
+                    "SC22",
+                    "SC23",
+                    "SC24",
+                    "SC25"
+                ],
+                "name": "Solar Cycle: "
+            }
+        }
+    ],
     "layer": [
         {
             "description": "Heatmap cells",
@@ -25,6 +42,13 @@
                 "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/gfz_kp_monthly.csv"
             },
             "transform": [
+                {
+                    "calculate": "+datum.year",
+                    "as": "year_num"
+                },
+                {
+                    "filter": "cycleSel == 'All' || (cycleSel == 'SC22' && datum.year_num <= 1996) || (cycleSel == 'SC23' && datum.year_num >= 1996 && datum.year_num <= 2008) || (cycleSel == 'SC24' && datum.year_num >= 2008 && datum.year_num <= 2019) || (cycleSel == 'SC25' && datum.year_num >= 2019)"
+                },
                 {
                     "calculate": "datum.max_kp < 3 ? 'Quiet (< 3)' : datum.max_kp < 5 ? 'Active (3–5)' : datum.max_kp < 7 ? 'Storm (5–7)' : datum.max_kp < 8 ? 'Strong Storm (7–8)' : 'Extreme (≥ 8)'",
                     "as": "kp_level"
@@ -37,6 +61,18 @@
                         "type": "point",
                         "on": "mouseover"
                     }
+                },
+                {
+                    "name": "focus",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "month_name",
+                            "year"
+                        ],
+                        "on": "click",
+                        "toggle": "event.shiftKey"
+                    }
                 }
             ],
             "mark": {
@@ -46,6 +82,25 @@
             },
             "encoding": {
                 "x": {
+                    "field": "year",
+                    "type": "ordinal",
+                    "title": "Year",
+                    "axis": {
+                        "labelColor": "#e8e2d4",
+                        "titleColor": "#e8e2d4",
+                        "gridColor": "#2a3a52",
+                        "labelFont": "system-ui, -apple-system, sans-serif",
+                        "titleFont": "system-ui, -apple-system, sans-serif",
+                        "labelFontSize": 10,
+                        "titleFontSize": 12,
+                        "titleFontWeight": "normal",
+                        "labelAngle": -45,
+                        "ticks": false,
+                        "domain": false,
+                        "labelPadding": 6
+                    }
+                },
+                "y": {
                     "field": "month_name",
                     "type": "ordinal",
                     "title": "Month",
@@ -72,29 +127,9 @@
                         "labelFontSize": 11,
                         "titleFontSize": 12,
                         "titleFontWeight": "normal",
-                        "orient": "top",
-                        "labelPadding": 6,
+                        "labelPadding": 8,
                         "ticks": false,
                         "domain": false
-                    }
-                },
-                "y": {
-                    "field": "year",
-                    "type": "ordinal",
-                    "title": "Year",
-                    "sort": "descending",
-                    "axis": {
-                        "labelColor": "#e8e2d4",
-                        "titleColor": "#e8e2d4",
-                        "gridColor": "#2a3a52",
-                        "labelFont": "system-ui, -apple-system, sans-serif",
-                        "titleFont": "system-ui, -apple-system, sans-serif",
-                        "labelFontSize": 10,
-                        "titleFontSize": 12,
-                        "titleFontWeight": "normal",
-                        "ticks": false,
-                        "domain": false,
-                        "labelPadding": 8
                     }
                 },
                 "color": {
@@ -133,6 +168,13 @@
                         ],
                         "labelExpr": "datum.value === 3 ? '< 3  Quiet' : datum.value === 5 ? '3–5  Active' : datum.value === 7 ? '5–7  Storm' : '7–8  Strong · ≥8 Extreme'"
                     }
+                },
+                "opacity": {
+                    "condition": {
+                        "test": "!focus || !focus.month_name || indexof(focus.month_name, datum.month_name) >= 0 || indexof(focus.year, datum.year) >= 0",
+                        "value": 1
+                    },
+                    "value": 0.18
                 },
                 "strokeWidth": {
                     "condition": {
@@ -181,21 +223,29 @@
                 "values": [
                     {
                         "year": "2003",
+                        "year_num": 2003,
                         "month_name": "Oct",
                         "label": "★"
                     },
                     {
                         "year": "2003",
+                        "year_num": 2003,
                         "month_name": "Nov",
                         "label": "★"
                     },
                     {
                         "year": "2024",
+                        "year_num": 2024,
                         "month_name": "May",
                         "label": "★"
                     }
                 ]
             },
+            "transform": [
+                {
+                    "filter": "cycleSel == 'All' || (cycleSel == 'SC22' && datum.year_num <= 1996) || (cycleSel == 'SC23' && datum.year_num >= 1996 && datum.year_num <= 2008) || (cycleSel == 'SC24' && datum.year_num >= 2008 && datum.year_num <= 2019) || (cycleSel == 'SC25' && datum.year_num >= 2019)"
+                }
+            ],
             "mark": {
                 "type": "text",
                 "fontSize": 9,
@@ -206,6 +256,10 @@
             },
             "encoding": {
                 "x": {
+                    "field": "year",
+                    "type": "ordinal"
+                },
+                "y": {
                     "field": "month_name",
                     "type": "ordinal",
                     "sort": [
@@ -222,11 +276,6 @@
                         "Nov",
                         "Dec"
                     ]
-                },
-                "y": {
-                    "field": "year",
-                    "type": "ordinal",
-                    "sort": "descending"
                 },
                 "text": {
                     "field": "label"
@@ -256,7 +305,7 @@
                         "strokeWidth": 2
                     },
                     "encoding": {
-                        "x": {
+                        "y": {
                             "field": "month_name",
                             "type": "ordinal",
                             "sort": [
