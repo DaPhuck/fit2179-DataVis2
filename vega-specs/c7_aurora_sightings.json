@@ -7,10 +7,10 @@
     "projection": {
         "type": "mercator",
         "center": {
-            "expr": "region == 'se' ? [145, -39] : region == 'tas' ? [146.6, -42] : [134, -28]"
+            "expr": "region == 'se' ? [145, -39] : region == 'tas' ? [146.6, -42] : region == 'east' ? [151.5, -31] : region == 'wa' ? [116.5, -31.5] : [134, -28]"
         },
         "scale": {
-            "expr": "region == 'se' ? 2000 : region == 'tas' ? 6500 : 720"
+            "expr": "region == 'se' ? 2000 : region == 'tas' ? 6500 : region == 'east' ? 1700 : region == 'wa' ? 2600 : 720"
         }
     },
     "params": [
@@ -22,12 +22,16 @@
                 "options": [
                     "all",
                     "se",
-                    "tas"
+                    "tas",
+                    "east",
+                    "wa"
                 ],
                 "labels": [
                     "All Australia",
                     "Southeast (VIC + TAS)",
-                    "Tasmania"
+                    "Tasmania",
+                    "Eastern seaboard",
+                    "Western Australia"
                 ],
                 "name": "Zoom to region: "
             }
