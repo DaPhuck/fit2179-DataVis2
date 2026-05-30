@@ -233,7 +233,71 @@
                 "baseline": "middle",
                 "dx": 8,
                 "dy": -2,
-                "color": "#0d1b2a"
+                "fill": "#0d1b2a",
+                "stroke": "#0d1b2a",
+                "strokeWidth": 3.5,
+                "strokeJoin": "round",
+                "opacity": 0.9
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "city"
+                }
+            }
+        },
+        {
+            "data": {
+                "values": [
+                    {
+                        "city": "Sydney",
+                        "lon": 151.21,
+                        "lat": -33.87
+                    },
+                    {
+                        "city": "Melbourne",
+                        "lon": 144.96,
+                        "lat": -37.81
+                    },
+                    {
+                        "city": "Perth",
+                        "lon": 115.86,
+                        "lat": -31.95
+                    },
+                    {
+                        "city": "Brisbane",
+                        "lon": 153.03,
+                        "lat": -27.47
+                    },
+                    {
+                        "city": "Adelaide",
+                        "lon": 138.60,
+                        "lat": -34.93
+                    },
+                    {
+                        "city": "Alice Springs",
+                        "lon": 133.87,
+                        "lat": -23.70
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "font": "system-ui, -apple-system, sans-serif",
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "align": "left",
+                "baseline": "middle",
+                "dx": 8,
+                "dy": -2,
+                "color": "#f5f0e6"
             },
             "encoding": {
                 "longitude": {
