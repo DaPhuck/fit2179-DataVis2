@@ -1,0 +1,343 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C12 — The Power-Law of Fireball Impact Energy (global CNEOS)",
+    "width": 600,
+    "height": 420,
+    "background": "#111d30",
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "axis": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "gridColor": "#1e3a5f",
+            "gridOpacity": 0.4,
+            "tickColor": "#2a4a6b",
+            "domainColor": "#2a4a6b",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titlePadding": 10
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "How Rare Are Big Fireballs? The Power-Law of Impact Energy",
+        "subtitle": [
+            "1,060 global fireballs, 1988–2026 · each 10× jump in energy makes a fireball roughly 10× rarer (a \"power-law\")",
+            "Hover any point for an exact count · Scroll to zoom, drag to pan"
+        ]
+    },
+    "layer": [
+        {
+            "description": "Cumulative size-frequency distribution (CCDF)",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/cneos_fireballs_global.csv"
+            },
+            "transform": [
+                {
+                    "window": [
+                        {
+                            "op": "rank",
+                            "as": "n_ge"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "impact_energy_kt",
+                            "order": "descending"
+                        }
+                    ]
+                }
+            ],
+            "params": [
+                {
+                    "name": "grid",
+                    "select": {
+                        "type": "interval"
+                    },
+                    "bind": "scales"
+                },
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "encodings": [
+                            "x"
+                        ],
+                        "nearest": true,
+                        "on": "pointerover",
+                        "clear": "pointerout"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "circle",
+                "color": "#fb923c",
+                "stroke": "#111d30",
+                "strokeWidth": 0.3,
+                "clip": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "impact_energy_kt",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "log",
+                        "domain": [
+                            0.04,
+                            600
+                        ]
+                    },
+                    "axis": {
+                        "title": "Impact energy — kilotons of TNT (log scale)",
+                        "values": [
+                            0.1,
+                            1,
+                            10,
+                            100
+                        ]
+                    }
+                },
+                "y": {
+                    "field": "n_ge",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "log",
+                        "domain": [
+                            1,
+                            2000
+                        ]
+                    },
+                    "axis": {
+                        "title": "Number of fireballs at least this energetic (log scale)",
+                        "values": [
+                            1,
+                            10,
+                            100,
+                            1000
+                        ]
+                    }
+                },
+                "size": {
+                    "condition": {
+                        "param": "hover",
+                        "empty": false,
+                        "value": 110
+                    },
+                    "value": 28
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "hover",
+                        "empty": false,
+                        "value": 1
+                    },
+                    "value": 0.5
+                },
+                "tooltip": [
+                    {
+                        "field": "datetime",
+                        "type": "nominal",
+                        "title": "Date / time (UT)"
+                    },
+                    {
+                        "field": "impact_energy_kt",
+                        "type": "quantitative",
+                        "title": "Impact energy (kt)",
+                        "format": ".3f"
+                    },
+                    {
+                        "field": "n_ge",
+                        "type": "quantitative",
+                        "title": "Fireballs this size or larger"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Annotate Chelyabinsk (largest event)",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/cneos_fireballs_global.csv"
+            },
+            "transform": [
+                {
+                    "filter": "datum.impact_energy_kt > 400"
+                }
+            ],
+            "layer": [
+                {
+                    "mark": {
+                        "type": "point",
+                        "size": 90,
+                        "color": "#fde047",
+                        "filled": true,
+                        "stroke": "#111d30",
+                        "strokeWidth": 1
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "impact_energy_kt",
+                            "type": "quantitative"
+                        },
+                        "y": {
+                            "value": 0,
+                            "datum": 1,
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "align": "right",
+                        "dx": -10,
+                        "dy": -10,
+                        "fontSize": 10,
+                        "fontWeight": "bold",
+                        "fill": "#fde047"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "impact_energy_kt",
+                            "type": "quantitative"
+                        },
+                        "y": {
+                            "datum": 1,
+                            "type": "quantitative"
+                        },
+                        "text": {
+                            "value": "Chelyabinsk 2013 — 441 kt"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "description": "Hover crosshair guides + count readout",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/cneos_fireballs_global.csv"
+            },
+            "transform": [
+                {
+                    "window": [
+                        {
+                            "op": "rank",
+                            "as": "n_ge"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "impact_energy_kt",
+                            "order": "descending"
+                        }
+                    ]
+                },
+                {
+                    "filter": {
+                        "param": "hover",
+                        "empty": false
+                    }
+                },
+                {
+                    "calculate": "'≥ ' + format(datum.impact_energy_kt, '.3~r') + ' kt  →  ' + datum.n_ge + ' fireballs'",
+                    "as": "readout"
+                }
+            ],
+            "layer": [
+                {
+                    "description": "Vertical guide down to the energy axis",
+                    "mark": {
+                        "type": "rule",
+                        "color": "#e2e8f0",
+                        "strokeWidth": 1,
+                        "opacity": 0.55,
+                        "strokeDash": [
+                            4,
+                            3
+                        ],
+                        "clip": true
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "impact_energy_kt",
+                            "type": "quantitative"
+                        },
+                        "y": {
+                            "field": "n_ge",
+                            "type": "quantitative"
+                        },
+                        "y2": {
+                            "datum": 1
+                        }
+                    }
+                },
+                {
+                    "description": "Horizontal guide across to the count axis",
+                    "mark": {
+                        "type": "rule",
+                        "color": "#e2e8f0",
+                        "strokeWidth": 1,
+                        "opacity": 0.55,
+                        "strokeDash": [
+                            4,
+                            3
+                        ],
+                        "clip": true
+                    },
+                    "encoding": {
+                        "y": {
+                            "field": "n_ge",
+                            "type": "quantitative"
+                        },
+                        "x": {
+                            "field": "impact_energy_kt",
+                            "type": "quantitative"
+                        },
+                        "x2": {
+                            "datum": 0.04
+                        }
+                    }
+                },
+                {
+                    "description": "Live count readout next to the hovered point",
+                    "mark": {
+                        "type": "text",
+                        "align": "left",
+                        "dx": 10,
+                        "dy": -10,
+                        "fontSize": 11.5,
+                        "fontWeight": "bold",
+                        "fill": "#e2e8f0",
+                        "clip": true
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "impact_energy_kt",
+                            "type": "quantitative"
+                        },
+                        "y": {
+                            "field": "n_ge",
+                            "type": "quantitative"
+                        },
+                        "text": {
+                            "field": "readout",
+                            "type": "nominal"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
