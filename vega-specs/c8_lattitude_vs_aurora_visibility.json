@@ -1,0 +1,446 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C8 — Geomagnetic Latitude vs Aurora Visibility: the Kp threshold gradient",
+    "width": 500,
+    "height": 460,
+    "background": "#111d30",
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "axis": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "gridColor": "#1e3a5f",
+            "gridOpacity": 0.4,
+            "tickColor": "#2a4a6b",
+            "domainColor": "#2a4a6b",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titlePadding": 10
+        },
+        "legend": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "titleFontWeight": "normal",
+            "padding": 6,
+            "cornerRadius": 4
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "Geomagnetic Latitude vs Aurora Visibility — The Kp Threshold Gradient",
+        "subtitle": [
+            "Each point is an Australian ARCTICS observer · colour = observation date · size = colours seen",
+            "Click a date in the legend to isolate it · Hover a point for details"
+        ]
+    },
+    "layer": [
+        {
+            "description": "Kp threshold background bands (now vertical)",
+            "data": {
+                "values": [
+                    {
+                        "kp_lo": 4,
+                        "kp_hi": 5
+                    },
+                    {
+                        "kp_lo": 5,
+                        "kp_hi": 7
+                    },
+                    {
+                        "kp_lo": 7,
+                        "kp_hi": 9
+                    },
+                    {
+                        "kp_lo": 9,
+                        "kp_hi": 10.4
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rect"
+            },
+            "encoding": {
+                "x": {
+                    "field": "kp_lo",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            4,
+                            10.4
+                        ]
+                    },
+                    "axis": null
+                },
+                "x2": {
+                    "field": "kp_hi"
+                },
+                "color": {
+                    "condition": [
+                        {
+                            "test": "datum.kp_lo === 4",
+                            "value": "#111d30"
+                        },
+                        {
+                            "test": "datum.kp_lo === 5",
+                            "value": "#0f2a1c"
+                        },
+                        {
+                            "test": "datum.kp_lo === 7",
+                            "value": "#221a0c"
+                        },
+                        {
+                            "test": "datum.kp_lo === 9",
+                            "value": "#2e0f0a"
+                        }
+                    ],
+                    "value": "#111d30"
+                },
+                "opacity": {
+                    "value": 1
+                }
+            }
+        },
+        {
+            "description": "Kp threshold dashed rules and band labels",
+            "data": {
+                "values": [
+                    {
+                        "kp": 5,
+                        "mid": 6,
+                        "label": "Kp ≥ 5 — storm"
+                    },
+                    {
+                        "kp": 7,
+                        "mid": 8,
+                        "label": "Kp ≥ 7 — severe"
+                    },
+                    {
+                        "kp": 9,
+                        "mid": 9.7,
+                        "label": "Kp ≥ 9 — extreme"
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "rule",
+                        "strokeDash": [
+                            5,
+                            4
+                        ],
+                        "strokeWidth": 1,
+                        "opacity": 0.6
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "kp",
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [
+                                    4,
+                                    10.4
+                                ]
+                            },
+                            "axis": null
+                        },
+                        "color": {
+                            "value": "#4a7a9b"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "align": "center",
+                        "baseline": "top",
+                        "dy": 6,
+                        "fontSize": 13,
+                        "fontStyle": "italic",
+                        "fontWeight": "bold"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "mid",
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [
+                                    4,
+                                    10.4
+                                ]
+                            },
+                            "axis": null
+                        },
+                        "y": {
+                            "value": 0
+                        },
+                        "text": {
+                            "field": "label"
+                        },
+                        "color": {
+                            "value": "#5a8aab"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "description": "Aurora sighting scatter points",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/aurora_kp_merged.csv"
+            },
+            "transform": [
+                {
+                    "calculate": "length(split(datum.colours_naked_eye, ','))",
+                    "as": "n_colours"
+                }
+            ],
+            "params": [
+                {
+                    "name": "dateSel",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "datetime"
+                        ]
+                    },
+                    "bind": "legend"
+                },
+                {
+                    "name": "hoverPt",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover",
+                        "clear": "mouseout"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "circle",
+                "stroke": "#111d30",
+                "strokeWidth": 0.8
+            },
+            "encoding": {
+                "y": {
+                    "field": "geomag_lat",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            -56,
+                            -25
+                        ]
+                    },
+                    "axis": {
+                        "title": "Observer geomagnetic latitude (° — further down = closer to the pole)",
+                        "values": [
+                            -55,
+                            -50,
+                            -45,
+                            -40,
+                            -35,
+                            -30,
+                            -25
+                        ],
+                        "format": ".0f"
+                    }
+                },
+                "x": {
+                    "field": "kp_max",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            4,
+                            10.4
+                        ]
+                    },
+                    "axis": {
+                        "title": "Daily maximum Kp index",
+                        "values": [
+                            4,
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10
+                        ]
+                    }
+                },
+                "color": {
+                    "field": "datetime",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "2024-05-10",
+                            "2024-05-11",
+                            "2024-05-12"
+                        ],
+                        "range": [
+                            "#fb923c",
+                            "#2dd4bf",
+                            "#a78bfa"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Observation date",
+                        "orient": "right",
+                        "symbolSize": 80
+                    }
+                },
+                "size": {
+                    "field": "n_colours",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "range": [
+                            40,
+                            90,
+                            160,
+                            240
+                        ]
+                    },
+                    "legend": {
+                        "title": "Colours seen",
+                        "values": [
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "orient": "right",
+                        "symbolFillColor": "#94a3b8",
+                        "symbolStrokeColor": "#94a3b8",
+                        "symbolOpacity": 1
+                    }
+                },
+                "opacity": {
+                    "condition": [
+                        {
+                            "param": "hoverPt",
+                            "empty": false,
+                            "value": 1
+                        },
+                        {
+                            "param": "dateSel",
+                            "value": 0.6
+                        }
+                    ],
+                    "value": 0.12
+                },
+                "strokeWidth": {
+                    "condition": {
+                        "param": "hoverPt",
+                        "empty": false,
+                        "value": 1.6
+                    },
+                    "value": 0.8
+                },
+                "tooltip": [
+                    {
+                        "field": "datetime",
+                        "type": "nominal",
+                        "title": "Date"
+                    },
+                    {
+                        "field": "lat",
+                        "type": "quantitative",
+                        "title": "Geographic lat",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "geomag_lat",
+                        "type": "quantitative",
+                        "title": "Geomagnetic lat",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "kp_max",
+                        "type": "quantitative",
+                        "title": "Daily Kp max",
+                        "format": ".2f"
+                    },
+                    {
+                        "field": "colours_naked_eye",
+                        "type": "nominal",
+                        "title": "Colours (naked eye)"
+                    },
+                    {
+                        "field": "n_colours",
+                        "type": "quantitative",
+                        "title": "No. of colours"
+                    },
+                    {
+                        "field": "special_forms",
+                        "type": "nominal",
+                        "title": "Special forms"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Callout in the empty Kp 5–7 storm band",
+            "data": {
+                "values": [
+                    {
+                        "x": 6
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 10.5,
+                "fontStyle": "italic",
+                "lineHeight": 14.5,
+                "color": "#86a4c0"
+            },
+            "encoding": {
+                "x": {
+                    "field": "x",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            4,
+                            10.4
+                        ]
+                    },
+                    "axis": null
+                },
+                "y": {
+                    "value": 222
+                },
+                "text": {
+                    "value": [
+                        "Nobody saw it at",
+                        "“storm” levels alone",
+                        "",
+                        "Every May 2024 sighting",
+                        "came under severe-to-",
+                        "extreme levels (Kp ≥ 7)."
+                    ]
+                }
+            }
+        }
+    ]
+}
