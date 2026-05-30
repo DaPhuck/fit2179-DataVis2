@@ -1,0 +1,317 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C9 — What Observers Saw: aurora colours, naked eye vs camera",
+    "width": 540,
+    "height": 240,
+    "background": "#111d30",
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 15,
+            "fontWeight": "bold",
+            "subtitleFontSize": 11,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 12
+        },
+        "axis": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "gridColor": "#1e3a5f",
+            "gridOpacity": 0.4,
+            "tickColor": "#2a4a6b",
+            "domainColor": "#2a4a6b",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titlePadding": 10
+        },
+        "legend": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "labelFontSize": 10,
+            "titleFontSize": 10,
+            "titleFontWeight": "normal"
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "What Observers Saw — Aurora Colours, Eye vs Camera",
+        "subtitle": "86 Australian observers · each dumbbell shows how cameras captured colours the naked eye missed · Hover a row for the exact gain"
+    },
+    "encoding": {
+        "y": {
+            "field": "category",
+            "type": "nominal",
+            "scale": {
+                "domain": [
+                    "purple/pink/magenta",
+                    "green",
+                    "red",
+                    "blue"
+                ]
+            },
+            "axis": {
+                "title": null,
+                "labelLimit": 220,
+                "labelFontSize": 11
+            }
+        }
+    },
+    "layer": [
+        {
+            "description": "Dumbbell connector lines (eye to camera)",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/aurora_colours_long.csv"
+            },
+            "transform": [
+                {
+                    "pivot": "source",
+                    "value": "count",
+                    "groupby": [
+                        "colour"
+                    ]
+                },
+                {
+                    "calculate": "datum.colour",
+                    "as": "category"
+                },
+                {
+                    "calculate": "datum.Camera - datum['Naked eye']",
+                    "as": "gain"
+                }
+            ],
+            "params": [
+                {
+                    "name": "hoverColour",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "category"
+                        ],
+                        "on": "mouseover",
+                        "clear": "mouseout"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "rule"
+            },
+            "encoding": {
+                "x": {
+                    "field": "Naked eye",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            86
+                        ]
+                    },
+                    "axis": {
+                        "title": "Number of observers (of 86)"
+                    }
+                },
+                "x2": {
+                    "field": "Camera"
+                },
+                "color": {
+                    "condition": {
+                        "param": "hoverColour",
+                        "empty": false,
+                        "value": "#6b93bd"
+                    },
+                    "value": "#3a5a7a"
+                },
+                "strokeWidth": {
+                    "condition": {
+                        "param": "hoverColour",
+                        "empty": false,
+                        "value": 4
+                    },
+                    "value": 2.5
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "hoverColour",
+                        "empty": false,
+                        "value": 1
+                    },
+                    "value": 0.7
+                },
+                "tooltip": [
+                    {
+                        "field": "category",
+                        "type": "nominal",
+                        "title": "Colour"
+                    },
+                    {
+                        "field": "Naked eye",
+                        "type": "quantitative",
+                        "title": "Naked-eye observers"
+                    },
+                    {
+                        "field": "Camera",
+                        "type": "quantitative",
+                        "title": "Camera observers"
+                    },
+                    {
+                        "field": "gain",
+                        "type": "quantitative",
+                        "title": "Extra seen via camera"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Colour dots — naked eye (faint) and camera (solid) via opacity",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/aurora_colours_long.csv"
+            },
+            "transform": [
+                {
+                    "calculate": "datum.colour",
+                    "as": "category"
+                }
+            ],
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "stroke": "#111d30",
+                "strokeWidth": 1
+            },
+            "encoding": {
+                "x": {
+                    "field": "count",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            86
+                        ]
+                    }
+                },
+                "color": {
+                    "field": "category",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "purple/pink/magenta",
+                            "green",
+                            "red",
+                            "blue"
+                        ],
+                        "range": [
+                            "#e879f9",
+                            "#4ade80",
+                            "#f87171",
+                            "#60a5fa"
+                        ]
+                    },
+                    "legend": null
+                },
+                "opacity": {
+                    "field": "source",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Naked eye",
+                            "Camera"
+                        ],
+                        "range": [
+                            0.3,
+                            1.0
+                        ]
+                    },
+                    "legend": {
+                        "title": "Captured by",
+                        "orient": "bottom-right",
+                        "symbolFillColor": "#94a3b8"
+                    }
+                },
+                "size": {
+                    "condition": {
+                        "param": "hoverColour",
+                        "empty": false,
+                        "value": 260
+                    },
+                    "value": 170
+                },
+                "tooltip": [
+                    {
+                        "field": "colour",
+                        "type": "nominal",
+                        "title": "Colour"
+                    },
+                    {
+                        "field": "source",
+                        "type": "nominal",
+                        "title": "Captured by"
+                    },
+                    {
+                        "field": "count",
+                        "type": "quantitative",
+                        "title": "Observers"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Camera-gain delta labels above each connector",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/aurora_colours_long.csv"
+            },
+            "transform": [
+                {
+                    "pivot": "source",
+                    "value": "count",
+                    "groupby": [
+                        "colour"
+                    ]
+                },
+                {
+                    "calculate": "datum.colour",
+                    "as": "category"
+                },
+                {
+                    "calculate": "(datum['Naked eye'] + datum.Camera) / 2",
+                    "as": "mid"
+                },
+                {
+                    "calculate": "datum.Camera - datum['Naked eye']",
+                    "as": "gain"
+                },
+                {
+                    "calculate": "(datum.gain >= 0 ? '+' : '') + datum.gain",
+                    "as": "gain_label"
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "dy": -13,
+                "fontSize": 10.5,
+                "fontWeight": "bold",
+                "color": "#cbd5e1"
+            },
+            "encoding": {
+                "x": {
+                    "field": "mid",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            86
+                        ]
+                    }
+                },
+                "text": {
+                    "field": "gain_label",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}
