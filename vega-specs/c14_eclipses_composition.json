@@ -1,0 +1,272 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C14 — Eclipse type composition for the Australian region",
+    "background": "#111d30",
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "axis": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "gridColor": "#1e3a5f",
+            "gridOpacity": 0.4,
+            "tickColor": "#2a4a6b",
+            "domainColor": "#2a4a6b",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titlePadding": 8
+        },
+        "legend": {
+            "disable": true
+        },
+        "header": {
+            "labelColor": "#e2e8f0",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold",
+            "titleColor": "#7a8ba3"
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "What Eclipses Does Australia Actually Get?",
+        "subtitle": [
+            "Composition of 74 eclipses centred over the Australian region (NASA catalogue, 1983–2262)",
+            "Lunar events dominate; total & hybrid solar are the rare prizes · Hover a bar for its share"
+        ]
+    },
+    "data": {
+        "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/nasa_eclipse_data.csv"
+    },
+    "transform": [
+        {
+            "filter": "datum.lat >= -50 && datum.lat <= -5 && datum.lon >= 105 && datum.lon <= 165"
+        },
+        {
+            "calculate": "datum.eclipse_category + ' ' + datum.eclipse_type",
+            "as": "kind"
+        },
+        {
+            "aggregate": [
+                {
+                    "op": "count",
+                    "as": "n"
+                }
+            ],
+            "groupby": [
+                "eclipse_category",
+                "eclipse_type",
+                "kind"
+            ]
+        },
+        {
+            "joinaggregate": [
+                {
+                    "op": "sum",
+                    "field": "n",
+                    "as": "total"
+                }
+            ]
+        },
+        {
+            "calculate": "datum.n / datum.total",
+            "as": "share"
+        }
+    ],
+    "facet": {
+        "row": {
+            "field": "eclipse_category",
+            "title": null,
+            "sort": [
+                "Lunar",
+                "Solar"
+            ],
+            "header": {
+                "labelAngle": 0,
+                "labelAlign": "left",
+                "labelAnchor": "middle"
+            }
+        }
+    },
+    "resolve": {
+        "scale": {
+            "y": "independent"
+        }
+    },
+    "spec": {
+        "width": 380,
+        "height": {
+            "step": 34
+        },
+        "layer": [
+            {
+                "description": "Bars",
+                "params": [
+                    {
+                        "name": "hover",
+                        "select": {
+                            "type": "point",
+                            "fields": [
+                                "kind"
+                            ],
+                            "on": "mouseover",
+                            "clear": "mouseout"
+                        }
+                    }
+                ],
+                "mark": {
+                    "type": "bar",
+                    "cornerRadiusEnd": 3,
+                    "height": {
+                        "band": 0.7
+                    }
+                },
+                "encoding": {
+                    "x": {
+                        "field": "n",
+                        "type": "quantitative",
+                        "scale": {
+                            "domain": [
+                                0,
+                                22
+                            ]
+                        },
+                        "axis": {
+                            "title": "Number of eclipses",
+                            "grid": true,
+                            "tickCount": 5
+                        }
+                    },
+                    "y": {
+                        "field": "eclipse_type",
+                        "type": "nominal",
+                        "sort": "-x",
+                        "axis": {
+                            "title": null,
+                            "labelFontSize": 12
+                        }
+                    },
+                    "color": {
+                        "field": "kind",
+                        "type": "nominal",
+                        "scale": {
+                            "domain": [
+                                "Solar Total",
+                                "Solar Hybrid",
+                                "Solar Annular",
+                                "Lunar Total",
+                                "Lunar Partial",
+                                "Lunar Penumbral"
+                            ],
+                            "range": [
+                                "#b45309",
+                                "#fb923c",
+                                "#facc15",
+                                "#2563eb",
+                                "#60a5fa",
+                                "#bfdbfe"
+                            ]
+                        }
+                    },
+                    "opacity": {
+                        "condition": {
+                            "param": "hover",
+                            "value": 1
+                        },
+                        "value": 0.3
+                    },
+                    "tooltip": [
+                        {
+                            "field": "eclipse_category",
+                            "type": "nominal",
+                            "title": "Category"
+                        },
+                        {
+                            "field": "eclipse_type",
+                            "type": "nominal",
+                            "title": "Type"
+                        },
+                        {
+                            "field": "n",
+                            "type": "quantitative",
+                            "title": "Eclipses"
+                        },
+                        {
+                            "field": "share",
+                            "type": "quantitative",
+                            "title": "Share of all 74",
+                            "format": ".1%"
+                        }
+                    ]
+                }
+            },
+            {
+                "description": "Count labels at bar ends",
+                "mark": {
+                    "type": "text",
+                    "align": "left",
+                    "dx": 5,
+                    "fontSize": 11,
+                    "fontWeight": "bold",
+                    "fill": "#cbd5e1"
+                },
+                "encoding": {
+                    "x": {
+                        "field": "n",
+                        "type": "quantitative"
+                    },
+                    "y": {
+                        "field": "eclipse_type",
+                        "type": "nominal",
+                        "sort": "-x"
+                    },
+                    "text": {
+                        "field": "n",
+                        "type": "quantitative"
+                    }
+                }
+            },
+            {
+                "description": "Callout on the rare hybrid solar eclipse",
+                "transform": [
+                    {
+                        "filter": "datum.eclipse_type === 'Hybrid'"
+                    }
+                ],
+                "mark": {
+                    "type": "text",
+                    "align": "left",
+                    "dx": 26,
+                    "fontSize": 10,
+                    "fontStyle": "italic",
+                    "fill": "#fb923c"
+                },
+                "encoding": {
+                    "x": {
+                        "field": "n",
+                        "type": "quantitative"
+                    },
+                    "y": {
+                        "field": "eclipse_type",
+                        "type": "nominal",
+                        "sort": "-x"
+                    },
+                    "text": {
+                        "value": "← rarest of all: a hybrid eclipse"
+                    }
+                }
+            }
+        ]
+    }
+}
