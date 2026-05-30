@@ -1,0 +1,403 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C13 \u2014 Eclipse Timeline over the Australian region, 2000\u20132080",
+    "width": 640,
+    "height": 200,
+    "background": "#111d30",
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "axis": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "gridColor": "#1e3a5f",
+            "gridOpacity": 0.4,
+            "tickColor": "#2a4a6b",
+            "domainColor": "#2a4a6b",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titlePadding": 10
+        },
+        "legend": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "labelFontSize": 10,
+            "titleFontSize": 10,
+            "titleFontWeight": "normal"
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "Eclipses Over the Australian Region \u2014 A Timeline to Plan By",
+        "subtitle": [
+            "Solar & lunar eclipses centred over Australia/Oceania, 2000\u20132080 \u00b7 colour = type",
+            "Click a type in the legend to isolate it \u00b7 Hover an eclipse for date & location \u00b7 Shaded = already passed"
+        ]
+    },
+    "data": {
+        "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/nasa_eclipse_data.csv"
+    },
+    "transform": [
+        {
+            "filter": "datum.lat >= -50 && datum.lat <= -5 && datum.lon >= 105 && datum.lon <= 165"
+        },
+        {
+            "filter": "datum.year >= 2000 && datum.year <= 2080"
+        },
+        {
+            "calculate": "datetime(toNumber(substring(datum.date,6,10)), toNumber(substring(datum.date,3,5))-1, toNumber(substring(datum.date,0,2)))",
+            "as": "dt"
+        },
+        {
+            "calculate": "datum.eclipse_category + ' ' + datum.eclipse_type",
+            "as": "kind"
+        }
+    ],
+    "layer": [
+        {
+            "description": "Shade the past (already passed)",
+            "data": {
+                "values": [
+                    {
+                        "start": "1999-01-01",
+                        "end": "2026-05-28"
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rect",
+                "fill": "#2a3a52",
+                "opacity": 0.3
+            },
+            "encoding": {
+                "x": {
+                    "field": "start",
+                    "type": "temporal"
+                },
+                "x2": {
+                    "field": "end",
+                    "type": "temporal"
+                }
+            }
+        },
+        {
+            "description": "Today marker",
+            "data": {
+                "values": [
+                    {
+                        "now": "2026-05-28"
+                    }
+                ]
+            },
+            "mark": {
+                "type": "rule",
+                "color": "#64748b",
+                "strokeWidth": 1.5,
+                "strokeDash": [
+                    4,
+                    3
+                ]
+            },
+            "encoding": {
+                "x": {
+                    "field": "now",
+                    "type": "temporal"
+                }
+            }
+        },
+        {
+            "description": "Today label",
+            "data": {
+                "values": [
+                    {
+                        "now": "2026-05-28",
+                        "label": "Today"
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "color": "#94a3b8",
+                "fontSize": 10,
+                "fontStyle": "italic",
+                "align": "left",
+                "dx": 4,
+                "y": -6
+            },
+            "encoding": {
+                "x": {
+                    "field": "now",
+                    "type": "temporal"
+                },
+                "text": {
+                    "field": "label"
+                }
+            }
+        },
+        {
+            "description": "Eclipse points, two lanes (solar / lunar)",
+            "params": [
+                {
+                    "name": "typeSel",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "kind"
+                        ]
+                    },
+                    "bind": "legend"
+                },
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover",
+                        "clear": "mouseout"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "stroke": "#111d30",
+                "strokeWidth": 1.2
+            },
+            "encoding": {
+                "x": {
+                    "field": "dt",
+                    "type": "temporal",
+                    "scale": {
+                        "domain": [
+                            {
+                                "year": 1999
+                            },
+                            {
+                                "year": 2081
+                            }
+                        ]
+                    },
+                    "axis": {
+                        "title": null,
+                        "format": "%Y",
+                        "tickCount": 9,
+                        "grid": true
+                    }
+                },
+                "y": {
+                    "field": "eclipse_category",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Solar",
+                            "Lunar"
+                        ]
+                    },
+                    "axis": {
+                        "title": null,
+                        "labelFontSize": 12,
+                        "labelFontWeight": "bold",
+                        "domain": false,
+                        "ticks": false
+                    }
+                },
+                "color": {
+                    "field": "kind",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Solar Total",
+                            "Solar Hybrid",
+                            "Solar Annular",
+                            "Lunar Total",
+                            "Lunar Partial",
+                            "Lunar Penumbral"
+                        ],
+                        "range": [
+                            "#b45309",
+                            "#fb923c",
+                            "#facc15",
+                            "#2563eb",
+                            "#60a5fa",
+                            "#bfdbfe"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Eclipse type",
+                        "orient": "bottom",
+                        "columns": 3,
+                        "symbolSize": 90
+                    }
+                },
+                "opacity": {
+                    "condition": [
+                        {
+                            "param": "hover",
+                            "empty": false,
+                            "value": 1
+                        },
+                        {
+                            "param": "typeSel",
+                            "value": 0.95
+                        }
+                    ],
+                    "value": 0.12
+                },
+                "size": {
+                    "condition": {
+                        "param": "hover",
+                        "empty": false,
+                        "value": 650
+                    },
+                    "value": 450
+                },
+                "stroke": {
+                    "condition": {
+                        "param": "hover",
+                        "empty": false,
+                        "value": "#ffffff"
+                    },
+                    "value": "#111d30"
+                },
+                "tooltip": [
+                    {
+                        "field": "date",
+                        "type": "nominal",
+                        "title": "Date"
+                    },
+                    {
+                        "field": "eclipse_category",
+                        "type": "nominal",
+                        "title": "Category"
+                    },
+                    {
+                        "field": "eclipse_type",
+                        "type": "nominal",
+                        "title": "Type"
+                    },
+                    {
+                        "field": "lat",
+                        "type": "quantitative",
+                        "title": "Centre lat",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "lon",
+                        "type": "quantitative",
+                        "title": "Centre lon",
+                        "format": ".1f"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Labels for landmark total/hybrid solar eclipses (staggered)",
+            "transform": [
+                {
+                    "filter": "datum.eclipse_category === 'Solar' && (datum.eclipse_type === 'Total' || datum.eclipse_type === 'Hybrid')"
+                },
+                {
+                    "window": [
+                        {
+                            "op": "rank",
+                            "as": "lrank"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "dt",
+                            "order": "ascending"
+                        }
+                    ]
+                }
+            ],
+            "layer": [
+                {
+                    "transform": [
+                        {
+                            "filter": "datum.lrank % 2 === 1"
+                        }
+                    ],
+                    "mark": {
+                        "type": "text",
+                        "dy": -19,
+                        "fontSize": 9,
+                        "fontWeight": "bold",
+                        "fill": "#fde68a",
+                        "align": "center"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "dt",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "eclipse_category",
+                            "type": "nominal"
+                        },
+                        "text": {
+                            "field": "year",
+                            "type": "quantitative",
+                            "format": "d"
+                        },
+                        "opacity": {
+                            "condition": {
+                                "param": "typeSel",
+                                "value": 1
+                            },
+                            "value": 0
+                        }
+                    }
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": "datum.lrank % 2 === 0"
+                        }
+                    ],
+                    "mark": {
+                        "type": "text",
+                        "dy": -33,
+                        "fontSize": 9,
+                        "fontWeight": "bold",
+                        "fill": "#fde68a",
+                        "align": "center"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "dt",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "eclipse_category",
+                            "type": "nominal"
+                        },
+                        "text": {
+                            "field": "year",
+                            "type": "quantitative",
+                            "format": "d"
+                        },
+                        "opacity": {
+                            "condition": {
+                                "param": "typeSel",
+                                "value": 1
+                            },
+                            "value": 0
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
