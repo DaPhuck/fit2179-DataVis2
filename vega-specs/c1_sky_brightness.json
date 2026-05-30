@@ -1,9 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "#111d30",
-    "padding": {
-        "right": 50
-    },
     "title": {
         "text": "Australia's Night Sky Brightness",
         "subtitle": "Mean limiting magnitude from Globe at Night observations · Higher = darker sky",
@@ -17,8 +14,8 @@
         "subtitlePadding": 6,
         "offset": 12
     },
-    "width": 760,
-    "height": 520,
+    "width": 700,
+    "height": 480,
     "projection": {
         "type": "conicEqualArea",
         "parallels": [

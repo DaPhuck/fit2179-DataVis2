@@ -14,9 +14,9 @@
         "subtitlePadding": 6,
         "offset": 12
     },
-    "width": 560,
+    "width": 500,
     "height": {
-        "step": 21
+        "step": 20
     },
     "params": [
         {
