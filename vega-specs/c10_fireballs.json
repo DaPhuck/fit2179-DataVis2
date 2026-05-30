@@ -1,0 +1,299 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C10 — Fireball Events Over Australia (NASA CNEOS)",
+    "width": 520,
+    "height": 500,
+    "background": "#111d30",
+    "projection": {
+        "type": "mercator",
+        "center": [
+            134,
+            -28
+        ],
+        "scale": 720
+    },
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "legend": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "titleFontWeight": "normal",
+            "padding": 6,
+            "cornerRadius": 4
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "Fireballs Over Australia — Two Decades of Detections",
+        "subtitle": [
+            "22 NASA CNEOS bolide events, 2005–2025 · size = radiated energy (log) · colour = peak-brightness altitude",
+            "Drag the energy slider to keep only the biggest · Click an altitude band to isolate it · Hover for details"
+        ]
+    },
+    "params": [
+        {
+            "name": "minEnergyTJ",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 0.7,
+                "step": 0.002,
+                "name": "Min radiated energy (TJ) ≥ "
+            }
+        }
+    ],
+    "layer": [
+        {
+            "description": "Australia state boundaries",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/STE_2021_AUST_GDA2020.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "STE_2021_AUST_GDA2020"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "#1a2d47",
+                "stroke": "#2a4a6b",
+                "strokeWidth": 0.8
+            }
+        },
+        {
+            "description": "Fireball detections",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/nasa_cneos_fireballs.csv"
+            },
+            "transform": [
+                {
+                    "calculate": "datum.radiated_energy_J / 1e12",
+                    "as": "energy_TJ"
+                },
+                {
+                    "calculate": "datum.altitude_km < 30 ? '20–30' : datum.altitude_km < 40 ? '30–40' : datum.altitude_km < 50 ? '40–50' : datum.altitude_km < 60 ? '50–60' : '60–70'",
+                    "as": "alt_band"
+                },
+                {
+                    "filter": "datum.energy_TJ >= minEnergyTJ"
+                }
+            ],
+            "params": [
+                {
+                    "name": "altSel",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "alt_band"
+                        ]
+                    },
+                    "bind": "legend"
+                },
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover",
+                        "clear": "mouseout"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "circle",
+                "stroke": "#111d30",
+                "strokeWidth": 0.8
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                },
+                "opacity": {
+                    "condition": [
+                        {
+                            "param": "hover",
+                            "empty": false,
+                            "value": 1
+                        },
+                        {
+                            "param": "altSel",
+                            "value": 0.55
+                        }
+                    ],
+                    "value": 0.15
+                },
+                "strokeWidth": {
+                    "condition": {
+                        "param": "hover",
+                        "empty": false,
+                        "value": 1.6
+                    },
+                    "value": 0.8
+                },
+                "size": {
+                    "field": "energy_TJ",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "log",
+                        "domain": [
+                            0.02,
+                            3.51
+                        ],
+                        "range": [
+                            40,
+                            700
+                        ]
+                    },
+                    "legend": {
+                        "title": "Radiated energy (TJ)",
+                        "orient": "right",
+                        "values": [
+                            0.02,
+                            0.1,
+                            1,
+                            3.51
+                        ],
+                        "format": ".2f",
+                        "symbolFillColor": "#94a3b8",
+                        "symbolStrokeColor": "#94a3b8",
+                        "symbolOpacity": 1
+                    }
+                },
+                "color": {
+                    "field": "alt_band",
+                    "type": "ordinal",
+                    "scale": {
+                        "domain": [
+                            "20–30",
+                            "30–40",
+                            "40–50",
+                            "50–60",
+                            "60–70"
+                        ],
+                        "range": [
+                            "#fde68a",
+                            "#fbbf24",
+                            "#f97316",
+                            "#dc2626",
+                            "#7f1d1d"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Peak altitude (km)",
+                        "orient": "right"
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "datetime",
+                        "type": "nominal",
+                        "title": "Date / time (UTC)"
+                    },
+                    {
+                        "field": "lat",
+                        "type": "quantitative",
+                        "title": "Latitude",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "lon",
+                        "type": "quantitative",
+                        "title": "Longitude",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "altitude_km",
+                        "type": "quantitative",
+                        "title": "Peak altitude (km)",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "energy_TJ",
+                        "type": "quantitative",
+                        "title": "Radiated energy (TJ)",
+                        "format": ".2f"
+                    },
+                    {
+                        "field": "impact_energy_kt",
+                        "type": "quantitative",
+                        "title": "Impact energy (kt)",
+                        "format": ".3f"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Label the two highest-energy events",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/nasa_cneos_fireballs.csv"
+            },
+            "transform": [
+                {
+                    "window": [
+                        {
+                            "op": "rank",
+                            "as": "energy_rank"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "radiated_energy_J",
+                            "order": "descending"
+                        }
+                    ]
+                },
+                {
+                    "filter": "datum.energy_rank <= 2"
+                },
+                {
+                    "filter": "datum.radiated_energy_J / 1e12 >= minEnergyTJ"
+                },
+                {
+                    "calculate": "utcyear(datetime(datum.datetime)) + ' bolide'",
+                    "as": "label"
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "dy": -16,
+                "fontSize": 10,
+                "fontWeight": "bold",
+                "fill": "#fde047",
+                "stroke": "#111d30",
+                "strokeWidth": 0.3
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "label",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}

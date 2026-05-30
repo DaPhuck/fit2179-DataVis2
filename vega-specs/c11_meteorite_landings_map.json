@@ -1,0 +1,311 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C11 — Meteorite Landing Sites Across Australia (NASA)",
+    "width": 520,
+    "height": 500,
+    "background": "#111d30",
+    "projection": {
+        "type": "mercator",
+        "center": [
+            134,
+            -28
+        ],
+        "scale": 720
+    },
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "legend": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "titleFontWeight": "normal",
+            "padding": 6,
+            "cornerRadius": 4
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "Meteorites Recovered Across Australia",
+        "subtitle": [
+            "Recoveries from 2001 onward · colour = class · size = mass (log) · most finds cluster in the arid outback",
+            "Drag the slider to show only the heaviest finds · Click a class in the legend to isolate it · Hover for details"
+        ]
+    },
+    "params": [
+        {
+            "name": "showTopN",
+            "value": 56,
+            "bind": {
+                "input": "range",
+                "min": 1,
+                "max": 56,
+                "step": 1,
+                "name": "Show heaviest N finds: "
+            }
+        }
+    ],
+    "layer": [
+        {
+            "description": "Australia state boundaries",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/STE_2021_AUST_GDA2020.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "STE_2021_AUST_GDA2020"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "#1a2d47",
+                "stroke": "#2a4a6b",
+                "strokeWidth": 0.8
+            }
+        },
+        {
+            "description": "Meteorite recovery points",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/nasa_meteorite_landings.csv"
+            },
+            "transform": [
+                {
+                    "filter": "datum.year > 2000"
+                },
+                {
+                    "calculate": "max(datum.mass_g, 1)",
+                    "as": "mass_plot"
+                },
+                {
+                    "window": [
+                        {
+                            "op": "rank",
+                            "as": "mass_rank"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "mass_plot",
+                            "order": "descending"
+                        }
+                    ]
+                },
+                {
+                    "filter": "datum.mass_rank <= showTopN"
+                }
+            ],
+            "params": [
+                {
+                    "name": "classSel",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "class_group"
+                        ]
+                    },
+                    "bind": "legend"
+                },
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover",
+                        "clear": "mouseout"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "circle",
+                "stroke": "#111d30",
+                "strokeWidth": 0.4
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                },
+                "opacity": {
+                    "condition": [
+                        {
+                            "param": "hover",
+                            "empty": false,
+                            "value": 1
+                        },
+                        {
+                            "param": "classSel",
+                            "value": 0.6
+                        }
+                    ],
+                    "value": 0.15
+                },
+                "strokeWidth": {
+                    "condition": {
+                        "param": "hover",
+                        "empty": false,
+                        "value": 1.4
+                    },
+                    "value": 0.4
+                },
+                "size": {
+                    "field": "mass_plot",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "log",
+                        "domain": [
+                            1,
+                            30000
+                        ],
+                        "range": [
+                            8,
+                            600
+                        ]
+                    },
+                    "legend": {
+                        "title": "Mass (g, log)",
+                        "orient": "right",
+                        "values": [
+                            1,
+                            10,
+                            100,
+                            1000,
+                            10000
+                        ],
+                        "format": ",.0f",
+                        "symbolFillColor": "#94a3b8",
+                        "symbolStrokeColor": "#94a3b8",
+                        "symbolOpacity": 1
+                    }
+                },
+                "color": {
+                    "field": "class_group",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Stony",
+                            "Iron",
+                            "Stony-iron"
+                        ],
+                        "range": [
+                            "#2dd4bf",
+                            "#f59e0b",
+                            "#fb7185"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Meteorite class",
+                        "orient": "right",
+                        "symbolSize": 90,
+                        "symbolOpacity": 1
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "name",
+                        "type": "nominal",
+                        "title": "Name"
+                    },
+                    {
+                        "field": "class_group",
+                        "type": "nominal",
+                        "title": "Class"
+                    },
+                    {
+                        "field": "recclass",
+                        "type": "nominal",
+                        "title": "Detailed class"
+                    },
+                    {
+                        "field": "mass_g",
+                        "type": "quantitative",
+                        "title": "Mass (g)",
+                        "format": ",.0f"
+                    },
+                    {
+                        "field": "fall",
+                        "type": "nominal",
+                        "title": "Fell / Found"
+                    },
+                    {
+                        "field": "year",
+                        "type": "quantitative",
+                        "title": "Year",
+                        "format": "d"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Label the three largest meteorites",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/nasa_meteorite_landings.csv"
+            },
+            "transform": [
+                {
+                    "filter": "datum.year > 2000"
+                },
+                {
+                    "window": [
+                        {
+                            "op": "rank",
+                            "as": "mass_rank"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "mass_g",
+                            "order": "descending"
+                        }
+                    ]
+                },
+                {
+                    "filter": "datum.mass_rank <= 3"
+                },
+                {
+                    "filter": "datum.mass_rank <= showTopN"
+                },
+                {
+                    "calculate": "datum.name + ' (' + format(datum.mass_g, ',.0f') + ' g)'",
+                    "as": "label"
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "dy": -14,
+                "fontSize": 9.5,
+                "fontWeight": "bold",
+                "fill": "#fbbf24",
+                "stroke": "#111d30",
+                "strokeWidth": 0.3
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "label",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}
