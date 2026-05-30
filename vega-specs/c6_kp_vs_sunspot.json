@@ -1,9 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "background": "#0f1a2b",
+    "background": "#111d30",
     "title": {
         "text": "Solar Activity vs Geomagnetic Disturbance, 1990–2025",
-        "subtitle": "Annual mean sunspot number (amber, right axis) vs annual mean Kp index (teal, left axis) · Kp peaks often lag sunspot maxima by 1–3 years",
+        "subtitle": "Annual mean sunspot number (amber, right axis) vs annual mean Kp index (teal, left axis) · Click to pin a year · Kp peaks lag sunspot maxima by 1–3 years",
         "fontSize": 18,
         "subtitleFontSize": 12,
         "font": "system-ui, -apple-system, sans-serif",
@@ -15,7 +15,11 @@
         "offset": 12
     },
     "width": 700,
-    "height": 380,
+    "height": 370,
+    "autosize": {
+        "type": "fit",
+        "contains": "padding"
+    },
     "resolve": {
         "scale": {
             "y": "independent"
@@ -156,8 +160,9 @@
             "mark": {
                 "type": "text",
                 "font": "system-ui, -apple-system, sans-serif",
-                "fontSize": 9,
+                "fontSize": 10,
                 "fontStyle": "italic",
+                "fontWeight": 600,
                 "color": "#e05c4b",
                 "align": "center",
                 "baseline": "bottom",
@@ -184,13 +189,12 @@
             }
         },
         {
-            "description": "Crosshair capture",
+            "description": "Crosshair capture — transparent points tile the plot for full-column hover/click",
             "data": {
                 "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
             },
             "mark": {
-                "type": "line",
-                "strokeWidth": 20,
+                "type": "point",
                 "opacity": 0
             },
             "params": [
@@ -199,7 +203,19 @@
                     "select": {
                         "type": "point",
                         "nearest": true,
-                        "on": "mouseover",
+                        "on": "pointerover",
+                        "clear": "pointerout",
+                        "encodings": [
+                            "x"
+                        ]
+                    }
+                },
+                {
+                    "name": "anchor",
+                    "select": {
+                        "type": "point",
+                        "nearest": true,
+                        "on": "click",
                         "encodings": [
                             "x"
                         ]
@@ -220,7 +236,14 @@
                 },
                 "y": {
                     "field": "mean_kp",
-                    "type": "quantitative"
+                    "type": "quantitative",
+                    "axis": null,
+                    "scale": {
+                        "domain": [
+                            0,
+                            4
+                        ]
+                    }
                 }
             }
         },
@@ -279,7 +302,7 @@
         {
             "description": "Sunspot number line — amber, right axis",
             "data": {
-                "url": "/data/kp_vs_sunspot_annual.csv"
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
             },
             "mark": {
                 "type": "line",
@@ -326,6 +349,7 @@
                         "orient": "right",
                         "tickCount": 5,
                         "offset": 20,
+                        "titlePadding": 12,
                         "labelColor": "#f59e0b",
                         "titleColor": "#f59e0b",
                         "labelFont": "system-ui, -apple-system, sans-serif",
@@ -374,6 +398,7 @@
                     "axis": {
                         "orient": "left",
                         "tickCount": 5,
+                        "titlePadding": 12,
                         "labelColor": "#2dd4bf",
                         "titleColor": "#2dd4bf",
                         "labelFont": "system-ui, -apple-system, sans-serif",
@@ -398,7 +423,7 @@
                 "size": 60,
                 "color": "#2dd4bf",
                 "filled": true,
-                "stroke": "#0f1a2b",
+                "stroke": "#111d30",
                 "strokeWidth": 1.5
             },
             "encoding": {
@@ -416,6 +441,7 @@
                 "y": {
                     "field": "mean_kp",
                     "type": "quantitative",
+                    "axis": null,
                     "scale": {
                         "domain": [
                             0,
@@ -443,7 +469,7 @@
                 "size": 60,
                 "color": "#f59e0b",
                 "filled": true,
-                "stroke": "#0f1a2b",
+                "stroke": "#111d30",
                 "strokeWidth": 1.5
             },
             "encoding": {
@@ -461,6 +487,7 @@
                 "y": {
                     "field": "mean_sunspot",
                     "type": "quantitative",
+                    "axis": null,
                     "scale": {
                         "domain": [
                             0,
@@ -471,6 +498,195 @@
                 "opacity": {
                     "condition": {
                         "param": "crosshair",
+                        "empty": false,
+                        "value": 1
+                    },
+                    "value": 0
+                }
+            }
+        },
+        {
+            "description": "Anchored vertical rule — persists on click",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "rule",
+                "color": "#e8e2d4",
+                "strokeWidth": 1.5
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "anchor",
+                        "empty": false,
+                        "value": 0.75
+                    },
+                    "value": 0
+                },
+                "tooltip": [
+                    {
+                        "field": "year",
+                        "type": "quantitative",
+                        "title": "Year",
+                        "format": "d"
+                    },
+                    {
+                        "field": "mean_kp",
+                        "type": "quantitative",
+                        "title": "Annual mean Kp",
+                        "format": ".2f"
+                    },
+                    {
+                        "field": "mean_sunspot",
+                        "type": "quantitative",
+                        "title": "Annual mean sunspot no.",
+                        "format": ".1f"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "Pinned year label at top of anchored rule",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
+            },
+            "transform": [
+                {
+                    "filter": {
+                        "param": "anchor",
+                        "empty": false
+                    }
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "font": "system-ui, -apple-system, sans-serif",
+                "fontSize": 10,
+                "fontWeight": "bold",
+                "color": "#e8e2d4",
+                "align": "center",
+                "baseline": "bottom",
+                "dy": -2
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "value": 0
+                },
+                "text": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "format": "d"
+                }
+            }
+        },
+        {
+            "description": "Pinned dot on Kp line",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "point",
+                "size": 80,
+                "color": "#2dd4bf",
+                "filled": true,
+                "stroke": "#e8e2d4",
+                "strokeWidth": 2
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "field": "mean_kp",
+                    "type": "quantitative",
+                    "axis": null,
+                    "scale": {
+                        "domain": [
+                            0,
+                            4
+                        ]
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "anchor",
+                        "empty": false,
+                        "value": 1
+                    },
+                    "value": 0
+                }
+            }
+        },
+        {
+            "description": "Pinned dot on sunspot line",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/kp_vs_sunspot_annual.csv"
+            },
+            "mark": {
+                "type": "point",
+                "size": 80,
+                "color": "#f59e0b",
+                "filled": true,
+                "stroke": "#e8e2d4",
+                "strokeWidth": 2
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1989,
+                            2026
+                        ],
+                        "zero": false
+                    }
+                },
+                "y": {
+                    "field": "mean_sunspot",
+                    "type": "quantitative",
+                    "axis": null,
+                    "scale": {
+                        "domain": [
+                            0,
+                            240
+                        ]
+                    }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "anchor",
                         "empty": false,
                         "value": 1
                     },
