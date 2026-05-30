@@ -1,0 +1,338 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C7 — Where Australians Saw the Aurora — May 2024 Superstorm",
+    "width": 520,
+    "height": 500,
+    "background": "#111d30",
+    "projection": {
+        "type": "mercator",
+        "center": {
+            "expr": "region == 'se' ? [145, -39] : region == 'tas' ? [146.6, -42] : [134, -28]"
+        },
+        "scale": {
+            "expr": "region == 'se' ? 2000 : region == 'tas' ? 6500 : 720"
+        }
+    },
+    "params": [
+        {
+            "name": "region",
+            "value": "all",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "all",
+                    "se",
+                    "tas"
+                ],
+                "labels": [
+                    "All Australia",
+                    "Southeast (VIC + TAS)",
+                    "Tasmania"
+                ],
+                "name": "Zoom to region: "
+            }
+        }
+    ],
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "legend": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "titleFontWeight": "normal",
+            "padding": 6,
+            "cornerRadius": 4
+        },
+        "view": {
+            "stroke": null
+        }
+    },
+    "title": {
+        "text": "Where Australians Saw the Aurora — May 2024 Superstorm",
+        "subtitle": [
+            "86 confirmed sightings · colour = primary naked-eye colour · size = number of colours seen",
+            "Click a colour in the legend to isolate it · Hover a point for details"
+        ]
+    },
+    "layer": [
+        {
+            "description": "Australia state boundaries",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/STE_2021_AUST_GDA2020.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "STE_2021_AUST_GDA2020"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "#1a2d47",
+                "stroke": "#2a4a6b",
+                "strokeWidth": 0.8,
+                "clip": true
+            }
+        },
+        {
+            "description": "Aurora sighting points",
+            "data": {
+                "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/aurora_sightings_australia.csv"
+            },
+            "transform": [
+                {
+                    "calculate": "trim(split(datum.colours_naked_eye, ',')[0])",
+                    "as": "primary_colour"
+                },
+                {
+                    "calculate": "length(split(datum.colours_naked_eye, ','))",
+                    "as": "n_colours"
+                }
+            ],
+            "params": [
+                {
+                    "name": "colourSel",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "primary_colour"
+                        ]
+                    },
+                    "bind": "legend"
+                },
+                {
+                    "name": "hover",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover",
+                        "clear": "mouseout"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "circle",
+                "stroke": "#111d30",
+                "strokeWidth": 0.8,
+                "clip": true
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "lon",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "lat",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "field": "primary_colour",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "red",
+                            "green",
+                            "purple/pink/magenta"
+                        ],
+                        "range": [
+                            "#f87171",
+                            "#4ade80",
+                            "#e879f9"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Primary colour (naked eye)",
+                        "orient": "right",
+                        "symbolSize": 80
+                    }
+                },
+                "size": {
+                    "field": "n_colours",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "range": [
+                            40,
+                            90,
+                            160,
+                            240
+                        ]
+                    },
+                    "legend": {
+                        "title": "Colours seen",
+                        "orient": "right",
+                        "values": [
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "symbolFillColor": "#94a3b8",
+                        "symbolStrokeColor": "#94a3b8",
+                        "symbolOpacity": 1
+                    }
+                },
+                "opacity": {
+                    "condition": [
+                        {
+                            "param": "hover",
+                            "empty": false,
+                            "value": 1
+                        },
+                        {
+                            "param": "colourSel",
+                            "value": 0.55
+                        }
+                    ],
+                    "value": 0.12
+                },
+                "strokeWidth": {
+                    "condition": {
+                        "param": "hover",
+                        "empty": false,
+                        "value": 1.6
+                    },
+                    "value": 0.8
+                },
+                "tooltip": [
+                    {
+                        "field": "datetime",
+                        "type": "nominal",
+                        "title": "Date"
+                    },
+                    {
+                        "field": "lat",
+                        "type": "quantitative",
+                        "title": "Latitude",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "lon",
+                        "type": "quantitative",
+                        "title": "Longitude",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "geomag_lat",
+                        "type": "quantitative",
+                        "title": "Geomag. lat",
+                        "format": ".1f"
+                    },
+                    {
+                        "field": "colours_naked_eye",
+                        "type": "nominal",
+                        "title": "Colours (naked eye)"
+                    },
+                    {
+                        "field": "n_colours",
+                        "type": "quantitative",
+                        "title": "No. of colours"
+                    },
+                    {
+                        "field": "special_forms",
+                        "type": "nominal",
+                        "title": "Special forms"
+                    }
+                ]
+            }
+        },
+        {
+            "description": "City reference labels",
+            "data": {
+                "values": [
+                    {
+                        "city": "Sydney",
+                        "lon": 151.2,
+                        "lat": -33.9
+                    },
+                    {
+                        "city": "Melbourne",
+                        "lon": 144.9,
+                        "lat": -37.8
+                    },
+                    {
+                        "city": "Brisbane",
+                        "lon": 153.0,
+                        "lat": -27.5
+                    },
+                    {
+                        "city": "Adelaide",
+                        "lon": 138.6,
+                        "lat": -34.9
+                    },
+                    {
+                        "city": "Perth",
+                        "lon": 115.9,
+                        "lat": -31.9
+                    },
+                    {
+                        "city": "Hobart",
+                        "lon": 147.3,
+                        "lat": -42.9
+                    }
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "point",
+                        "shape": "diamond",
+                        "size": 28,
+                        "fill": "#7a8ba3",
+                        "stroke": "#111d30",
+                        "strokeWidth": 0.5,
+                        "opacity": 0.7,
+                        "clip": true
+                    },
+                    "encoding": {
+                        "longitude": {
+                            "field": "lon",
+                            "type": "quantitative"
+                        },
+                        "latitude": {
+                            "field": "lat",
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "dy": -10,
+                        "fontSize": 9.5,
+                        "fontWeight": "normal",
+                        "fill": "#7a8ba3",
+                        "clip": true
+                    },
+                    "encoding": {
+                        "longitude": {
+                            "field": "lon",
+                            "type": "quantitative"
+                        },
+                        "latitude": {
+                            "field": "lat",
+                            "type": "quantitative"
+                        },
+                        "text": {
+                            "field": "city",
+                            "type": "nominal"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
