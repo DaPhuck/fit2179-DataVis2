@@ -1,0 +1,428 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "C15 — Dark Sky Finder: linked map + scatter with a city filter",
+    "background": "#111d30",
+    "config": {
+        "font": "system-ui, -apple-system, sans-serif",
+        "title": {
+            "color": "#e2e8f0",
+            "subtitleColor": "#7a8ba3",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "subtitleFontSize": 12,
+            "subtitlePadding": 6,
+            "anchor": "start",
+            "offset": 14
+        },
+        "axis": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "gridColor": "#1e3a5f",
+            "gridOpacity": 0.4,
+            "tickColor": "#2a4a6b",
+            "domainColor": "#2a4a6b",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titlePadding": 10
+        },
+        "legend": {
+            "labelColor": "#94a3b8",
+            "titleColor": "#94a3b8",
+            "labelFontSize": 10,
+            "titleFontSize": 10,
+            "titleFontWeight": "normal"
+        },
+        "view": {
+            "stroke": null,
+            "fill": "#0f1a2b"
+        }
+    },
+    "title": {
+        "text": "Dark Sky Finder — Where to Escape the City Glow",
+        "subtitle": [
+            "Globe at Night observation clusters · use the dropdown to focus on one capital",
+            "Map shows where · scatter shows how far · hover any point to highlight it in both views"
+        ]
+    },
+    "params": [
+        {
+            "name": "citySelect",
+            "value": "All",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "All",
+                    "Sydney",
+                    "Melbourne",
+                    "Brisbane",
+                    "Perth",
+                    "Adelaide",
+                    "Hobart",
+                    "Canberra",
+                    "Darwin"
+                ],
+                "name": "Filter by nearest capital:  "
+            }
+        }
+    ],
+    "data": {
+        "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/darksky_clusters.csv"
+    },
+    "spacing": 28,
+    "vconcat": [
+        {
+            "description": "Map of clusters coloured by sky darkness",
+            "width": 560,
+            "height": 340,
+            "projection": {
+                "type": "mercator",
+                "center": {
+                    "expr": "citySelect == 'Sydney' ? [150.81, -32.67] : citySelect == 'Melbourne' ? [143.95, -37.18] : citySelect == 'Brisbane' ? [147.55, -23.24] : citySelect == 'Perth' ? [120.72, -27.95] : citySelect == 'Adelaide' ? [137.09, -31.32] : citySelect == 'Hobart' ? [146.72, -42.18] : citySelect == 'Canberra' ? [148.26, -34.61] : citySelect == 'Darwin' ? [132.05, -17.96] : [134, -28]"
+                },
+                "scale": {
+                    "expr": "citySelect == 'Sydney' ? 2500 : citySelect == 'Melbourne' ? 2600 : citySelect == 'Brisbane' ? 845 : citySelect == 'Perth' ? 830 : citySelect == 'Adelaide' ? 880 : citySelect == 'Hobart' ? 2600 : citySelect == 'Canberra' ? 1900 : citySelect == 'Darwin' ? 910 : 620"
+                },
+                "translate": {
+                    "expr": "citySelect == 'All' ? [280, 170] : [280, 230]"
+                }
+            },
+            "layer": [
+                {
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/STE_2021_AUST_GDA2020.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "STE_2021_AUST_GDA2020"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#1a2d47",
+                        "stroke": "#2a4a6b",
+                        "strokeWidth": 0.8,
+                        "clip": true
+                    }
+                },
+                {
+                    "description": "Observation clusters",
+                    "transform": [
+                        {
+                            "filter": "citySelect == 'All' || datum.nearest_city == citySelect"
+                        }
+                    ],
+                    "params": [
+                        {
+                            "name": "hoverMap",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "clear": "mouseout",
+                                "fields": [
+                                    "lat",
+                                    "lon"
+                                ]
+                            }
+                        }
+                    ],
+                    "mark": {
+                        "type": "circle",
+                        "stroke": "#0f1a2b",
+                        "strokeWidth": 0.4,
+                        "clip": true
+                    },
+                    "encoding": {
+                        "longitude": {
+                            "field": "lon",
+                            "type": "quantitative"
+                        },
+                        "latitude": {
+                            "field": "lat",
+                            "type": "quantitative"
+                        },
+                        "size": {
+                            "field": "n_obs",
+                            "type": "quantitative",
+                            "scale": {
+                                "type": "log",
+                                "range": [
+                                    10,
+                                    400
+                                ]
+                            },
+                            "legend": null
+                        },
+                        "color": {
+                            "field": "mean_mag",
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [
+                                    2.5,
+                                    4,
+                                    5.5,
+                                    7
+                                ],
+                                "range": [
+                                    "#fb923c",
+                                    "#fde047",
+                                    "#86efac",
+                                    "#22d3ee"
+                                ]
+                            },
+                            "legend": {
+                                "title": "Sky darkness (limiting mag)",
+                                "orient": "bottom-left"
+                            }
+                        },
+                        "opacity": {
+                            "condition": {
+                                "test": "vlSelectionTest('hoverMap_store', datum) || vlSelectionTest('hoverSct_store', datum)",
+                                "value": 1
+                            },
+                            "value": 0.78
+                        },
+                        "stroke": {
+                            "condition": {
+                                "test": "vlSelectionTest('hoverMap_store', datum) || vlSelectionTest('hoverSct_store', datum)",
+                                "value": "#ffffff"
+                            },
+                            "value": "#0f1a2b"
+                        },
+                        "strokeWidth": {
+                            "condition": {
+                                "test": "vlSelectionTest('hoverMap_store', datum) || vlSelectionTest('hoverSct_store', datum)",
+                                "value": 1.4
+                            },
+                            "value": 0.4
+                        },
+                        "tooltip": [
+                            {
+                                "field": "nearest_city",
+                                "type": "nominal",
+                                "title": "Nearest capital"
+                            },
+                            {
+                                "field": "dist_km",
+                                "type": "quantitative",
+                                "title": "Distance (km)",
+                                "format": ".0f"
+                            },
+                            {
+                                "field": "mean_mag",
+                                "type": "quantitative",
+                                "title": "Mean limiting mag",
+                                "format": ".2f"
+                            },
+                            {
+                                "field": "n_obs",
+                                "type": "quantitative",
+                                "title": "Observations"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "description": "Scatter: darkness vs distance from nearest capital",
+            "width": 560,
+            "height": 320,
+            "transform": [
+                {
+                    "filter": "citySelect == 'All' || datum.nearest_city == citySelect"
+                }
+            ],
+            "layer": [
+                {
+                    "params": [
+                        {
+                            "name": "hoverSct",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "clear": "mouseout",
+                                "fields": [
+                                    "lat",
+                                    "lon"
+                                ]
+                            }
+                        }
+                    ],
+                    "mark": {
+                        "type": "circle",
+                        "stroke": "#0f1a2b",
+                        "strokeWidth": 0.4
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "dist_km",
+                            "type": "quantitative",
+                            "scale": {
+                                "type": "sqrt",
+                                "domain": [
+                                    0,
+                                    1600
+                                ]
+                            },
+                            "axis": {
+                                "title": "Distance from nearest capital city (km)",
+                                "values": [
+                                    0,
+                                    50,
+                                    100,
+                                    200,
+                                    400,
+                                    800,
+                                    1600
+                                ]
+                            }
+                        },
+                        "y": {
+                            "field": "mean_mag",
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [
+                                    1,
+                                    7.3
+                                ]
+                            },
+                            "axis": {
+                                "title": "Sky darkness — naked-eye limiting magnitude (higher = darker)"
+                            }
+                        },
+                        "size": {
+                            "field": "n_obs",
+                            "type": "quantitative",
+                            "scale": {
+                                "type": "log",
+                                "range": [
+                                    8,
+                                    600
+                                ]
+                            },
+                            "legend": {
+                                "title": "Observations",
+                                "orient": "right",
+                                "format": ".0s"
+                            }
+                        },
+                        "color": {
+                            "field": "nearest_city",
+                            "type": "nominal",
+                            "scale": {
+                                "domain": [
+                                    "Sydney",
+                                    "Melbourne",
+                                    "Brisbane",
+                                    "Perth",
+                                    "Adelaide",
+                                    "Hobart",
+                                    "Canberra",
+                                    "Darwin"
+                                ],
+                                "range": [
+                                    "#60a5fa",
+                                    "#f87171",
+                                    "#fbbf24",
+                                    "#34d399",
+                                    "#c084fc",
+                                    "#22d3ee",
+                                    "#fb923c",
+                                    "#f472b6"
+                                ]
+                            },
+                            "legend": {
+                                "title": "Nearest capital",
+                                "orient": "right",
+                                "symbolSize": 70
+                            }
+                        },
+                        "opacity": {
+                            "condition": {
+                                "test": "vlSelectionTest('hoverMap_store', datum) || vlSelectionTest('hoverSct_store', datum)",
+                                "value": 1
+                            },
+                            "value": 0.6
+                        },
+                        "stroke": {
+                            "condition": {
+                                "test": "vlSelectionTest('hoverMap_store', datum) || vlSelectionTest('hoverSct_store', datum)",
+                                "value": "#ffffff"
+                            },
+                            "value": "#0f1a2b"
+                        },
+                        "strokeWidth": {
+                            "condition": {
+                                "test": "vlSelectionTest('hoverMap_store', datum) || vlSelectionTest('hoverSct_store', datum)",
+                                "value": 1.4
+                            },
+                            "value": 0.4
+                        },
+                        "tooltip": [
+                            {
+                                "field": "nearest_city",
+                                "type": "nominal",
+                                "title": "Nearest capital"
+                            },
+                            {
+                                "field": "dist_km",
+                                "type": "quantitative",
+                                "title": "Distance (km)",
+                                "format": ".0f"
+                            },
+                            {
+                                "field": "mean_mag",
+                                "type": "quantitative",
+                                "title": "Mean limiting mag",
+                                "format": ".2f"
+                            },
+                            {
+                                "field": "n_obs",
+                                "type": "quantitative",
+                                "title": "Observations"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "transform": [
+                        {
+                            "loess": "mean_mag",
+                            "on": "dist_km",
+                            "bandwidth": 0.55
+                        }
+                    ],
+                    "mark": {
+                        "type": "line",
+                        "color": "#e2e8f0",
+                        "strokeWidth": 2.5,
+                        "opacity": 0.9
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "dist_km",
+                            "type": "quantitative",
+                            "scale": {
+                                "type": "sqrt",
+                                "domain": [
+                                    0,
+                                    1600
+                                ]
+                            }
+                        },
+                        "y": {
+                            "field": "mean_mag",
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [
+                                    1,
+                                    7.3
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
