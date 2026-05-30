@@ -14,8 +14,8 @@
         "subtitlePadding": 6,
         "offset": 12
     },
-    "width": 700,
-    "height": 350,
+    "width": 640,
+    "height": 340,
     "params": [
         {
             "name": "cycleSel",

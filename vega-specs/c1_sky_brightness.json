@@ -17,8 +17,8 @@
         "subtitlePadding": 6,
         "offset": 12
     },
-    "width": 820,
-    "height": 560,
+    "width": 760,
+    "height": 520,
     "projection": {
         "type": "conicEqualArea",
         "parallels": [
