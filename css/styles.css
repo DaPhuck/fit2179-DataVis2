@@ -17,6 +17,7 @@
     --amber: #f59e0b;
     --amber-dim: #92600a;
     --coral: #e05c4b;
+    --red: #ff3b3b;
     --teal: #2dd4bf;
     --blue: #60a5fa;
     --purple: #a78bfa;
@@ -61,7 +62,7 @@ body::before {
 .page {
     position: relative;
     z-index: 1;
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem 6rem;
 }
@@ -128,13 +129,115 @@ body::before {
     margin-bottom: 5rem;
 }
 
-/* ── Section header ───────────────────────────────────────────────── */
+/* ── Section intro (two-column: numbered heading | narrative) ─────── */
+.section-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 3.5rem;
+    align-items: start;
+    padding-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-top: 1px solid var(--navy-border);
+}
+
+.section-intro-head {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.section-num {
+    font-family: 'Crimson Pro', serif;
+    font-size: 3.6rem;
+    font-weight: 300;
+    line-height: 0.95;
+    color: var(--amber);
+    padding-left: 1rem;
+    border-left: 3px solid var(--amber);
+    flex-shrink: 0;
+}
+
+.section-num--amber  { color: var(--amber);  border-left-color: var(--amber); }
+.section-num--coral  { color: var(--coral);  border-left-color: var(--coral); }
+.section-num--teal   { color: var(--teal);   border-left-color: var(--teal); }
+.section-num--purple { color: var(--purple); border-left-color: var(--purple); }
+.section-num--blue   { color: var(--blue);   border-left-color: var(--blue); }
+.section-num--pink   { color: var(--pink);   border-left-color: var(--pink); }
+
+.section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+}
+
+.section-lede {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: rgba(232, 226, 212, 0.85);
+}
+
+.section-lede strong {
+    font-weight: 600;
+    color: var(--star-white);
+}
+
+/* Single-column lead variant: unnumbered, narrow centred stack */
+.section-intro--lead {
+    display: block;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1rem;
+    border-top: none;
+}
+
+.section-intro--lead .section-eyebrow {
+    color: var(--amber);
+    opacity: 0.85;
+    margin-bottom: 1.2rem;
+}
+
+.section-intro--lead .section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+}
+
+.section-intro--lead .section-lede {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+@media (max-width: 800px) {
+    .section-intro {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+}
+
+/* ── Section header (legacy, kept for intro section) ──────────────── */
 .section-header {
     display: flex;
     align-items: baseline;
     gap: 1rem;
     margin-bottom: 1.4rem;
     padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--navy-border);
+}
+
+/* Intro: separating line sits below the narrative instead of under the heading */
+.section-header--noline {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.narrative--divider {
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--navy-border);
 }
 
@@ -194,6 +297,127 @@ body::before {
     color: var(--star-white);
 }
 
+/* ── Generic grid: pass columns/gap via CSS vars ──────────────────── */
+/* Usage: <div class="grid" style="--cols: 60% 1fr; --gap: 1.5rem"> */
+.grid {
+    display: grid;
+    grid-template-columns: var(--cols, 1fr 1fr);
+    gap: var(--gap, 1.5rem);
+    align-items: var(--align, start);
+}
+
+.grid > * { min-width: 0; }
+
+/* Charts side-by-side: stretch both columns to equal height, let each
+   card grow to fill its column and centre its chart vertically. */
+.chart-grid > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-grid .chart-card {
+    flex: 1;
+    align-items: center;
+}
+
+/* ── Passage card (narrating text that pairs with a chart) ────────── */
+/* Sits in a two-column .grid above the chart cards; each card lines up
+   with the chart card below it and shares the same column width. */
+.passage-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--navy-card), rgba(17, 29, 48, 0.6));
+    border: 1px solid var(--navy-border);
+    border-top: 3px solid var(--muted);
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.18rem;
+    line-height: 1.75;
+    color: rgba(232, 226, 212, 0.85);
+}
+
+.passage-card strong {
+    font-weight: 600;
+    color: var(--star-white);
+}
+
+.passage-card--amber  { border-top-color: var(--amber); }
+.passage-card--coral  { border-top-color: var(--coral); }
+.passage-card--teal   { border-top-color: var(--teal); }
+.passage-card--purple { border-top-color: var(--purple); }
+.passage-card--blue   { border-top-color: var(--blue); }
+.passage-card--pink   { border-top-color: var(--pink); }
+
+/* Stack helper for grid children that need vertical flow with a gap */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap, 1.25rem);
+}
+
+.chart-commentary {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.18rem;
+    line-height: 1.75;
+    color: rgba(232, 226, 212, 0.85);
+}
+
+.chart-commentary strong {
+    font-weight: 600;
+    color: var(--star-white);
+}
+
+.insight-card {
+    background: rgba(17, 29, 48, 0.55);
+    border: 1px solid var(--navy-border);
+    border-left: 2px solid var(--amber);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(232, 226, 212, 0.78);
+    height: 100%;
+}
+
+/* Equal-height rows for any .grid that holds .insight-card children */
+.grid:has(> .insight-card) {
+    grid-auto-rows: 1fr;
+}
+
+.insight-card-title {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.45rem;
+    opacity: 0.9;
+}
+
+.insight-card--coral  { border-left-color: var(--coral); }
+.insight-card--coral  .insight-card-title { color: var(--coral); }
+.insight-card--red    { border-left-color: var(--red); }
+.insight-card--red    .insight-card-title { color: var(--red); }
+.insight-card--teal   { border-left-color: var(--teal); }
+.insight-card--teal   .insight-card-title { color: var(--teal); }
+.insight-card--purple { border-left-color: var(--purple); }
+.insight-card--purple .insight-card-title { color: var(--purple); }
+.insight-card--blue   { border-left-color: var(--blue); }
+.insight-card--blue   .insight-card-title { color: var(--blue); }
+.insight-card--pink   { border-left-color: var(--pink); }
+.insight-card--pink   .insight-card-title { color: var(--pink); }
+.insight-card--muted  { border-left-color: var(--muted); }
+.insight-card--muted  .insight-card-title { color: var(--muted); }
+
+@media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr !important; }
+}
+
 /* ── Chart card ───────────────────────────────────────────────────── */
 .chart-card {
     background: var(--navy-card);
@@ -201,7 +425,222 @@ body::before {
     border-radius: 10px;
     padding: 2rem 1.75rem;
     margin-bottom: 1.5rem;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: safe center;
+}
+
+/* ── Chart footer (data sources / credits) ────────────────────────── */
+/* Sits directly below a .chart-card as a sibling and visually joins to it. */
+.chart-card:has(+ .chart-footer) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.chart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5rem;
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-top: 1px solid rgba(30, 46, 71, 0.6);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0.9rem 1.75rem;
+    margin-bottom: 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    line-height: 1.65;
+    letter-spacing: 0.08em;
+}
+
+.chart-footer-label {
+    flex-shrink: 0;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.75;
+}
+
+.chart-footer-source {
+    text-align: right;
+    color: rgba(232, 226, 212, 0.78);
+}
+
+.chart-footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(232, 226, 212, 0.35);
+    text-underline-offset: 2px;
+    transition: color 0.15s ease;
+}
+
+.chart-footer a:hover {
+    color: var(--amber);
+    text-decoration-color: var(--amber);
+}
+
+/* Shared, section-level source line — one footnote summarising every dataset
+   used across a section's charts (vs per-chart .chart-footer). */
+.section-sources {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--navy-border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    line-height: 1.65;
+    letter-spacing: 0.08em;
+    color: rgba(232, 226, 212, 0.78);
+}
+
+.section-sources .chart-footer-label {
+    margin-right: 0.75rem;
+}
+
+/* ── Section 2 layout: full-width / split / bridge chart cards ─────── */
+/* Sample layout adapted to the site palette. These override the base
+   .chart-card flex so the card's contents stack (or grid) instead of
+   sitting in a single centred row. */
+.chart-card.full {
+    display: block;
+    width: 100%;
+}
+
+/* Centre the chart within a full-width card (chart has a fixed width) */
+.chart-card.full > .vega-embed {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.chart-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+/* Insight rows below a full-width chart: equal-width, equal-height cards.
+   Override --cols for a different count (e.g. --cols: repeat(3, 1fr)). */
+.insight-row {
+    display: grid;
+    grid-template-columns: var(--cols, repeat(4, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+/* When a row of insights sits directly under a chart footer, the footer's
+   own bottom margin already provides the separation above; add space below
+   to separate the row from the next chart block. */
+.chart-footer + .insight-row {
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+}
+
+.insight {
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 0.6rem 0.8rem;
+    background: rgba(17, 29, 48, 0.55);
+    border-radius: 6px;
+    border-left: 3px solid var(--navy-border);
+    color: rgba(232, 226, 212, 0.78);
+}
+
+.insight b {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--star-white);
+}
+
+/* Chart + aside row: chart card (70%) beside a narrative/insight column (30%).
+   Explicit placement puts the chart card and the aside in the same grid rows,
+   so the aside's top aligns with the chart card's top and its bottom aligns
+   with the source footer's bottom. */
+.chart-side-grid {
+    display: grid;
+    grid-template-columns: 7fr 3fr;   /* 70 / 30 */
+    column-gap: 1.5rem;
+    row-gap: 0;
+    align-items: stretch;
+    /* larger gap between charts (matches the C4 insight-row → C5 gap) */
+    margin-bottom: 2.5rem;
+}
+
+.chart-side-grid .chart-card   { grid-column: 1; grid-row: 1; }
+/* footer's own bottom margin removed; the grid carries the section spacing
+   so the aside's bottom lines up exactly with the footer's bottom */
+.chart-side-grid .chart-footer { grid-column: 1; grid-row: 2; margin-bottom: 0; }
+.chart-side-grid .chart-aside  { grid-column: 2; grid-row: 1 / 3; }
+
+/* When the side-grid has no footer (e.g. C9), the aside should align to the
+   chart card alone — otherwise it stretches into the empty second row and
+   the insight cards grow taller than the chart. */
+.chart-side-grid:not(:has(> .chart-footer)) .chart-aside { grid-row: 1; }
+
+/* Reversed variant (e.g. C12): insight aside on the LEFT (30%), chart on the
+   RIGHT (70%). The aside still spans both rows so its insight cards fill from
+   the top of the chart card to the bottom of the footer. */
+.chart-side-grid--reverse              { grid-template-columns: 3fr 7fr; }
+.chart-side-grid--reverse .chart-card  { grid-column: 2; }
+.chart-side-grid--reverse .chart-footer{ grid-column: 2; }
+.chart-side-grid--reverse .chart-aside { grid-column: 1; }
+
+/* Centre the chart within its card */
+.chart-side-grid .chart-card > .vega-embed {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+/* Aside column: optional narrative on top, insight cards filling the rest */
+.chart-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Minor padding on the aside's text passage (aligns with the insight cards'
+   text). Its extra height is absorbed by the flex:1 insight cards below, so
+   the aside's total height stays equal to the chart card + footer. */
+.chart-aside .chart-commentary {
+    padding: 0.25rem 1rem 0.75rem;
+}
+
+.chart-aside .insight-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Bridge tag — the "linking back to the sun" cue on the C6 card */
+.bridge-tag {
+    display: block;
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+}
+
+/* Stack everything on narrow screens */
+@media (max-width: 700px) {
+    .insight-row,
+    .chart-card.bridge .insight-row { grid-template-columns: 1fr; }
+
+    .chart-side-grid { grid-template-columns: 1fr; }
+    .chart-side-grid .chart-card,
+    .chart-side-grid .chart-footer,
+    .chart-side-grid .chart-aside {
+        grid-column: 1;
+        grid-row: auto;
+    }
 }
 
 /* ── Placeholder card ─────────────────────────────────────────────── */
@@ -267,39 +706,136 @@ body::before {
     color: var(--muted);
 }
 
-/* ── Outro ────────────────────────────────────────────────────────── */
-.outro {
-    margin-top: 5rem;
-    padding: 2.5rem;
-    background: var(--navy-card);
-    border: 1px solid var(--navy-border);
-    border-radius: 12px;
-    text-align: center;
+/* ── Page footer (authorship · sources · method) ──────────────────── */
+.site-footer {
+    position: relative;
+    margin-top: 6rem;
+    padding-top: 3.5rem;
+    border-top: 1px solid var(--navy-border);
 }
 
-.outro-title {
-    font-family: 'Crimson Pro', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--star-white);
-    margin-bottom: 1rem;
+/* Multi-colour accent line, echoing the section palette */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        var(--green), var(--teal), var(--blue),
+        var(--purple), var(--amber), var(--coral), var(--red));
+    opacity: 0.75;
 }
 
-.outro p {
-    font-family: 'Crimson Pro', serif;
-    font-size: 1rem;
+.site-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 0.9fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+}
+
+.footer-col-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.85;
+    margin-bottom: 1.4rem;
+}
+
+/* Authorship metadata rows (label left, value right, dashed rules) */
+.footer-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed rgba(30, 46, 71, 0.8);
+}
+
+.footer-meta-row:last-of-type { border-bottom: none; }
+
+.footer-meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--muted);
-    line-height: 1.8;
-    max-width: 600px;
-    margin: 0 auto 1.5rem;
 }
 
-.outro-meta {
+.footer-meta-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    color: var(--star-white);
+    text-align: right;
+}
+
+.footer-meta-value a { color: var(--amber); text-decoration: none; }
+.footer-meta-value a:hover { text-decoration: underline; }
+
+.footer-note {
+    margin-top: 1.5rem;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(122, 139, 163, 0.85);
+}
+
+/* Source / method lists */
+.footer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+}
+
+.footer-list li {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+.footer-list b { color: var(--star-white); font-weight: 600; }
+.footer-list i { font-style: italic; color: rgba(232, 226, 212, 0.75); }
+
+.footer-list a {
+    color: var(--amber);
+    text-decoration: none;
+    word-break: break-word;
+}
+.footer-list a:hover { text-decoration: underline; }
+
+.footer-list code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--teal);
+}
+
+.footer-tag {
     font-family: 'DM Mono', monospace;
     font-size: 0.62rem;
-    color: rgba(122, 139, 163, 0.5);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
+    color: rgba(122, 139, 163, 0.65);
+    white-space: nowrap;
+}
+
+/* Centred bottom caption */
+.site-footer-base {
+    border-top: 1px solid var(--navy-border);
+    padding: 1.6rem 0 2.5rem;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(122, 139, 163, 0.55);
+}
+
+@media (max-width: 900px) {
+    .site-footer-grid { grid-template-columns: 1fr; gap: 2.4rem; }
 }
 
 /* ── Stat strip ───────────────────────────────────────────────────── */

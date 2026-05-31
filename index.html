@@ -28,22 +28,64 @@
 
         <!-- ── INTRO ─────────────────────────────────────────────────────────── -->
         <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Why Australia? The dark sky advantage</h2>
+            <div class="section-intro section-intro--lead">
+                <p class="section-eyebrow">Prologue · The Dark Sky Advantage</p>
+                <h2 class="section-title">Why Australia?</h2>
+                <div class="section-lede">
+                    Australia sits almost entirely in the southern hemisphere, granting
+                    <strong>exclusive views of the Milky Way's galactic core</strong>, the Magellanic Clouds,
+                    and celestial objects invisible from most of the world. Its vast, arid interior places
+                    millions of square kilometres far from city lights — among the darkest skies on the planet.
+                    This visualisation takes you through five lenses: the solar engine, geomagnetic storms and
+                    aurora, a once-in-twenty-years superstorm, rocks from space, and eclipses.
+                    Everything is anchored to the Australian landscape and sky.
+                </div>
             </div>
 
-            <div class="narrative narrative-muted">
-                Australia sits almost entirely in the southern hemisphere, granting
-                <strong>exclusive views of the Milky Way's galactic core</strong>, the Magellanic Clouds,
-                and celestial objects invisible from most of the world. Its vast, arid interior places
-                millions of square kilometres far from city lights — among the darkest skies on the planet.
-                This visualisation takes you through five lenses: the solar engine, geomagnetic storms and
-                aurora, a once-in-twenty-years superstorm, rocks from space, and eclipses.
-                Everything is anchored to the Australian landscape and sky.
-            </div>
+            <div class="grid" style="--cols: 70% 1fr;">
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c1"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Source</span>
+                        <span class="chart-footer-source">
+                            Globe at Night (n.d.); Australian Bureau of Statistics [ABS] (2021)
+                        </span>
+                    </div>
+                </div>
 
-            <div class="chart-card">
-                <div id="chart-c1"></div>
+                <div class="stack">
+                    <p class="chart-commentary">
+                        In the city you might count a few dozen stars; in the outback, thousands. This map
+                        shades every state by how dark its skies really are, drawn from citizen-science
+                        readings. The pattern is instant: a <strong>bright, populated coastal fringe</strong>
+                        — and a <strong>vast, pristine interior</strong>. State averages come from citizen
+                        observations, biased toward populated areas, so they understate the true darkness
+                        of remote interiors.
+                    </p>
+
+                    <div class="grid" style="--cols: 1fr 1fr; --gap: 0.75rem;">
+                        <div class="insight-card">
+                            <span class="insight-card-title">The coastal glow</span>
+                            Light pollution clusters where people do, along the eastern and southern seaboards.
+                        </div>
+                        <div class="insight-card insight-card--teal">
+                            <span class="insight-card-title">The dark heart</span>
+                            The arid interior states (NT, WA, SA) average far darker skies than the urbanised east.
+                        </div>
+                        <div class="insight-card insight-card--purple">
+                            <span class="insight-card-title">Size isn't darkness</span>
+                            A big state still reads bright if its readings sit in cities; this tracks population,
+                            not area.
+                        </div>
+                        <div class="insight-card insight-card--muted">
+                            <span class="insight-card-title">Read with care</span>
+                            State averages come from citizen observations, biased toward populated areas, so
+                            they understate the darkness of remote interiors.
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -51,25 +93,89 @@
 
         <!-- ── SECTION 1 — SOLAR ENGINE ──────────────────────────────────────── -->
         <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">The solar engine — what drives it all</h2>
+            <div class="section-intro">
+                <div class="section-intro-head">
+                    <div class="section-num section-num--amber">01</div>
+                    <div>
+                        <p class="section-eyebrow">Section 1 — Solar Engine</p>
+                        <h2 class="section-title">The solar engine — what drives it all</h2>
+                    </div>
+                </div>
+                <div class="section-lede">
+                    Every phenomenon in this story — aurora, geomagnetic storms, even enhanced meteor activity
+                    — traces back to one source: <strong>the sun</strong>. Our star breathes on an
+                    <strong>11-year cycle</strong> of rising and falling magnetic chaos, measured by the count
+                    of dark sunspots on its surface. We are currently in Solar Cycle 25, approaching its
+                    predicted peak in 2025–2026. Right now, the sun is as active as it has been in two
+                    decades — and that energy is flowing toward Earth.
+                </div>
             </div>
 
-            <div class="narrative narrative-amber">
-                Every phenomenon in this story — aurora, geomagnetic storms, even enhanced meteor activity
-                — traces back to one source: <strong>the sun</strong>. Our star breathes on an
-                <strong>11-year cycle</strong> of rising and falling magnetic chaos, measured by the count
-                of dark sunspots on its surface. We are currently in Solar Cycle 25, approaching its
-                predicted peak in 2025–2026. Right now, the sun is as active as it has been in two
-                decades — and that energy is flowing toward Earth.
+            <div class="grid chart-grid" style="--cols: 1fr 1fr; --align: stretch;">
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c2"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Source</span>
+                        <span class="chart-footer-source">
+                            World Data Center SILSO, Royal Observatory of Belgium (2015)
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c3"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Source</span>
+                        <span class="chart-footer-source">
+                            Matzka et al. (2022)
+                        </span>
+                    </div>
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c2"></div>
+            <div class="grid" style="--cols: 1fr 1fr; --align: stretch;">
+                <div class="passage-card passage-card--amber">
+                    <p>
+                        Every story here starts with the sun. Its magnetic activity rises and falls on an
+                        <strong>~11-year heartbeat</strong>, counted in dark sunspots — quiet years, then a
+                        roaring peak, over and over. We're now near the crest of <strong>Solar Cycle 25</strong>,
+                        the busiest sun in two decades. That energy is what flows toward Earth in everything
+                        that follows.
+                    </p>
+                </div>
+                <div class="passage-card passage-card--coral">
+                    <p>
+                        When the sun is loud, Earth feels it. This chart counts the days each year that
+                        geomagnetic storms rattle our magnetic field, measured by the <strong>Kp index</strong>
+                        — and the rhythm echoes the sunspot cycle almost beat for beat. The rare
+                        <strong>severe days (Kp ≥ 7)</strong> are when the aurora pushes far enough north to
+                        light up Australian skies.
+                    </p>
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c3"></div>
+            <div class="grid" style="--cols: repeat(4, 1fr); --gap: 0.75rem; --align: stretch;">
+                <div class="insight-card">
+                    <span class="insight-card-title">Cycles aren't equal</span>
+                    SC24 was notably weaker than SC22 or SC23; not every peak hits the same height.
+                </div>
+                <div class="insight-card insight-card--red">
+                    <span class="insight-card-title">We're at the crest</span>
+                    SC25 (amber band) is peaking around 2024–25, the strongest activity since the 1990s.
+                </div>
+                <div class="insight-card insight-card--teal">
+                    <span class="insight-card-title">Storms follow the sun</span>
+                    Storm-day counts peak near each solar maximum and collapse in the minima — the same
+                    pattern as the sun's activity.
+                </div>
+                <div class="insight-card insight-card--purple">
+                    <span class="insight-card-title">2024 stands out</span>
+                    The recent SC25 rise delivered the May superstorm, the strongest in 20 years.
+                </div>
             </div>
         </section>
 
@@ -77,144 +183,562 @@
 
         <!-- ── SECTION 2 — STORM SEASONS ─────────────────────────────────────── -->
         <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Storm seasons — when to look up</h2>
+            <div class="section-intro">
+                <div class="section-intro-head">
+                    <div class="section-num section-num--coral">02</div>
+                    <div>
+                        <p class="section-eyebrow">Section 2 — Storm Seasons</p>
+                        <h2 class="section-title">Storm seasons — when to look up</h2>
+                    </div>
+                </div>
+                <div class="section-lede">
+                    Solar activity sets the long-run average — but within any given year, geomagnetic storms
+                    are not distributed evenly across months. The <strong>"equinox effect"</strong> means that
+                    March and September consistently produce more severe storms than midsummer or midwinter.
+                    This counterintuitive fact — rooted in the geometry of Earth's magnetic field orientation
+                    relative to the sun — has enormous practical value for aurora chasers planning a trip south.
+                    The following charts decode the seasonality hidden inside nine decades of geomagnetic records.
+                </div>
             </div>
 
-            <div class="narrative narrative-coral">
-                Solar activity sets the long-run average — but within any given year, geomagnetic storms
-                are not distributed evenly across months. The <strong>"equinox effect"</strong> means that
-                March and September consistently produce more severe storms than midsummer or midwinter.
-                This counterintuitive fact — rooted in the geometry of Earth's magnetic field orientation
-                relative to the sun — has enormous practical value for aurora chasers planning a trip south.
-                The following charts decode the seasonality hidden inside nine decades of geomagnetic records.
+            <!-- ROW 1: C4 heatmap, full width · 4 insight cards left-to-right below -->
+            <div class="chart-card full">
+                <div id="chart-c4" class="vega-embed"></div>
+            </div>
+            <div class="chart-footer">
+                <span class="chart-footer-label">Source</span>
+                <span class="chart-footer-source">
+                    Matzka et al. (2022)
+                </span>
+            </div>
+            <div class="insight-row">
+                <div class="insight-card">
+                    <span class="insight-card-title">Vertical rhythm</span>
+                    Hot columns cluster at solar maxima — storm intensity tracks the sunspot cycle.
+                </div>
+                <div class="insight-card insight-card--coral">
+                    <span class="insight-card-title">Horizontal stripes</span>
+                    March–April and September–October run hotter than the solstice months.
+                </div>
+                <div class="insight-card insight-card--teal">
+                    <span class="insight-card-title">Standout cells</span>
+                    2003 and May 2024 glow as the extremes of the record.
+                </div>
+                <div class="insight-card insight-card--purple">
+                    <span class="insight-card-title">Quiet is the norm</span>
+                    Truly extreme months are rare punctuation in decades of calm.
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c4"></div>
+            <!-- ROW 2: C5 dual-view chart (70%) + narrative & insight cards aside (30%) -->
+            <div class="chart-side-grid">
+                <div class="chart-card">
+                    <div id="chart-c5" class="vega-embed"></div>
+                </div>
+                <div class="chart-footer">
+                    <span class="chart-footer-label">Source</span>
+                    <span class="chart-footer-source">
+                        Matzka et al. (2022)
+                    </span>
+                </div>
+                <div class="chart-aside">
+                    <p class="chart-commentary">
+                        If you're planning just one trip south to chase the aurora, timing matters as much as
+                        luck. Severe storm days aren't spread evenly across the year — they cluster around the
+                        equinoxes.
+                    </p>
+                    <div class="insight-card insight-card--coral">
+                        <span class="insight-card-title">Equinox peaks</span>
+                        March/April and September/October are the best windows.
+                    </div>
+                    <div class="insight-card insight-card--teal">
+                        <span class="insight-card-title">Solstice lulls</span>
+                        June/July and December/January run noticeably quieter.
+                    </div>
+                    <div class="insight-card insight-card--purple">
+                        <span class="insight-card-title">Plan around it</span>
+                        Aim for the equinox months to load the odds in your favour.
+                    </div>
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c5"></div>
+            <!-- ROW 3: C6 dual-axis, full width · 3 insight cards left-to-right below -->
+            <div class="chart-card full">
+                <div id="chart-c6" class="vega-embed"></div>
             </div>
-
-            <div class="chart-card">
-                <div id="chart-c6"></div>
+            <div class="chart-footer">
+                <span class="chart-footer-label">Sources</span>
+                <span class="chart-footer-source">
+                    Matzka et al. (2022); World Data Center SILSO, Royal Observatory of Belgium (2015)
+                </span>
+            </div>
+            <div class="insight-row" style="--cols: repeat(3, 1fr);">
+                <div class="insight-card">
+                    <span class="insight-card-title">Two lines, one rhythm</span>
+                    Sunspots and storms ride the same solar cycle.
+                </div>
+                <div class="insight-card insight-card--coral">
+                    <span class="insight-card-title">The lag</span>
+                    Kp peaks trail sunspot maxima by roughly 1–3 years.
+                </div>
+                <div class="insight-card insight-card--teal">
+                    <span class="insight-card-title">Closing the loop</span>
+                    Ties Section 2's storms back to Section 1's sun.
+                </div>
             </div>
         </section>
 
         <!-- ── SECTION 3 — MAY 2024 SUPERSTORM ─────────────────────────────────  -->
         <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Case study — the May 2024 superstorm</h2>
+            <div class="section-intro">
+                <div class="section-intro-head">
+                    <div class="section-num section-num--teal">03</div>
+                    <div>
+                        <p class="section-eyebrow">Section 3 — May 2024 Superstorm</p>
+                        <h2 class="section-title">Case study — the May 2024 superstorm</h2>
+                    </div>
+                </div>
+                <div class="section-lede">
+                    On the night of <strong>10 May 2024</strong>, the strongest geomagnetic storm in 20 years
+                    struck Earth. With a peak Kp of 9, the aurora australis blazed across the entire southern
+                    sky — visible from every Australian state, reaching as far north as Queensland. The ARCTICS
+                    survey captured 696 observers across 30+ countries. This section zooms into the Australian
+                    respondents, turning a historic storm into a human story: who saw it, from where, what they
+                    described, and what the data reveals about aurora visibility thresholds across latitudes.
+                </div>
             </div>
 
-            <div class="narrative narrative-teal">
-                On the night of <strong>10 May 2024</strong>, the strongest geomagnetic storm in 20 years
-                struck Earth. With a peak Kp of 9, the aurora australis blazed across the entire southern
-                sky — visible from every Australian state, reaching as far north as Queensland. The ARCTICS
-                survey captured 696 observers across 30+ countries. This section zooms into the Australian
-                respondents, turning a historic storm into a human story: who saw it, from where, what they
-                described, and what the data reveals about aurora visibility thresholds across latitudes.
+            <!-- narrative lead-in, 55% width, centered above both charts -->
+            <div class="passage-card passage-card--teal" style="width: 55%; margin-left: 15%; margin-right: auto;">
+                <p>
+                    On <strong>10 May 2024</strong>, the strongest geomagnetic storm in two decades lit
+                    the southern sky. Mapping where ARCTICS respondents stood when they looked up reveals
+                    a clear geography to the night — and shows just how far north the aurora pushed.
+                </p>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c7"></div>
+            <!-- ROW 1: C7 map (55%) + C8 scatter (45%) side-by-side -->
+            <div class="grid chart-grid" style="--cols: 55% 45%; --align: stretch;">
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c7" class="vega-embed"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Sources</span>
+                        <span class="chart-footer-source">
+                            Pal et al. (2024); Australian Bureau of Statistics [ABS] (2021)
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c8" class="vega-embed"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Sources</span>
+                        <span class="chart-footer-source">
+                            Pal et al. (2024); Matzka et al. (2022)
+                        </span>
+                    </div>
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c8"></div>
+            <!-- insights for C7 + C8 · gap above matches C6 (cards' own 1.5rem margin), big gap below -->
+            <div class="insight-row" style="margin-top: 0; margin-bottom: 2.5rem;">
+                <div class="insight-card">
+                    <span class="insight-card-title">Closer to the pole, easier to see</span>
+                    The further south you are, the nearer the southern magnetic pole where aurora forms — so
+                    southern observers (Tas, Vic, southern SA) get the most sightings on the map.
+                </div>
+                <div class="insight-card insight-card--coral">
+                    <span class="insight-card-title">The south needs less to see more</span>
+                    The scatter shows southern latitudes unlock the aurora at a lower Kp; northern observers
+                    need a stronger storm before it's visible.
+                </div>
+                <div class="insight-card insight-card--teal">
+                    <span class="insight-card-title">A visible threshold line</span>
+                    Seen and not-seen points separate along a latitude–Kp boundary — read off roughly what Kp
+                    your own location needs.
+                </div>
+                <div class="insight-card insight-card--purple">
+                    <span class="insight-card-title">This storm broke the rule</span>
+                    At Kp ≈ 9, the aurora reached far enough north to be seen toward Queensland — a reach that
+                    normally takes a once-in-decades storm.
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c9"></div>
+            <!-- ROW 3: C9 breakdown · narrative lead-in (55%, centered) + 4 insight cards below -->
+            <div class="passage-card passage-card--teal" style="width: 55%; margin-left: 15%; margin-right: auto;">
+                <p>
+                    Beyond <em>where</em> and <em>when</em> lies the question instruments can't answer: what
+                    did it actually look like? Observers' own descriptions — the colours, the forms, their
+                    experience level — restore the texture that a single Kp number flattens away.
+                </p>
+            </div>
+            <!-- C9 dual view (70%) + insight cards aside (30%) -->
+            <div class="chart-side-grid">
+                <div class="chart-card">
+                    <div id="chart-c9" class="vega-embed"></div>
+                </div>
+                <div class="chart-footer">
+                    <span class="chart-footer-label">Source</span>
+                    <span class="chart-footer-source">
+                        Pal et al. (2024)
+                    </span>
+                </div>
+                <div class="chart-aside">
+                    <div class="insight-card">
+                        <span class="insight-card-title">A pink-red night</span>
+                        Reds and pinks featured heavily in observers' accounts.
+                    </div>
+                    <div class="insight-card insight-card--teal">
+                        <span class="insight-card-title">First-timers out</span>
+                        Many were seeing the aurora for the very first time.
+                    </div>
+                    <div class="insight-card insight-card--purple">
+                        <span class="insight-card-title">Lived, not just measured</span>
+                        The texture a Kp value can't capture.
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- ── SECTION 4 — ROCKS FROM SPACE ──────────────────────────────────── -->
         <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Rocks from space — fireballs &amp; meteorites</h2>
+            <div class="section-intro">
+                <div class="section-intro-head">
+                    <div class="section-num section-num--purple">04</div>
+                    <div>
+                        <p class="section-eyebrow">Section 4 — Rocks From Space</p>
+                        <h2 class="section-title">Rocks from space — fireballs &amp; meteorites</h2>
+                    </div>
+                </div>
+                <div class="section-lede">
+                    Not everything falling from the sky is light. Every day, <strong>tonnes of rocky debris</strong>
+                    left over from the solar system's formation rain down on Earth. Most vaporise in a streak of
+                    light — fireballs bright enough to cast shadows. A precious few survive the fiery descent and
+                    land as meteorites. Australia's vast, dry, geologically stable interior is one of the planet's
+                    finest meteorite-preserving environments — the continent is, in a very real sense,
+                    <strong>a natural meteorite museum</strong>.
+                </div>
             </div>
 
-            <div class="narrative narrative-purple">
-                Not everything falling from the sky is light. Every day, <strong>tonnes of rocky debris</strong>
-                left over from the solar system's formation rain down on Earth. Most vaporise in a streak of
-                light — fireballs bright enough to cast shadows. A precious few survive the fiery descent and
-                land as meteorites. Australia's vast, dry, geologically stable interior is one of the planet's
-                finest meteorite-preserving environments — the continent is, in a very real sense,
-                <strong>a natural meteorite museum</strong>.
+            <!-- ROW: C10 fireball map + C11 meteorite map side-by-side (50/50) -->
+            <div class="grid chart-grid" style="--cols: 1fr 1fr; --align: stretch;">
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c10"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Sources</span>
+                        <span class="chart-footer-source">
+                            Center for Near Earth Object Studies [CNEOS] (n.d.); Australian Bureau of Statistics [ABS]
+                            (2021)
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c11"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Sources</span>
+                        <span class="chart-footer-source">
+                            The Meteoritical Society (2024); Australian Bureau of Statistics [ABS] (2021)
+                        </span>
+                    </div>
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c10"></div>
+            <!-- narrative passages below C10/C11, matching the 50/50 column split -->
+            <div class="grid" style="--cols: 1fr 1fr; --align: stretch;">
+                <div class="passage-card passage-card--amber">
+                    <p>
+                        Most space rock arrives as light, not stone. This map plots two decades of NASA
+                        CNEOS bolide detections over Australia — each circle sized by the energy it released,
+                        coloured by how high it burned. Bright entries scatter right across the continent,
+                        from desert to coast.
+                    </p>
+                </div>
+                <div class="passage-card passage-card--teal">
+                    <p>
+                        A precious few survive the fall. These recoveries cluster tightly in the arid south
+                        and interior — not where more rock lands, but where the dry, bare ground preserves
+                        stones and makes them findable. Teal stony finds dominate; the lone amber giant is
+                        the Windimurra iron.
+                    </p>
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c11"></div>
+            <!-- combined key points drawn from C10 + C11 (the comparison row) -->
+            <div class="insight-row" style="--cols: repeat(5, 1fr); margin-top: 0; margin-bottom: 2.5rem;">
+                <div class="insight-card">
+                    <span class="insight-card-title">Light scatters, stone clusters</span>
+                    Fireballs are detected continent-wide; recovered meteorites bunch in the arid south —
+                    the core contrast of the section.
+                </div>
+                <div class="insight-card insight-card--coral">
+                    <span class="insight-card-title">The outback preserves</span>
+                    Dry, stable, sparsely vegetated ground is why finds concentrate inland, not because more
+                    falls there.
+                </div>
+                <div class="insight-card insight-card--teal">
+                    <span class="insight-card-title">Stony dominates the ground</span>
+                    Recovered finds are overwhelmingly stony (teal), with iron (e.g. Windimurra, 30,000 g)
+                    the rare exception.
+                </div>
+                <div class="insight-card insight-card--purple">
+                    <span class="insight-card-title">Energy spans orders of magnitude</span>
+                    Fireball circle sizes range hugely; a few high-energy entries dwarf the rest.
+                </div>
+                <div class="insight-card insight-card--blue">
+                    <span class="insight-card-title">Detection ≠ recovery</span>
+                    C10 shows what was witnessed burning; C11 shows what was later found — two different
+                    questions, two different maps.
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c12"></div>
+            <!-- C12 narrative lead-in: 80% width, centered above the chart -->
+            <div class="passage-card passage-card--purple" style="width: 80%; margin-left: auto; margin-right: auto;">
+                <p>
+                    How rare is a big one? This plots 1,060 global fireballs by energy against how many were
+                    at least that energetic. Every tenfold jump in energy makes an event roughly tenfold
+                    rarer — and out at the far edge sits Chelyabinsk 2013, a 441-kiloton outlier in a class
+                    of its own.
+                </p>
+            </div>
+
+            <!-- C12: insight aside (30%, left) + chart (70%, right) -->
+            <div class="chart-side-grid chart-side-grid--reverse">
+                <div class="chart-card">
+                    <div id="chart-c12"></div>
+                </div>
+                <div class="chart-footer">
+                    <span class="chart-footer-label">Source</span>
+                    <span class="chart-footer-source">
+                        Center for Near Earth Object Studies [CNEOS] (n.d.)
+                    </span>
+                </div>
+                <div class="chart-aside">
+                    <div class="insight-card">
+                        <span class="insight-card-title">Small is constant, big is rare</span>
+                        Counts fall steeply as energy climbs — the signature of a power law.
+                    </div>
+                    <div class="insight-card insight-card--teal">
+                        <span class="insight-card-title">Readable on log–log</span>
+                        Logarithmic axes turn a brutal curve into an interpretable slope.
+                    </div>
+                    <div class="insight-card insight-card--coral">
+                        <span class="insight-card-title">The lonely tail</span>
+                        A handful of extreme events (Chelyabinsk far right) carry the real impact risk.
+                    </div>
+                    <div class="insight-card insight-card--purple">
+                        <span class="insight-card-title">Why go global</span>
+                        1,060 worldwide events reveal a pattern Australia's ~22 detections alone never
+                        could — which is exactly why C12 leaves the national frame.
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- ── SECTION 5 — ECLIPSES ───────────────────────────────────────────── -->
         <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Eclipses — Australia's appointments with shadow</h2>
+            <div class="section-intro">
+                <div class="section-intro-head">
+                    <div class="section-num section-num--blue">05</div>
+                    <div>
+                        <p class="section-eyebrow">Section 5 — Eclipses</p>
+                        <h2 class="section-title">Eclipses — Australia's appointments with shadow</h2>
+                    </div>
+                </div>
+                <div class="section-lede">
+                    Total solar eclipses rank among the rarest and most awe-inspiring events a human being can
+                    witness — a moment when day turns to twilight, stars appear at noon, and the solar corona
+                    shimmers around a perfect black disc. Australia is fortunate: several total solar eclipses
+                    will cross the continent in the coming decades, including <strong>Sydney in 2028</strong>
+                    and <strong>Queensland in 2038</strong>. This section maps every eclipse visible from
+                    Australia across 160 years — past and future.
+                </div>
             </div>
 
-            <div class="narrative narrative-blue">
-                Total solar eclipses rank among the rarest and most awe-inspiring events a human being can
-                witness — a moment when day turns to twilight, stars appear at noon, and the solar corona
-                shimmers around a perfect black disc. Australia is fortunate: several total solar eclipses
-                will cross the continent in the coming decades, including <strong>Sydney in 2028</strong>
-                and <strong>Queensland in 2038</strong>. This section maps every eclipse visible from
-                Australia across 160 years — past and future.
+            <!-- C13: narrative (35%, left) + chart card with footer (65%, right) -->
+            <div class="grid chart-grid" style="--cols: 35fr 65fr; --align: stretch;">
+                <div class="chart-commentary" style="justify-content: center;">
+                    <h3
+                        style="font-family: 'Crimson Pro', serif; font-size: 2.4rem; font-weight: 300; line-height: 1.15; color: var(--blue); margin-bottom: 1rem;">
+                        Book yourself an appointment to view an eclipse</h3>
+                    <p>Eclipses are appointments you can book decades ahead. This timeline marks every solar and lunar
+                        eclipse centred over the Australia/Oceania region from 2000 to 2080, each dot coloured by type,
+                        with a dashed "today" line splitting past from future. Find the totalities ahead — including the
+                        ones reaching the continent in 2028 and 2038.</p>
+                </div>
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c13"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Source</span>
+                        <span class="chart-footer-source">
+                            Espenak and Meeus (2006)
+                        </span>
+                    </div>
+                </div>
             </div>
 
-            <div class="chart-card">
-                <div id="chart-c13"></div>
-            </div>
-
-            <div class="chart-card">
-                <div id="chart-c14"></div>
+            <!-- C14: chart card with footer (65%, left) + narrative (35%, right) -->
+            <div class="grid chart-grid" style="--cols: 65fr 35fr; --align: stretch;">
+                <div>
+                    <div class="chart-card">
+                        <div id="chart-c14"></div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="chart-footer-label">Source</span>
+                        <span class="chart-footer-source">
+                            Espenak and Meeus (2006)
+                        </span>
+                    </div>
+                </div>
+                <div class="chart-commentary" style="justify-content: center;">
+                    <h3
+                        style="font-family: 'Crimson Pro', serif; font-size: 2.4rem; font-weight: 300; line-height: 1.15; color: var(--blue); margin-bottom: 1rem;">
+                        So how often does the sky keep one of these appointments?</h3>
+                    <p>Of 74 eclipses over the Australian region, the Moon shows up far more than the Sun — partial and
+                        penumbral lunars are the easy regulars, a total solar is the rare guest of honour, and a lone
+                        hybrid solar sits at the very bottom: one event in the whole catalogue.</p>
+                </div>
             </div>
         </section>
 
         <!-- ── SECTION 6 — DARK SKY FINDER ───────────────────────────────────── -->
         <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Finding your dark sky — where to go tonight</h2>
+            <div class="section-intro">
+                <div class="section-intro-head">
+                    <div class="section-num section-num--pink">06</div>
+                    <div>
+                        <p class="section-eyebrow">Section 6 — Dark Sky Finder</p>
+                        <h2 class="section-title">Finding your dark sky — where to go tonight</h2>
+                    </div>
+                </div>
+                <div class="section-lede">
+                    Armed with an understanding of what to look for and when, the final question is:
+                    <strong>where?</strong> The Globe at Night citizen-science project has been collecting sky
+                    brightness readings across Australia for over a decade. By aggregating those readings by
+                    location, we can build a practical ranking of dark-sky sites relative to Australia's major
+                    population centres. This closing section gives readers a data-driven answer to the question
+                    <em>"where is the darkest, clearest sky I can realistically reach?"</em>
+                </div>
             </div>
 
-            <div class="narrative narrative-pink">
-                Armed with an understanding of what to look for and when, the final question is:
-                <strong>where?</strong> The Globe at Night citizen-science project has been collecting sky
-                brightness readings across Australia for over a decade. By aggregating those readings by
-                location, we can build a practical ranking of dark-sky sites relative to Australia's major
-                population centres. This closing section gives readers a data-driven answer to the question
-                <em>"where is the darkest, clearest sky I can realistically reach?"</em>
-            </div>
-
-            <div class="chart-card">
+            <div class="chart-card" style="max-width: 1000px; margin-left: auto; margin-right: auto;">
                 <div id="chart-c15"></div>
             </div>
+            <div class="chart-footer" style="max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <span class="chart-footer-label">Source</span>
+                <span class="chart-footer-source">
+                    Globe at Night (2006)
+                </span>
+            </div>
+
+            <p class="chart-commentary"
+                style="font-style: italic; width: 75%; margin-left: auto; margin-right: auto; text-align: center;">
+                This closing chart completes the arc — from the sun's physics back down to a personal stargazing plan.
+                It revisits the Globe at Night data from the opening map (C1), but at finer grain: individual
+                observation clusters rather than state averages, so the coast-versus-interior gradient becomes a
+                continuous trend you can read your own location against.
+            </p>
         </section>
 
-        <!-- ── OUTRO ──────────────────────────────────────────────────────────── -->
-        <div class="outro">
-            <p class="outro-title">Australia's cosmic privilege</p>
-            <p>
-                From the sun's 11-year heartbeat to a record-breaking aurora, from ancient meteorites
-                sleeping in the desert to an eclipse that will darken Sydney in 2028 — every story in
-                this visualisation is both planetary and deeply local. Australia's geography, geology,
-                and climate combine to make it one of Earth's premier nations for astronomy.
-            </p>
-            <!-- <p class="outro-meta">FIT2179 Data Visualisation 2 &nbsp;·&nbsp; Vega-Lite &nbsp;·&nbsp; GitHub Pages -->
-            </p>
-        </div>
+        <!-- ── PAGE FOOTER ────────────────────────────────────────────────────── -->
+        <footer class="site-footer">
+            <div class="site-footer-grid">
+
+                <!-- Authorship & metadata -->
+                <div>
+                    <p class="footer-col-title">Authorship &amp; Metadata</p>
+                    <div class="footer-meta-row">
+                        <span class="footer-meta-label">Author</span>
+                        <span class="footer-meta-value">Phuc Van</span>
+                    </div>
+                    <div class="footer-meta-row">
+                        <span class="footer-meta-label">Date</span>
+                        <span class="footer-meta-value">May 2026</span>
+                    </div>
+                    <div class="footer-meta-row">
+                        <span class="footer-meta-label">Unit</span>
+                        <span class="footer-meta-value">FIT2179 Data Visualisation 2</span>
+                    </div>
+                    <div class="footer-meta-row">
+                        <span class="footer-meta-label">Institution</span>
+                        <span class="footer-meta-value">Monash University</span>
+                    </div>
+                    <div class="footer-meta-row">
+                        <span class="footer-meta-label">Repository</span>
+                        <span class="footer-meta-value"><a href="https://github.com/DaPhuck/fit2179-DataVis2"
+                                target="_blank" rel="noopener">DaPhuck/fit2179-DataVis2</a></span>
+                    </div>
+                    <p class="footer-note">
+                        Generative AI was used for grammar and copy-editing assistance only. All analysis,
+                        narrative, visual design, and implementation decisions are the author's own.
+                    </p>
+                </div>
+
+                <!-- Data sources -->
+                <div>
+                    <p class="footer-col-title">Data Sources</p>
+                    <ul class="footer-list">
+                        <li><b>Australian Bureau of Statistics. (2021).</b> <i>Australian Statistical Geography Standard
+                                (ASGS) edition 3: Digital boundary files</i> [Data set]. Commonwealth of Australia. <a
+                                href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files"
+                                target="_blank" rel="noopener">abs.gov.au</a> <span class="footer-tag">C1, C7, C10,
+                                C11</span></li>
+                        <li><b>Center for Near Earth Object Studies. (n.d.).</b> <i>Fireball and bolide data</i> [Data
+                            set]. NASA Jet Propulsion Laboratory, California Institute of Technology. <a
+                                href="https://cneos.jpl.nasa.gov/fireballs/" target="_blank"
+                                rel="noopener">cneos.jpl.nasa.gov</a> <span class="footer-tag">C10, C12</span></li>
+                        <li><b>Espenak, F., &amp; Meeus, J. (2006).</b> <i>Five millennium canon of solar eclipses:
+                                −1999 to +3000</i> (NASA/TP-2006-214141) [Data set]. NASA Center for AeroSpace
+                            Information. <a href="https://www.kaggle.com/datasets/nasa/solar-eclipses" target="_blank"
+                                rel="noopener">kaggle.com</a> <span class="footer-tag">C13, C14</span></li>
+                        <li><b>Globe at Night. (2006).</b> <i>Globe at Night sky brightness observations</i> [Data set].
+                            NSF's NOIRLab. <a href="https://globeatnight.org/maps-data/" target="_blank"
+                                rel="noopener">globeatnight.org</a> <span class="footer-tag">C1, C15</span></li>
+                        <li><b>Matzka, J., Bronkalla, O., Tornow, K., Elger, K., &amp; Stolle, C. (2022).</b>
+                            <i>Geomagnetic Kp index</i> [Data set]. GFZ Data Services. <a
+                                href="https://doi.org/10.5880/Kp.0001" target="_blank"
+                                rel="noopener">doi.org/10.5880/Kp.0001</a> <span class="footer-tag">C3–C6, C8</span>
+                        </li>
+                        <li><b>Pal, S., Nandy, D., &amp; ARCTICS Team. (2024).</b> <i>Citizen science reports on aurora
+                                sighting and technological disruptions during the 10 May 2024 geomagnetic storm —
+                                ARCTICS survey</i> [Data set]. Zenodo. <a href="https://zenodo.org/records/12732615"
+                                target="_blank" rel="noopener">zenodo.org</a> <span class="footer-tag">C7–C9</span></li>
+                        <li><b>The Meteoritical Society. (2024).</b> <i>Meteorite landings</i> [Data set]. NASA Open
+                            Data Portal. <a href="https://data.nasa.gov/dataset/meteorite-landings" target="_blank"
+                                rel="noopener">data.nasa.gov</a> <span class="footer-tag">C11</span></li>
+                        <li><b>World Data Center SILSO, Royal Observatory of Belgium. (2015).</b> <i>International
+                                sunspot number monthly bulletin and online catalogue</i> [Data set]. Royal Observatory
+                            of Belgium. <a href="https://www.sidc.be/SILSO/datafiles" target="_blank"
+                                rel="noopener">sidc.be</a> <span class="footer-tag">C2, C6</span></li>
+                    </ul>
+                </div>
+
+                <!-- Method & tools -->
+                <div>
+                    <p class="footer-col-title">Method &amp; Tools</p>
+                    <ul class="footer-list">
+                        <li>All charts built with <b>Vega-Lite v5</b> and embedded via <b>vega-embed v6</b>. Specs live
+                            in <code>/vega-specs</code> and can be inspected individually.</li>
+                        <li>Page hand-built with <b>semantic HTML</b> and <b>CSS</b> — no framework.</li>
+                        <li>Typefaces: <b>Crimson Pro</b>, <b>Outfit</b>, and <b>DM Mono</b>.</li>
+                        <li>Source hosted and served via <b>GitHub Pages</b>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="site-footer-base">
+                Australia's Night Sky — A Stargazer's Atlas &nbsp;·&nbsp; FIT2179 Data Visualisation 2 &nbsp;·&nbsp;
+                2026
+            </div>
+        </footer>
 
     </div>
 
