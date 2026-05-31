@@ -17,8 +17,8 @@
         "subtitlePadding": 6,
         "offset": 12
     },
-    "width": 700,
-    "height": 370,
+    "width": 1250,
+    "height": 460,
     "autosize": {
         "type": "fit",
         "contains": "padding"
