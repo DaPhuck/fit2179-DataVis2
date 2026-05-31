@@ -292,7 +292,7 @@
             "mark": {
                 "type": "text",
                 "dy": -13,
-                "fontSize": 10.5,
+                "fontSize": 10,
                 "fontWeight": "bold",
                 "color": "#cbd5e1"
             },

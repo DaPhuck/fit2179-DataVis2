@@ -97,7 +97,8 @@
                         "labelAngle": -45,
                         "ticks": false,
                         "domain": false,
-                        "labelPadding": 6
+                        "labelPadding": 6,
+                        "labelExpr": "(+datum.value) % 5 === 0 ? datum.label : ''"
                     }
                 },
                 "y": {
@@ -133,22 +134,20 @@
                     }
                 },
                 "color": {
-                    "field": "max_kp",
-                    "type": "quantitative",
+                    "field": "kp_level",
+                    "type": "ordinal",
                     "scale": {
-                        "type": "threshold",
                         "domain": [
-                            3,
-                            5,
-                            7,
-                            8
+                            "Extreme (≥ 8)",
+                            "Strong Storm (7–8)",
+                            "Storm (5–7)",
+                            "Active (3–5)"
                         ],
                         "range": [
-                            "#2166ac",
-                            "#92c5de",
-                            "#f4a582",
+                            "#b2182b",
                             "#d6604d",
-                            "#b2182b"
+                            "#f4a582",
+                            "#92c5de"
                         ]
                     },
                     "legend": {
@@ -160,13 +159,12 @@
                         "labelFont": "system-ui, -apple-system, sans-serif",
                         "labelFontSize": 10,
                         "orient": "right",
-                        "values": [
-                            3,
-                            5,
-                            7,
-                            8
-                        ],
-                        "labelExpr": "datum.value === 3 ? '< 3  Quiet' : datum.value === 5 ? '3–5  Active' : datum.value === 7 ? '5–7  Storm' : '7–8  Strong · ≥8 Extreme'"
+                        "symbolType": "square",
+                        "symbolSize": 360,
+                        "symbolStrokeWidth": 0,
+                        "rowPadding": 4,
+                        "labelBaseline": "middle",
+                        "labelExpr": "datum.label === 'Extreme (≥ 8)' ? '≥8  Extreme' : datum.label === 'Strong Storm (7–8)' ? '7–8  Strong' : datum.label === 'Storm (5–7)' ? '5–7  Storm' : '3–5  Active'"
                     }
                 },
                 "opacity": {
@@ -248,7 +246,7 @@
             ],
             "mark": {
                 "type": "text",
-                "fontSize": 9,
+                "fontSize": 10,
                 "color": "#ffffff",
                 "fontWeight": "bold",
                 "align": "center",

@@ -317,7 +317,7 @@
                         "align": "left",
                         "dx": 10,
                         "dy": -10,
-                        "fontSize": 11.5,
+                        "fontSize": 10,
                         "fontWeight": "bold",
                         "fill": "#e2e8f0",
                         "clip": true

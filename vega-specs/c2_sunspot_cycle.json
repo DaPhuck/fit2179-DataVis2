@@ -196,7 +196,7 @@
                     "mark": {
                         "type": "text",
                         "font": "system-ui, -apple-system, sans-serif",
-                        "fontSize": 9,
+                        "fontSize": 10,
                         "fontWeight": "bold",
                         "color": "#d97706",
                         "align": "right",

@@ -332,7 +332,7 @@
                     "mark": {
                         "type": "text",
                         "dy": -19,
-                        "fontSize": 9,
+                        "fontSize": 10,
                         "fontWeight": "bold",
                         "fill": "#fde68a",
                         "align": "center"
@@ -369,7 +369,7 @@
                     "mark": {
                         "type": "text",
                         "dy": -33,
-                        "fontSize": 9,
+                        "fontSize": 10,
                         "fontWeight": "bold",
                         "fill": "#fde68a",
                         "align": "center"

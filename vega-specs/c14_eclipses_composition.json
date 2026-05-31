@@ -217,7 +217,7 @@
                     "type": "text",
                     "align": "left",
                     "dx": 5,
-                    "fontSize": 11,
+                    "fontSize": 10,
                     "fontWeight": "bold",
                     "fill": "#cbd5e1"
                 },

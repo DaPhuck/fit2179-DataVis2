@@ -170,7 +170,7 @@
                         "align": "center",
                         "baseline": "top",
                         "dy": 6,
-                        "fontSize": 13,
+                        "fontSize": 10,
                         "fontStyle": "italic",
                         "fontWeight": "bold"
                     },
@@ -410,7 +410,7 @@
                 "type": "text",
                 "align": "center",
                 "baseline": "middle",
-                "fontSize": 10.5,
+                "fontSize": 10,
                 "fontStyle": "italic",
                 "lineHeight": 14.5,
                 "color": "#86a4c0"

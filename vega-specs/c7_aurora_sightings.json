@@ -316,7 +316,7 @@
                     "mark": {
                         "type": "text",
                         "dy": -10,
-                        "fontSize": 9.5,
+                        "fontSize": 10,
                         "fontWeight": "normal",
                         "fill": "#7a8ba3",
                         "clip": true

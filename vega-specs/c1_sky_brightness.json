@@ -224,7 +224,7 @@
             "mark": {
                 "type": "text",
                 "font": "system-ui, -apple-system, sans-serif",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontWeight": "bold",
                 "align": "left",
                 "baseline": "middle",
@@ -288,7 +288,7 @@
             "mark": {
                 "type": "text",
                 "font": "system-ui, -apple-system, sans-serif",
-                "fontSize": 11,
+                "fontSize": 10,
                 "fontWeight": "bold",
                 "align": "left",
                 "baseline": "middle",

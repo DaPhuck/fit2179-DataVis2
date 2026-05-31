@@ -133,7 +133,7 @@
                     "mark": {
                         "type": "text",
                         "radius": 225,
-                        "fontSize": 11,
+                        "fontSize": 10,
                         "fontWeight": "normal",
                         "font": "system-ui, -apple-system, sans-serif"
                     },
@@ -176,7 +176,7 @@
                     "mark": {
                         "type": "text",
                         "radiusOffset": 12,
-                        "fontSize": 11,
+                        "fontSize": 10,
                         "fontWeight": "bold",
                         "font": "system-ui, -apple-system, sans-serif"
                     },
