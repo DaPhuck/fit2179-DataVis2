@@ -14,8 +14,8 @@
         "subtitlePadding": 6,
         "offset": 12
     },
-    "width": 640,
-    "height": 340,
+    "width": 570,
+    "height": 430,
     "params": [
         {
             "name": "cycleSel",
@@ -167,7 +167,8 @@
             "data": {
                 "values": [
                     {
-                        "marker": "2023-01-01"
+                        "marker": "2023-01-01",
+                        "label_x": "2025-03-01"
                     }
                 ]
             },
@@ -198,15 +199,15 @@
                         "fontSize": 9,
                         "fontWeight": "bold",
                         "color": "#d97706",
-                        "align": "left",
+                        "align": "right",
                         "baseline": "bottom",
-                        "dx": 4,
+                        "dx": -4,
                         "dy": -4,
                         "clip": true
                     },
                     "encoding": {
                         "x": {
-                            "field": "marker",
+                            "field": "label_x",
                             "type": "temporal"
                         },
                         "y": {

@@ -16,7 +16,7 @@
     },
     "vconcat": [
         {
-            "width": 560,
+            "width": 450,
             "height": 360,
             "layer": [
                 {
@@ -353,7 +353,7 @@
         },
         {
             "description": "Timeline overview with brush — drag to filter the main chart",
-            "width": 560,
+            "width": 360,
             "height": 55,
             "data": {
                 "url": "https://raw.githubusercontent.com/DaPhuck/fit2179-DataVis2/refs/heads/main/data/gfz_kp_yearly.csv"
