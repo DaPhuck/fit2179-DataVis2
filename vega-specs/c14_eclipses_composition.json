@@ -105,7 +105,7 @@
         }
     },
     "spec": {
-        "width": 380,
+        "width": 600,
         "height": {
             "step": 34
         },
