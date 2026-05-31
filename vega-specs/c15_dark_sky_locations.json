@@ -73,7 +73,7 @@
     "vconcat": [
         {
             "description": "Map of clusters coloured by sky darkness",
-            "width": 560,
+            "width": 720,
             "height": 340,
             "projection": {
                 "type": "mercator",
@@ -84,7 +84,7 @@
                     "expr": "citySelect == 'Sydney' ? 2500 : citySelect == 'Melbourne' ? 2600 : citySelect == 'Brisbane' ? 845 : citySelect == 'Perth' ? 830 : citySelect == 'Adelaide' ? 880 : citySelect == 'Hobart' ? 2600 : citySelect == 'Canberra' ? 1900 : citySelect == 'Darwin' ? 910 : 620"
                 },
                 "translate": {
-                    "expr": "citySelect == 'All' ? [280, 170] : [280, 230]"
+                    "expr": "citySelect == 'All' ? [360, 170] : [360, 230]"
                 }
             },
             "layer": [
@@ -225,7 +225,7 @@
         },
         {
             "description": "Scatter: darkness vs distance from nearest capital",
-            "width": 560,
+            "width": 720,
             "height": 320,
             "transform": [
                 {
