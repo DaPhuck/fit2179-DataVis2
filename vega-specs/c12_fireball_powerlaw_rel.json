@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "C12 — The Power-Law of Fireball Impact Energy (global CNEOS)",
-    "width": 600,
+    "width": 700,
     "height": 420,
     "background": "#111d30",
     "config": {
